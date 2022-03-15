@@ -14,7 +14,7 @@ struct ContentView: View {
         // 소스트리 실험 중
     }
 }
-
+//깃테스트
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
