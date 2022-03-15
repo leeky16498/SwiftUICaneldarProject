@@ -8,8 +8,17 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    @State var currentDate : Date = Date()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView{
+            ScrollView(.vertical, showsIndicators: false) {
+                CalendarView(currentDate: $currentDate)
+                    .padding()
+            }
+            .navigationTitle("Planery 🥰")
+        }
     }
 }
 
