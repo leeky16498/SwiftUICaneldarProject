@@ -11,6 +11,9 @@
 		799129C127DF6D2B004CBE70 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799129C027DF6D2B004CBE70 /* ContentView.swift */; };
 		799129C327DF6D2C004CBE70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 799129C227DF6D2C004CBE70 /* Assets.xcassets */; };
 		799129C627DF6D2C004CBE70 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 799129C527DF6D2C004CBE70 /* Preview Assets.xcassets */; };
+		F05062A527E014B30051359B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05062A427E014B30051359B /* Color.swift */; };
+		F05062A827E016360051359B /* UIKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05062A727E016360051359B /* UIKeyboard.swift */; };
+		F05062AC27E016960051359B /* CreateReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05062AB27E016960051359B /* CreateReminderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,9 @@
 		799129C027DF6D2B004CBE70 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		799129C227DF6D2C004CBE70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		799129C527DF6D2C004CBE70 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F05062A427E014B30051359B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		F05062A727E016360051359B /* UIKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKeyboard.swift; sourceTree = "<group>"; };
+		F05062AB27E016960051359B /* CreateReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReminderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +58,11 @@
 			isa = PBXGroup;
 			children = (
 				799129BE27DF6D2B004CBE70 /* SwiftUICaneldarProjectApp.swift */,
-				799129C027DF6D2B004CBE70 /* ContentView.swift */,
+				F05062A627E014DC0051359B /* Extension */,
+				F050629F27E014560051359B /* Utilites */,
+				F05062A327E014840051359B /* Models */,
+				F05062A227E0147C0051359B /* ViewModels */,
+				F05062A027E014620051359B /* Views */,
 				799129C227DF6D2C004CBE70 /* Assets.xcassets */,
 				799129C427DF6D2C004CBE70 /* Preview Content */,
 			);
@@ -65,6 +75,45 @@
 				799129C527DF6D2C004CBE70 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F050629F27E014560051359B /* Utilites */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilites;
+			sourceTree = "<group>";
+		};
+		F05062A027E014620051359B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				799129C027DF6D2B004CBE70 /* ContentView.swift */,
+				F05062AB27E016960051359B /* CreateReminderView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F05062A227E0147C0051359B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F05062A327E014840051359B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F05062A627E014DC0051359B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F05062A427E014B30051359B /* Color.swift */,
+				F05062A727E016360051359B /* UIKeyboard.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +188,9 @@
 			files = (
 				799129C127DF6D2B004CBE70 /* ContentView.swift in Sources */,
 				799129BF27DF6D2B004CBE70 /* SwiftUICaneldarProjectApp.swift in Sources */,
+				F05062A827E016360051359B /* UIKeyboard.swift in Sources */,
+				F05062A527E014B30051359B /* Color.swift in Sources */,
+				F05062AC27E016960051359B /* CreateReminderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
