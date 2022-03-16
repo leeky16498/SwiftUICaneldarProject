@@ -22,6 +22,8 @@
 		F05062A527E014B30051359B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05062A427E014B30051359B /* Color.swift */; };
 		F05062A827E016360051359B /* UIKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05062A727E016360051359B /* UIKeyboard.swift */; };
 		F05062AC27E016960051359B /* CreateReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05062AB27E016960051359B /* CreateReminderView.swift */; };
+		F05950CE27E164B4001C10D8 /* TaskContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F05950CC27E164B4001C10D8 /* TaskContainer.xcdatamodeld */; };
+		F05950D027E164D0001C10D8 /* TaskDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05950CF27E164D0001C10D8 /* TaskDataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 		F05062A427E014B30051359B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		F05062A727E016360051359B /* UIKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKeyboard.swift; sourceTree = "<group>"; };
 		F05062AB27E016960051359B /* CreateReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReminderView.swift; sourceTree = "<group>"; };
+		F05950CD27E164B4001C10D8 /* TaskContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskContainer.xcdatamodel; sourceTree = "<group>"; };
+		F05950CF27E164D0001C10D8 /* TaskDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,7 @@
 			children = (
 				7978DBE427E0AC2D00499843 /* TaskModel.swift */,
 				7978DBED27E0BEFD00499843 /* DateModel.swift */,
+				F05950CC27E164B4001C10D8 /* TaskContainer.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -109,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				7978DBE827E0AC4B00499843 /* App */,
+				F05950CB27E16462001C10D8 /* DataServices */,
 				7978DBE127E0AC1800499843 /* Utilities */,
 				7978DBE027E0AC1400499843 /* Model */,
 				7978DBDF27E0AC0C00499843 /* ViewModel */,
@@ -146,6 +152,14 @@
 				7978DBF127E0CB5600499843 /* GetAllDate.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		F05950CB27E16462001C10D8 /* DataServices */ = {
+			isa = PBXGroup;
+			children = (
+				F05950CF27E164D0001C10D8 /* TaskDataService.swift */,
+			);
+			path = DataServices;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +242,8 @@
 				799129BF27DF6D2B004CBE70 /* SwiftUICaneldarProjectApp.swift in Sources */,
 				F05062A827E016360051359B /* UIKeyboard.swift in Sources */,
 				F05062A527E014B30051359B /* Color.swift in Sources */,
+				F05950CE27E164B4001C10D8 /* TaskContainer.xcdatamodeld in Sources */,
+				F05950D027E164D0001C10D8 /* TaskDataService.swift in Sources */,
 				7978DBE727E0AC3200499843 /* SoundKit.swift in Sources */,
 				F05062AC27E016960051359B /* CreateReminderView.swift in Sources */,
 				7978DBE527E0AC2D00499843 /* TaskModel.swift in Sources */,
@@ -437,6 +453,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F05950CC27E164B4001C10D8 /* TaskContainer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F05950CD27E164B4001C10D8 /* TaskContainer.xcdatamodel */,
+			);
+			currentVersion = F05950CD27E164B4001C10D8 /* TaskContainer.xcdatamodel */;
+			path = TaskContainer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 799129B327DF6D2B004CBE70 /* Project object */;
 }
