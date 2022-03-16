@@ -9,6 +9,14 @@ import SwiftUI
 
 struct CreateReminderView: View {
     @StateObject var remindervm = ReminderViewModel()
+    
+    @State var startAngle : Double = 0
+    @State var toAngle : Double = 180
+    
+    @State var startProgress : CGFloat = 0
+    @State var toProgress : CGFloat = 0.5
+    
+    
     @State private var createReminderText:String = ""
 
     var body: some View {
@@ -21,9 +29,17 @@ struct CreateReminderView: View {
                 Circle()
                     .frame(width: uiScreen().width * 0.9, height: uiScreen().width * 0.9, alignment: .center)
                     .shadow(color: Color.caltheme.pink, radius: 20, x: 0, y: 0)
+                
+                //드레그 할때 움직이는 아이
+                Circle()
+                    .trim(from: startProgress, to: toProgress)
+                    .stroke(Color.red.opacity(5), style: StrokeStyle(lineWidth: 40, lineCap: .round, lineJoin: .round))
+                    .frame(width: uiScreen().width * 0.8, height: uiScreen().width * 0.8, alignment: .center)
+                    .rotationEffect(Angle(degrees: -90))
+               
                 Circle()
                     .frame(width: uiScreen().width * 0.7, height: uiScreen().width * 0.7, alignment: .center)
-                    .foregroundColor(Color.caltheme.black)
+                    .foregroundColor(Color.caltheme.black.opacity(0.85))
                 ForEach(1..<361, id: \.self){ sec in
                     Rectangle()
                             .frame(width: 20, height: 1)
@@ -32,14 +48,25 @@ struct CreateReminderView: View {
                             .rotationEffect(Angle(degrees: Double(sec)))
                 }
                 Rectangle()
-                        .frame(width: 120, height: 3)
+                        .frame(width: 130, height: 3)
                         .foregroundColor(Color.caltheme.red)
                         .offset(x: 60)
-                        .rotationEffect(Angle(degrees: Double(remindervm.counter * 6)))
+                        .rotationEffect(Angle(degrees: Double(-90)))
                         
                 Circle()
                     .frame(width: 15, height: 15, alignment: .center)
                     .foregroundColor(Color.caltheme.red)
+                
+                Image(systemName: "pawprint.fill")
+                    .font(.callout)
+                    .frame(width:30, height: 30)
+                    .foregroundColor(Color.red)
+                    .rotationEffect(Angle(degrees: 90))
+                    .rotationEffect(Angle(degrees: toAngle))
+                    .background(.white, in:Circle())
+                    .offset(x:  uiScreen().width * 0.8 / 2)
+                    .rotationEffect(Angle(degrees: -90))
+                    .rotationEffect(Angle(degrees: toAngle))
             }
          
 

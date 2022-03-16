@@ -19,6 +19,7 @@ struct CalTheme{
     let red = Color("ColorRed")
     let violet = Color("ColorViolet")
     let yellow = Color("ColorYellow")
+    let blue = Color("ColorBlue")
     let secondaryText = Color("SecondaryTextColor")
     let black = Color("ColorBlack")
     let background = Color("BackgroundColor")
