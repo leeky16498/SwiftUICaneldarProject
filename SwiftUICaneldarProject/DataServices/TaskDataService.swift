@@ -12,13 +12,12 @@ import CoreData
  1. Container 생성 : MyCoreContainer -> NSPersistentContainer
  2. 퍼블리셔 생성
  3. Container 초기화 --> loadPersistentStores
- 
  */
 
 class CoreDataService:ObservableObject{
     let container : NSPersistentContainer
     let containerName : String = "TaskContainer"
-    let entityName : String = "MyCoreEntity"
+    let entityName : String = "TaskEntity"
     @Published var savedEntity : [TaskEntity] = []
     init(){
         container = NSPersistentContainer(name: containerName)
