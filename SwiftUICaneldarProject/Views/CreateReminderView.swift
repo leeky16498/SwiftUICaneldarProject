@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CreateReminderView: View {
-    
+    @StateObject var remindervm = ReminderViewModel()
     @State private var createReminderText:String = ""
 
     var body: some View {
@@ -35,7 +35,7 @@ struct CreateReminderView: View {
                         .frame(width: 120, height: 3)
                         .foregroundColor(Color.caltheme.red)
                         .offset(x: 60)
-                        .rotationEffect(Angle(degrees: Double(45)))
+                        .rotationEffect(Angle(degrees: Double(remindervm.counter * 6)))
                         
                 Circle()
                     .frame(width: 15, height: 15, alignment: .center)

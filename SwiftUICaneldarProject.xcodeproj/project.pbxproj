@@ -24,6 +24,7 @@
 		F05062AC27E016960051359B /* CreateReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05062AB27E016960051359B /* CreateReminderView.swift */; };
 		F05950CE27E164B4001C10D8 /* TaskContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F05950CC27E164B4001C10D8 /* TaskContainer.xcdatamodeld */; };
 		F05950D027E164D0001C10D8 /* TaskDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05950CF27E164D0001C10D8 /* TaskDataService.swift */; };
+		F0ECB7DD27E1E3CD00851ABD /* ReminderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ECB7DC27E1E3CD00851ABD /* ReminderViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		F05062AB27E016960051359B /* CreateReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReminderView.swift; sourceTree = "<group>"; };
 		F05950CD27E164B4001C10D8 /* TaskContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskContainer.xcdatamodel; sourceTree = "<group>"; };
 		F05950CF27E164D0001C10D8 /* TaskDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDataService.swift; sourceTree = "<group>"; };
+		F0ECB7DC27E1E3CD00851ABD /* ReminderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 			children = (
 				7978DBE227E0AC2400499843 /* HomeViewModel.swift */,
 				7978DBEF27E0C55D00499843 /* CalendarViewModel.swift */,
+				F0ECB7DC27E1E3CD00851ABD /* ReminderViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				7978DBEC27E0AC6C00499843 /* MonthlyCalendarView.swift in Sources */,
 				7978DBEA27E0AC6400499843 /* HomeView.swift in Sources */,
 				7978DBEE27E0BEFD00499843 /* DateModel.swift in Sources */,
+				F0ECB7DD27E1E3CD00851ABD /* ReminderViewModel.swift in Sources */,
 				799129C127DF6D2B004CBE70 /* ContentView.swift in Sources */,
 				7978DBF227E0CB5600499843 /* GetAllDate.swift in Sources */,
 				7978DBE327E0AC2400499843 /* HomeViewModel.swift in Sources */,
