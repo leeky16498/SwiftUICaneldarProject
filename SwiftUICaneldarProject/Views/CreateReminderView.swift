@@ -12,10 +12,39 @@ struct CreateReminderView: View {
     @State private var createReminderText:String = ""
     
     var body: some View {
+        VStack{
+            inputTextTitle
+            inputTextSection
+            Divider()
+            reminderDetailsTitle
+        }
+    }
+}
+
+struct CreateReminderView_Previews: PreviewProvider {
+    static var previews: some View {
+        CreateReminderView()
+            .preferredColorScheme(.dark)
+    }
+}
+
+
+extension CreateReminderView {
+    
+    private var inputTextTitle :some View{
+        Text("Create a new remainder")
+            .font(.title)
+            .bold()
+            .foregroundColor(Color.caltheme.secondaryText)
+            .frame(maxWidth:.infinity, alignment: .leading)
+            .padding(.vertical)
+    }
+
+    private var inputTextSection : some View{
         HStack{
             Image(systemName: "magnifyingglass")
                 .foregroundColor(Color.caltheme.secondaryText)
-            TextField("Search by name or symblo...", text: $createReminderText)
+            TextField("할일을 입력해주세요", text: $createReminderText)
                 .foregroundColor(
                     createReminderText.isEmpty ?
                     Color.caltheme.secondaryText : Color.caltheme.violet)
@@ -34,19 +63,23 @@ struct CreateReminderView: View {
                 ,alignment:  .trailing
                 )
         }
-        .font(.headline)
-        .padding()
+        .font(.title3)
+        .padding(.vertical,20)
         .background(
-            RoundedRectangle(cornerRadius: 25)
+            RoundedRectangle(cornerRadius: 15)
                 .fill(Color.caltheme.background)
-                .shadow(color: Color.caltheme.black.opacity(0.15), radius: 10, x: 0, y: 0)
+                .shadow(color: Color.caltheme.black.opacity(0.5), radius: 10, x: 0, y: 0)
         )
         .padding()
+        
     }
-}
-
-struct CreateReminderView_Previews: PreviewProvider {
-    static var previews: some View {
-        CreateReminderView()
+    
+    private var reminderDetailsTitle :some View{
+        Text("Reminder Details")
+            .font(.headline)
+            .bold()
+            .foregroundColor(Color.caltheme.secondaryText)
+            .frame(maxWidth:.infinity, alignment: .leading)
+            .padding(.vertical)
     }
 }
