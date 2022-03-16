@@ -91,8 +91,8 @@
 		7978DBE827E0AC4B00499843 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				799129C027DF6D2B004CBE70 /* ContentView.swift */,
 				799129BE27DF6D2B004CBE70 /* SwiftUICaneldarProjectApp.swift */,
+				799129C027DF6D2B004CBE70 /* ContentView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
