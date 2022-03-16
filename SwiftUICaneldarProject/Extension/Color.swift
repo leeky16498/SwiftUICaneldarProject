@@ -11,6 +11,7 @@ import SwiftUI
 extension Color {
     static let caltheme = CalTheme()
 }
+
 struct CalTheme{
     let green = Color("ColorGreen")
     let lightgray = Color("ColorLightGray")

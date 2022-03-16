@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7978DBE327E0AC2400499843 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7978DBE227E0AC2400499843 /* HomeViewModel.swift */; };
+		7978DBE527E0AC2D00499843 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7978DBE427E0AC2D00499843 /* TaskModel.swift */; };
+		7978DBE727E0AC3200499843 /* SoundKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7978DBE627E0AC3200499843 /* SoundKit.swift */; };
+		7978DBEA27E0AC6400499843 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7978DBE927E0AC6400499843 /* HomeView.swift */; };
+		7978DBEC27E0AC6C00499843 /* MonthlyCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7978DBEB27E0AC6C00499843 /* MonthlyCalendarView.swift */; };
+		7978DBEE27E0BEFD00499843 /* DateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7978DBED27E0BEFD00499843 /* DateModel.swift */; };
+		7978DBF027E0C55D00499843 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7978DBEF27E0C55D00499843 /* CalendarViewModel.swift */; };
+		7978DBF227E0CB5600499843 /* GetAllDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7978DBF127E0CB5600499843 /* GetAllDate.swift */; };
 		799129BF27DF6D2B004CBE70 /* SwiftUICaneldarProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799129BE27DF6D2B004CBE70 /* SwiftUICaneldarProjectApp.swift */; };
 		799129C127DF6D2B004CBE70 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799129C027DF6D2B004CBE70 /* ContentView.swift */; };
 		799129C327DF6D2C004CBE70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 799129C227DF6D2C004CBE70 /* Assets.xcassets */; };
@@ -17,6 +25,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7978DBE227E0AC2400499843 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		7978DBE427E0AC2D00499843 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
+		7978DBE627E0AC3200499843 /* SoundKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundKit.swift; sourceTree = "<group>"; };
+		7978DBE927E0AC6400499843 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		7978DBEB27E0AC6C00499843 /* MonthlyCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCalendarView.swift; sourceTree = "<group>"; };
+		7978DBED27E0BEFD00499843 /* DateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateModel.swift; sourceTree = "<group>"; };
+		7978DBEF27E0C55D00499843 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		7978DBF127E0CB5600499843 /* GetAllDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllDate.swift; sourceTree = "<group>"; };
 		799129BB27DF6D2B004CBE70 /* SwiftUICaneldarProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUICaneldarProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		799129BE27DF6D2B004CBE70 /* SwiftUICaneldarProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUICaneldarProjectApp.swift; sourceTree = "<group>"; };
 		799129C027DF6D2B004CBE70 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -38,6 +54,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7978DBDF27E0AC0C00499843 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7978DBE227E0AC2400499843 /* HomeViewModel.swift */,
+				7978DBEF27E0C55D00499843 /* CalendarViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7978DBE027E0AC1400499843 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7978DBE427E0AC2D00499843 /* TaskModel.swift */,
+				7978DBED27E0BEFD00499843 /* DateModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7978DBE127E0AC1800499843 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				7978DBE627E0AC3200499843 /* SoundKit.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		7978DBE827E0AC4B00499843 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				799129C027DF6D2B004CBE70 /* ContentView.swift */,
+				799129BE27DF6D2B004CBE70 /* SwiftUICaneldarProjectApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		799129B227DF6D2B004CBE70 = {
 			isa = PBXGroup;
 			children = (
@@ -57,11 +108,11 @@
 		799129BD27DF6D2B004CBE70 /* SwiftUICaneldarProject */ = {
 			isa = PBXGroup;
 			children = (
-				799129BE27DF6D2B004CBE70 /* SwiftUICaneldarProjectApp.swift */,
+				7978DBE827E0AC4B00499843 /* App */,
+				7978DBE127E0AC1800499843 /* Utilities */,
+				7978DBE027E0AC1400499843 /* Model */,
+				7978DBDF27E0AC0C00499843 /* ViewModel */,
 				F05062A627E014DC0051359B /* Extension */,
-				F050629F27E014560051359B /* Utilites */,
-				F05062A327E014840051359B /* Models */,
-				F05062A227E0147C0051359B /* ViewModels */,
 				F05062A027E014620051359B /* Views */,
 				799129C227DF6D2C004CBE70 /* Assets.xcassets */,
 				799129C427DF6D2C004CBE70 /* Preview Content */,
@@ -77,34 +128,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		F050629F27E014560051359B /* Utilites */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utilites;
-			sourceTree = "<group>";
-		};
 		F05062A027E014620051359B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				799129C027DF6D2B004CBE70 /* ContentView.swift */,
+				7978DBE927E0AC6400499843 /* HomeView.swift */,
+				7978DBEB27E0AC6C00499843 /* MonthlyCalendarView.swift */,
 				F05062AB27E016960051359B /* CreateReminderView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		F05062A227E0147C0051359B /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		F05062A327E014840051359B /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		F05062A627E014DC0051359B /* Extension */ = {
@@ -112,6 +143,7 @@
 			children = (
 				F05062A427E014B30051359B /* Color.swift */,
 				F05062A727E016360051359B /* UIKeyboard.swift */,
+				7978DBF127E0CB5600499843 /* GetAllDate.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -186,11 +218,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7978DBF027E0C55D00499843 /* CalendarViewModel.swift in Sources */,
+				7978DBEC27E0AC6C00499843 /* MonthlyCalendarView.swift in Sources */,
+				7978DBEA27E0AC6400499843 /* HomeView.swift in Sources */,
+				7978DBEE27E0BEFD00499843 /* DateModel.swift in Sources */,
 				799129C127DF6D2B004CBE70 /* ContentView.swift in Sources */,
+				7978DBF227E0CB5600499843 /* GetAllDate.swift in Sources */,
+				7978DBE327E0AC2400499843 /* HomeViewModel.swift in Sources */,
 				799129BF27DF6D2B004CBE70 /* SwiftUICaneldarProjectApp.swift in Sources */,
 				F05062A827E016360051359B /* UIKeyboard.swift in Sources */,
 				F05062A527E014B30051359B /* Color.swift in Sources */,
+				7978DBE727E0AC3200499843 /* SoundKit.swift in Sources */,
 				F05062AC27E016960051359B /* CreateReminderView.swift in Sources */,
+				7978DBE527E0AC2D00499843 /* TaskModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

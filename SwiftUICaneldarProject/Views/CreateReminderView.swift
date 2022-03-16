@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct CreateReminderView: View {
+    
     @State private var createReminderText:String = ""
+    
     var body: some View {
         HStack{
             Image(systemName: "magnifyingglass")
