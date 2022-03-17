@@ -22,6 +22,7 @@ class ReminderViewModel : ObservableObject{
     ]
 
     var cancellables = Set<AnyCancellable>()
+    
     init(){
         setUpTimer()
     }
@@ -29,6 +30,7 @@ class ReminderViewModel : ObservableObject{
     func getData(){
         //코어에서 가져올꺼야
     }
+    
     func setUpTimer(){
         Timer
             .publish(every: 1, on: .main, in: .common)
@@ -38,11 +40,13 @@ class ReminderViewModel : ObservableObject{
             }
             .store(in: &cancellables)
     }
+    
     func addItem(selectedColor: Color, reimderdtime : String){
         let addItem = [TaskModel(content: createReminderText, selectedColor: selectedColor, remindedtime: reimderdtime)]
         taskmodel.append(contentsOf: addItem)
         print(addItem)
     }
+    
     func uiScreen() -> CGRect{
         return UIScreen.main.bounds
     }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CreateReminderView: View {
+    
     @StateObject var remindervm = ReminderViewModel()
     @State private var startAngle : Double = 0
     @State private var toAngle : Double = 180
@@ -18,7 +19,21 @@ struct CreateReminderView: View {
     @State private var textalert : String = ""
     @State private var selectedColor : Color = Color.caltheme.red
     @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
+        VStack{
+            inputTextTitle
+            inputTextSection
+            Divider()
+                .padding(.bottom,10)
+            clockSection
+            timeTextSection
+            createButtonSection 
+        }
+    }
+    
+    func uiScreen() -> CGRect{
+        return UIScreen.main.bounds
             VStack{
                 inputTextTitle
                 inputTextSection
@@ -32,7 +47,7 @@ struct CreateReminderView: View {
                 createButtonSection
             } //VSTACK
             .alert(isPresented: $isshowAlert, content: getAlert)
-    }
+        
     func onDrag(value: DragGesture.Value){
         let vector = CGVector(dx: value.location.x, dy: value.location.y)
         let radians = atan2(vector.dy - 15, vector.dx - 15)
@@ -42,21 +57,24 @@ struct CreateReminderView: View {
         self.toAngle = angle
         self.toProgress = progress
     }
+        
     func isPressedSave() {
         if textCondition(){
             remindervm.addItem(selectedColor: selectedColor, reimderdtime: toProgress.roundCGFloat())
             presentationMode.wrappedValue.dismiss()
         }
     }
+        
     func textCondition() -> Bool {
         if remindervm.createReminderText.count < 2{
             textalert = "Please, insert at least 3 characters\n😅😅😅"
             isshowAlert = true
             return false
-        }else {
+        } else {
             return true
         }
     }
+        
     func getAlert() -> Alert{
         Alert(title: Text(textalert))
     }
@@ -69,6 +87,7 @@ struct CreateReminderView_Previews: PreviewProvider {
     }
 }
 extension CreateReminderView {
+    
     private var inputTextTitle :some View{
         Text("Create a new remainder")
             .font(.title)
@@ -77,6 +96,7 @@ extension CreateReminderView {
             .frame(maxWidth:.infinity, alignment: .leading)
             .padding(.horizontal)
     }
+    
     private var inputTextSection : some View{
         HStack{
             Image(systemName: "magnifyingglass")
@@ -108,6 +128,7 @@ extension CreateReminderView {
         )
         .padding(.horizontal)
     }
+    
     private var colorTextSection: some View{
         Text("Select the reminder color")
             .frame(maxWidth:.infinity, alignment: .leading)
@@ -115,6 +136,7 @@ extension CreateReminderView {
             .foregroundColor(Color.caltheme.secondaryText)
             .padding(.horizontal)
     }
+    
     private var colorCircleSection: some View{
         HStack(spacing:5){
             ForEach(remindervm.circle, id:\.self){color in
@@ -137,6 +159,7 @@ extension CreateReminderView {
             .padding()
         }
     }
+    
     private var clockSection : some View{
         ZStack{
             Circle()
@@ -204,6 +227,7 @@ extension CreateReminderView {
                 .rotationEffect(Angle(degrees: -90))
         }
     }
+    
     private var timeTextSection: some View{
         HStack(spacing : 0) {
             Text(toProgress.roundCGFloat())
@@ -216,6 +240,7 @@ extension CreateReminderView {
         .padding()
         .scaleEffect(1.5)
     }
+    
     private var createButtonSection: some View{
         Button(action: {
             isPressedSave()
