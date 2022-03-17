@@ -183,7 +183,7 @@ extension CreateReminderView {
                 .frame(width: 15, height: 15, alignment: .center)
                 .foregroundColor(selectedColor)
             
-            Image(systemName: "alarm.fill")
+            Image(systemName: "m.circle.fill")
                 .font(.callout)
                 .frame(width:30, height: 30)
                 .foregroundColor(selectedColor)
