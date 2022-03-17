@@ -3,7 +3,7 @@
     <entity name="TaskEntity" representedClassName="TaskEntity" syncable="YES" codeGenerationType="class">
         <attribute name="content" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="remindedtime" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="remindedtime" optional="YES" attributeType="String"/>
         <attribute name="selectedColor" optional="YES" attributeType="String"/>
     </entity>
     <elements>
