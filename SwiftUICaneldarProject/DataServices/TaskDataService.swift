@@ -15,10 +15,13 @@ import CoreData
  */
 
 class CoreDataService:ObservableObject{
+    
     let container : NSPersistentContainer
     let containerName : String = "TaskContainer"
     let entityName : String = "TaskEntity"
+    
     @Published var savedEntity : [TaskEntity] = []
+    
     init(){
         container = NSPersistentContainer(name: containerName)
         container.loadPersistentStores { _, error in
@@ -28,6 +31,7 @@ class CoreDataService:ObservableObject{
         }
         fetchData()
     }
+    
     func fetchData(){ // 초기 셋업
         let request = NSFetchRequest<TaskEntity>(entityName: entityName)
         do{
@@ -42,6 +46,7 @@ class CoreDataService:ObservableObject{
 //        newData.title = text
         saveCoreEntity()
     }
+    
     func saveCoreEntity(){
         do{
             try container.viewContext.save()
@@ -50,10 +55,12 @@ class CoreDataService:ObservableObject{
             print("Error saving \(error)")
         }
     }
+    
     func updateCoreEntity(entity : TaskEntity, text:String){
 //        entity.title = text
         saveCoreEntity()
     }
+    
     func deleteCoreEntity(indexSet: IndexSet){
         guard let index = indexSet.first else {return}
         let entity = savedEntity[index]
