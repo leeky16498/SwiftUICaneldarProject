@@ -11,6 +11,7 @@ struct CreateReminderView: View {
     @StateObject var remindervm = ReminderViewModel()
     @State private var startAngle : Double = 0
     @State private var toAngle : Double = 180
+    @State private var toHourAngle : Double = 0
     @State private var startProgress : CGFloat = 0
     @State private var toProgress : CGFloat = 0.5
     @State private var isshowAlert : Bool = false
@@ -147,6 +148,7 @@ extension CreateReminderView {
                 .stroke(selectedColor, style: StrokeStyle(lineWidth: 40, lineCap: .round, lineJoin: .round))
                 .frame(width: remindervm.uiScreen().width * 0.8, height: remindervm.uiScreen().width * 0.8, alignment: .center)
                 .rotationEffect(Angle(degrees: -90))
+                .opacity(0.5)
             Circle()
                 .frame(width: remindervm.uiScreen().width * 0.7, height: remindervm.uiScreen().width * 0.7, alignment: .center)
                 .foregroundColor(Color.caltheme.black.opacity(0.85))
@@ -182,6 +184,7 @@ extension CreateReminderView {
             Circle()
                 .frame(width: 15, height: 15, alignment: .center)
                 .foregroundColor(selectedColor)
+       
             
             Image(systemName: "m.circle.fill")
                 .font(.callout)
@@ -227,5 +230,6 @@ extension CreateReminderView {
         .cornerRadius(10)
         .padding()
     }
+    
     
 }
