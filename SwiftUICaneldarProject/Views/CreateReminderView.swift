@@ -180,7 +180,9 @@ extension CreateReminderView {
                     .offset(x: (remindervm.uiScreen().width * 0.6) / 2)
                     .rotationEffect(.init(degrees: Double(i) * 6))
             }
+            
             let texts = [6,9,12,3]
+            
             ForEach(texts.indices, id: \.self){index in
                 Text("\(texts[index])")
                     .font(.caption.bold())
@@ -189,6 +191,7 @@ extension CreateReminderView {
                     .offset(y:(remindervm.uiScreen().width * 0.25))
                     .rotationEffect(Angle(degrees: Double(index) * 90))
             }
+            
             ForEach(1..<361, id: \.self){ sec in
                 Rectangle()
                     .frame(width: 20, height: 1)
@@ -196,6 +199,7 @@ extension CreateReminderView {
                     .offset(x: (remindervm.uiScreen().width * 0.8 ) / 2)
                     .rotationEffect(Angle(degrees: Double(sec)))
             }
+            
             Rectangle()
                 .frame(width: 130, height: 3)
                 .foregroundColor(selectedColor)
