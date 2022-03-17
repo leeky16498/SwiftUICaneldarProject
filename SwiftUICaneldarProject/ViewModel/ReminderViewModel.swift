@@ -20,6 +20,7 @@ class ReminderViewModel : ObservableObject{
         Color.caltheme.yellow,
         Color.caltheme.blue,
     ]
+
     var cancellables = Set<AnyCancellable>()
     init(){
         setUpTimer()
@@ -41,6 +42,9 @@ class ReminderViewModel : ObservableObject{
         let addItem = [TaskModel(content: createReminderText, selectedColor: selectedColor, remindedtime: reimderdtime)]
         taskmodel.append(contentsOf: addItem)
         print(addItem)
+    }
+    func uiScreen() -> CGRect{
+        return UIScreen.main.bounds
     }
     
 }

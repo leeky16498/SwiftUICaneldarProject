@@ -8,21 +8,16 @@
 import SwiftUI
 
 struct CreateReminderView: View {
-    
     @StateObject var remindervm = ReminderViewModel()
-    //    @Binding var createReminderText:String
-    
     @State private var startAngle : Double = 0
     @State private var toAngle : Double = 180
     @State private var startProgress : CGFloat = 0
     @State private var toProgress : CGFloat = 0.5
-    
+    @State private var isshowAlert : Bool = false
+    @State private var textalert : String = ""
     @State private var selectedColor : Color = Color.caltheme.red
-    
-    
+    @Environment(\.presentationMode) var presentationMode
     var body: some View {
-        
-    
             VStack{
                 inputTextTitle
                 inputTextSection
@@ -35,11 +30,7 @@ struct CreateReminderView: View {
                 timeTextSection
                 createButtonSection
             } //VSTACK
-            
-        
-    }
-    func uiScreen() -> CGRect{
-        return UIScreen.main.bounds
+            .alert(isPresented: $isshowAlert, content: getAlert)
     }
     func onDrag(value: DragGesture.Value){
         let vector = CGVector(dx: value.location.x, dy: value.location.y)
@@ -47,9 +38,26 @@ struct CreateReminderView: View {
         var angle = radians * 180 / .pi
         if angle < 0 {angle += 360}
         let progress = angle / 360
-        
         self.toAngle = angle
         self.toProgress = progress
+    }
+    func isPressedSave() {
+        if textCondition(){
+            remindervm.addItem(selectedColor: selectedColor, reimderdtime: toProgress.roundCGFloat())
+            presentationMode.wrappedValue.dismiss()
+        }
+    }
+    func textCondition() -> Bool {
+        if remindervm.createReminderText.count < 2{
+            textalert = "Please, insert at least 3 characters\n😅😅😅"
+            isshowAlert = true
+            return false
+        }else {
+            return true
+        }
+    }
+    func getAlert() -> Alert{
+        Alert(title: Text(textalert))
     }
 }
 
@@ -128,29 +136,25 @@ extension CreateReminderView {
             .padding()
         }
     }
-    
-    
-    
-    
     private var clockSection : some View{
         ZStack{
             Circle()
-                .frame(width: uiScreen().width * 0.9, height: uiScreen().width * 0.9, alignment: .center)
+                .frame(width: remindervm.uiScreen().width * 0.9, height: remindervm.uiScreen().width * 0.9, alignment: .center)
                 .shadow(color: selectedColor, radius: 20, x: 0, y: 0)
             //드레그 할때 움직이는 아이
             Circle()
                 .trim(from: startProgress, to: toProgress)
                 .stroke(selectedColor, style: StrokeStyle(lineWidth: 40, lineCap: .round, lineJoin: .round))
-                .frame(width: uiScreen().width * 0.8, height: uiScreen().width * 0.8, alignment: .center)
+                .frame(width: remindervm.uiScreen().width * 0.8, height: remindervm.uiScreen().width * 0.8, alignment: .center)
                 .rotationEffect(Angle(degrees: -90))
             Circle()
-                .frame(width: uiScreen().width * 0.7, height: uiScreen().width * 0.7, alignment: .center)
+                .frame(width: remindervm.uiScreen().width * 0.7, height: remindervm.uiScreen().width * 0.7, alignment: .center)
                 .foregroundColor(Color.caltheme.black.opacity(0.85))
             ForEach(0..<60, id:\.self){i in
                 Rectangle()
                     .foregroundColor(Color.white)
                     .frame(width: i % 5 == 0 ? 15 : 5, height:  1)
-                    .offset(x: (uiScreen().width * 0.6) / 2)
+                    .offset(x: (remindervm.uiScreen().width * 0.6) / 2)
                     .rotationEffect(.init(degrees: Double(i) * 6))
             }
             let texts = [6,9,12,3]
@@ -159,14 +163,14 @@ extension CreateReminderView {
                     .font(.caption.bold())
                     .foregroundColor(.white)
                     .rotationEffect(Angle(degrees: Double(index) * -90))
-                    .offset(y:(uiScreen().width * 0.25))
+                    .offset(y:(remindervm.uiScreen().width * 0.25))
                     .rotationEffect(Angle(degrees: Double(index) * 90))
             }
             ForEach(1..<361, id: \.self){ sec in
                 Rectangle()
                     .frame(width: 20, height: 1)
                     .foregroundColor(selectedColor)
-                    .offset(x: (uiScreen().width * 0.8 ) / 2)
+                    .offset(x: (remindervm.uiScreen().width * 0.8 ) / 2)
                     .rotationEffect(Angle(degrees: Double(sec)))
             }
             Rectangle()
@@ -186,7 +190,7 @@ extension CreateReminderView {
                 .rotationEffect(Angle(degrees: 90))
                 .rotationEffect(Angle(degrees: -toAngle))
                 .background(.white, in:Circle())
-                .offset(x:  uiScreen().width * 0.8 / 2)
+                .offset(x:remindervm.uiScreen().width * 0.8 / 2)
                 .rotationEffect(Angle(degrees: toAngle))
                 .gesture(
                     DragGesture()
@@ -209,10 +213,9 @@ extension CreateReminderView {
         .padding()
         .scaleEffect(1.5)
     }
-    
     private var createButtonSection: some View{
         Button(action: {
-            remindervm.addItem(selectedColor: selectedColor, reimderdtime: toProgress.roundCGFloat())
+            isPressedSave()
         }, label: {
             Text("Create Reminder")
         })
