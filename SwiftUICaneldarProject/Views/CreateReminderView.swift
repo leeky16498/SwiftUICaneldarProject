@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct CreateReminderView: View {
+    @State var circle = [
+        Color.caltheme.red,
+        Color.caltheme.pink,
+        Color.caltheme.green,
+        Color.caltheme.yellow,
+        Color.caltheme.blue,
+    ]
     @StateObject var remindervm = ReminderViewModel()
     
     @State var startAngle : Double = 0
@@ -15,23 +22,45 @@ struct CreateReminderView: View {
     
     @State var startProgress : CGFloat = 0
     @State var toProgress : CGFloat = 0.5
-    
+    @State var isSelected : Bool = false
     
     @State private var createReminderText:String = ""
     
     var body: some View {
-        VStack{
-            inputTextTitle
-            inputTextSection
-            Divider()
-                .padding(.bottom,10)
-            clockSection
-            timeTextSection
-            createButtonSection
-
-
-            
-            
+        
+        ScrollView {
+            VStack{
+                inputTextTitle
+                inputTextSection
+                Divider()
+                    .padding(.bottom,10)
+                colorTextSection
+                Divider()
+                    .padding(.bottom,10)
+                HStack(spacing:5){
+                    ForEach(circle, id:\.self){color in
+                        Circle()
+                            .frame(width: 40, height: 40)
+                            .foregroundColor(color)
+                            .background(
+                                Circle()
+                                    .frame(width: 45, height: 45)
+                                    .foregroundColor(isSelected ? Color.white : Color.clear)
+                                    .shadow(color: isSelected ? Color.white : Color.clear, radius: 5, x: 0, y: 0))
+                            .onTapGesture {
+                                withAnimation(.easeIn){
+                                    isSelected.toggle()
+                                }
+                            }
+                    }
+                    .frame(maxWidth:.infinity)
+                    .padding()
+                }
+//                            clockSection
+//                            timeTextSection
+                            createButtonSection
+            } //VSTACK
+           
         }
     }
     func uiScreen() -> CGRect{
@@ -43,10 +72,9 @@ struct CreateReminderView: View {
         var angle = radians * 180 / .pi
         if angle < 0 {angle += 360}
         let progress = angle / 360
-
-            self.toAngle = angle
-            self.toProgress = progress
-       
+        
+        self.toAngle = angle
+        self.toProgress = progress
     }
 }
 
@@ -56,19 +84,15 @@ struct CreateReminderView_Previews: PreviewProvider {
             .preferredColorScheme(.dark)
     }
 }
-
-
 extension CreateReminderView {
-    
     private var inputTextTitle :some View{
         Text("Create a new remainder")
             .font(.title)
             .bold()
             .foregroundColor(Color.caltheme.secondaryText)
             .frame(maxWidth:.infinity, alignment: .leading)
-            .padding(.vertical)
+            .padding()
     }
-    
     private var inputTextSection : some View{
         HStack{
             Image(systemName: "magnifyingglass")
@@ -99,21 +123,25 @@ extension CreateReminderView {
                 .shadow(color: Color.caltheme.black.opacity(0.5), radius: 10, x: 0, y: 0)
         )
         .padding()
-        
+    }
+    private var colorTextSection: some View{
+        Text("Select the reminder color")
+            .frame(maxWidth:.infinity, alignment: .leading)
+            .font(.headline)
+            .foregroundColor(Color.caltheme.secondaryText)
+            .padding()
     }
     private var clockSection : some View{
         ZStack{
             Circle()
                 .frame(width: uiScreen().width * 0.9, height: uiScreen().width * 0.9, alignment: .center)
                 .shadow(color: Color.caltheme.pink, radius: 20, x: 0, y: 0)
-            
             //드레그 할때 움직이는 아이
             Circle()
                 .trim(from: startProgress, to: toProgress)
                 .stroke(Color.caltheme.red, style: StrokeStyle(lineWidth: 40, lineCap: .round, lineJoin: .round))
                 .frame(width: uiScreen().width * 0.8, height: uiScreen().width * 0.8, alignment: .center)
                 .rotationEffect(Angle(degrees: -90))
-            
             Circle()
                 .frame(width: uiScreen().width * 0.7, height: uiScreen().width * 0.7, alignment: .center)
                 .foregroundColor(Color.caltheme.black.opacity(0.85))
@@ -166,10 +194,8 @@ extension CreateReminderView {
                         }
                 )
                 .rotationEffect(Angle(degrees: -90))
-            
         }
     }
-    
     private var timeTextSection: some View{
         HStack(spacing : 0) {
             Text(toProgress.roundCGFloat())
