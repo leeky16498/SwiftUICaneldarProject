@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+<<<<<<< HEAD
 struct Task : Identifiable {
     
     let id = UUID()
@@ -23,4 +24,11 @@ struct TaskTimeModel : Identifiable {
     let task : [Task]
     let taskDate : Date
     
+=======
+struct TaskModel: Identifiable {
+    let id = UUID().uuidString
+    let content : String
+    var selectedColor : Color
+    let remindedtime : String
+>>>>>>> dc9e35a1636016db4c89c954e5bc1ef071197aaf
 }
