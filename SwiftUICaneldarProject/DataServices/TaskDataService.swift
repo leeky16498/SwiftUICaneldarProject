@@ -32,7 +32,7 @@ class CoreDataService:ObservableObject{
         let request = NSFetchRequest<TaskEntity>(entityName: entityName)
         do{
             savedEntity = try container.viewContext.fetch(request)
-        }catch let error {
+        } catch let error {
             print("Error fetching Core data \(error)")
         }
     }

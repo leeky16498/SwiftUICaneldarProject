@@ -27,11 +27,7 @@ struct CreateReminderView: View {
                 .padding(.bottom,10)
             clockSection
             timeTextSection
-            createButtonSection
-
-
-            
-            
+            createButtonSection 
         }
     }
     func uiScreen() -> CGRect{

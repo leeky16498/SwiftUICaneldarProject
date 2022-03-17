@@ -14,6 +14,7 @@ class ReminderViewModel : ObservableObject{
     init(){
         setUpTimer()
     }
+    
     func setUpTimer(){
         Timer
             .publish(every: 1, on: .main, in: .common)
