@@ -39,7 +39,7 @@ class CoreDataService:ObservableObject{
     
     func addMyCoreEntity(text:String){
         let newData = TaskEntity(context: container.viewContext)
-        newData.title = text
+//        newData.title = text
         saveCoreEntity()
     }
     func saveCoreEntity(){
@@ -51,7 +51,7 @@ class CoreDataService:ObservableObject{
         }
     }
     func updateCoreEntity(entity : TaskEntity, text:String){
-        entity.title = text
+//        entity.title = text
         saveCoreEntity()
     }
     func deleteCoreEntity(indexSet: IndexSet){

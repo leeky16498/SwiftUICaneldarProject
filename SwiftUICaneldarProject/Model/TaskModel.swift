@@ -11,7 +11,6 @@ import SwiftUI
 struct TaskModel: Identifiable {
     let id = UUID().uuidString
     let content : String
-    let circleColor : Color
-    let remindedtime : Int
-    let isSelected : Bool
+    var selectedColor : Color
+    let remindedtime : String
 }
