@@ -12,7 +12,7 @@ import CoreData
 
 class ReminderViewModel : ObservableObject{
     @Published var counter : Int = 0
-    @Published var taskmodel : [TaskModel] = []
+//    @Published var taskmodel : [TaskModel] = []
     @Published var createReminderText : String = ""
     
 //    private let teskdataservice = TaskDataService()
@@ -51,7 +51,6 @@ class ReminderViewModel : ObservableObject{
         }
     }
     func addItem(selectedColor: Color, reimderdtime : String){
-
         let entity = TaskEntity(context: container.viewContext)
         entity.content = createReminderText
         entity.selectedColor = selectedColor.description

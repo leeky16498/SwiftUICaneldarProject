@@ -11,10 +11,11 @@ struct LoadedReminderView: View {
     @StateObject var vm = ReminderViewModel()
     var body: some View {
         List{
-            ForEach(vm.savedEntity){ entity in
+            ForEach(vm.savedEntity){entity in
                 Text(entity.content ?? "no")
-                Text(entity.selectedColor ?? "no")
+                Text("hello")
             }
+            Text("out")
         }
     }
 }
