@@ -26,9 +26,6 @@ class ReminderViewModel : ObservableObject{
 
     
     let container : NSPersistentContainer
-//    let containerName : String = "TaskContainer"
-//    let entityName : String = "TaskEntity"
-    
     @Published var savedEntity : [TaskEntity] = []
     
     init(){
@@ -57,10 +54,8 @@ class ReminderViewModel : ObservableObject{
         entity.remindedtime = reimderdtime
         saveCoreEntity()
         print("Success saved")
+
     }
-    
-    
-    
     func saveCoreEntity(){
         do{
             try container.viewContext.save()

@@ -11,7 +11,7 @@ import SwiftUI
 struct SwiftUICaneldarProjectApp: App {
     var body: some Scene {
         WindowGroup {
-            CreateReminderView()
+            LoadedReminderView()
 //            ContentView()
         }
     }
