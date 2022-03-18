@@ -14,7 +14,6 @@ struct LoadedReminderView: View {
             ForEach(vm.savedEntity){ entity in
                 Text(entity.content ?? "no")
                 Text(entity.selectedColor ?? "no")
-                
             }
         }
     }
