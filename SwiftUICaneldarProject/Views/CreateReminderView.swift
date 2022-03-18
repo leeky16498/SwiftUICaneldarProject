@@ -26,7 +26,18 @@ struct CreateReminderView: View {
             colorTextSection
             colorCircleSection
                 .padding(.bottom,10)
-            clockSection
+//            clockSection
+            List{
+                ForEach(remindervm.savedEntity){entity in
+                    HStack {
+                        Text(entity.content ?? "1 no")
+                        Text(entity.selectedColor ?? "2 no")
+                        Text(entity.remindedtime ?? "2 no")
+                     
+                    }
+                }
+                .onDelete(perform: remindervm.deleteCoreEntity)
+            }
             timeTextSection
             createButtonSection
         } //VSTACK
@@ -215,6 +226,7 @@ extension CreateReminderView {
     private var createButtonSection: some View{
         Button(action: {
             isPressedCreateReminer()
+//            remindervm.addItem(selectedColor: selectedColor, reimderdtime: toProgress.roundCGFloat())
         }, label: {
             Text("Create Reminder")
         })

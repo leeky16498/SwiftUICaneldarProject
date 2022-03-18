@@ -19,10 +19,12 @@
 		799129C127DF6D2B004CBE70 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799129C027DF6D2B004CBE70 /* ContentView.swift */; };
 		799129C327DF6D2C004CBE70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 799129C227DF6D2C004CBE70 /* Assets.xcassets */; };
 		799129C627DF6D2C004CBE70 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 799129C527DF6D2C004CBE70 /* Preview Assets.xcassets */; };
+		F01E315127E4C4E600B89C4D /* LoadedTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01E315027E4C4E600B89C4D /* LoadedTimerView.swift */; };
+		F01E315427E4D4C800B89C4D /* TaskContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F01E315227E4D4C800B89C4D /* TaskContainer.xcdatamodeld */; };
 		F05062A527E014B30051359B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05062A427E014B30051359B /* Color.swift */; };
 		F05062A827E016360051359B /* UIKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05062A727E016360051359B /* UIKeyboard.swift */; };
 		F05062AC27E016960051359B /* CreateReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05062AB27E016960051359B /* CreateReminderView.swift */; };
-		F05950CE27E164B4001C10D8 /* TaskContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F05950CC27E164B4001C10D8 /* TaskContainer.xcdatamodeld */; };
+		F070D53727E4A026009EE736 /* ReminderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070D53627E4A026009EE736 /* ReminderListView.swift */; };
 		F075D3E727E3715D0036593F /* LoadedReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F075D3E627E3715D0036593F /* LoadedReminderView.swift */; };
 		F0AE1D3B27E2BB3E00CF1AA2 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AE1D3A27E2BB3E00CF1AA2 /* CGFloat.swift */; };
 		F0ECB7DD27E1E3CD00851ABD /* ReminderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ECB7DC27E1E3CD00851ABD /* ReminderViewModel.swift */; };
@@ -42,10 +44,12 @@
 		799129C027DF6D2B004CBE70 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		799129C227DF6D2C004CBE70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		799129C527DF6D2C004CBE70 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F01E315027E4C4E600B89C4D /* LoadedTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadedTimerView.swift; sourceTree = "<group>"; };
+		F01E315327E4D4C800B89C4D /* TaskContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskContainer.xcdatamodel; sourceTree = "<group>"; };
 		F05062A427E014B30051359B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		F05062A727E016360051359B /* UIKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKeyboard.swift; sourceTree = "<group>"; };
 		F05062AB27E016960051359B /* CreateReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReminderView.swift; sourceTree = "<group>"; };
-		F05950CD27E164B4001C10D8 /* TaskContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskContainer.xcdatamodel; sourceTree = "<group>"; };
+		F070D53627E4A026009EE736 /* ReminderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderListView.swift; sourceTree = "<group>"; };
 		F075D3E627E3715D0036593F /* LoadedReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadedReminderView.swift; sourceTree = "<group>"; };
 		F0AE1D3A27E2BB3E00CF1AA2 /* CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
 		F0ECB7DC27E1E3CD00851ABD /* ReminderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewModel.swift; sourceTree = "<group>"; };
@@ -68,6 +72,7 @@
 				7978DBE227E0AC2400499843 /* HomeViewModel.swift */,
 				7978DBEF27E0C55D00499843 /* CalendarViewModel.swift */,
 				F0ECB7DC27E1E3CD00851ABD /* ReminderViewModel.swift */,
+				F01E315227E4D4C800B89C4D /* TaskContainer.xcdatamodeld */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -77,7 +82,6 @@
 			children = (
 				7978DBE427E0AC2D00499843 /* TaskModel.swift */,
 				7978DBED27E0BEFD00499843 /* DateModel.swift */,
-				F05950CC27E164B4001C10D8 /* TaskContainer.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -143,8 +147,10 @@
 			children = (
 				7978DBE927E0AC6400499843 /* HomeView.swift */,
 				7978DBEB27E0AC6C00499843 /* CalendarView.swift */,
-				F075D3E627E3715D0036593F /* LoadedReminderView.swift */,
 				F05062AB27E016960051359B /* CreateReminderView.swift */,
+				F075D3E627E3715D0036593F /* LoadedReminderView.swift */,
+				F070D53627E4A026009EE736 /* ReminderListView.swift */,
+				F01E315027E4C4E600B89C4D /* LoadedTimerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -230,7 +236,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F01E315127E4C4E600B89C4D /* LoadedTimerView.swift in Sources */,
 				F0AE1D3B27E2BB3E00CF1AA2 /* CGFloat.swift in Sources */,
+				F070D53727E4A026009EE736 /* ReminderListView.swift in Sources */,
 				7978DBF027E0C55D00499843 /* CalendarViewModel.swift in Sources */,
 				7978DBEC27E0AC6C00499843 /* CalendarView.swift in Sources */,
 				F075D3E727E3715D0036593F /* LoadedReminderView.swift in Sources */,
@@ -243,7 +251,7 @@
 				799129BF27DF6D2B004CBE70 /* SwiftUICaneldarProjectApp.swift in Sources */,
 				F05062A827E016360051359B /* UIKeyboard.swift in Sources */,
 				F05062A527E014B30051359B /* Color.swift in Sources */,
-				F05950CE27E164B4001C10D8 /* TaskContainer.xcdatamodeld in Sources */,
+				F01E315427E4D4C800B89C4D /* TaskContainer.xcdatamodeld in Sources */,
 				7978DBE727E0AC3200499843 /* SoundKit.swift in Sources */,
 				F05062AC27E016960051359B /* CreateReminderView.swift in Sources */,
 				7978DBE527E0AC2D00499843 /* TaskModel.swift in Sources */,
@@ -455,12 +463,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		F05950CC27E164B4001C10D8 /* TaskContainer.xcdatamodeld */ = {
+		F01E315227E4D4C800B89C4D /* TaskContainer.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				F05950CD27E164B4001C10D8 /* TaskContainer.xcdatamodel */,
+				F01E315327E4D4C800B89C4D /* TaskContainer.xcdatamodel */,
 			);
-			currentVersion = F05950CD27E164B4001C10D8 /* TaskContainer.xcdatamodel */;
+			currentVersion = F01E315327E4D4C800B89C4D /* TaskContainer.xcdatamodel */;
 			path = TaskContainer.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

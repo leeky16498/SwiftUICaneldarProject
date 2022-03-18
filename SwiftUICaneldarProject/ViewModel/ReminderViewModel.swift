@@ -12,10 +12,8 @@ import CoreData
 
 class ReminderViewModel : ObservableObject{
     @Published var counter : Int = 0
-//    @Published var taskmodel : [TaskModel] = []
     @Published var createReminderText : String = ""
-    
-//    private let teskdataservice = TaskDataService()
+    @Published var savedEntity : [TaskEntity] = []
     @Published var circle = [
         Color.caltheme.red,
         Color.caltheme.pink,
@@ -23,11 +21,9 @@ class ReminderViewModel : ObservableObject{
         Color.caltheme.yellow,
         Color.caltheme.blue,
     ]
-
-    
+   
     let container : NSPersistentContainer
-    @Published var savedEntity : [TaskEntity] = []
-    
+    var cancellables = Set<AnyCancellable>()
     init(){
         container = NSPersistentContainer(name: "TaskContainer")
         container.loadPersistentStores { _, error in
@@ -36,24 +32,38 @@ class ReminderViewModel : ObservableObject{
             }
         }
         fetchData()
+        setUpTimer()
     }
-    
+    func setUpTimer(){
+        let sub =  Timer
+            .publish(every: 1, on: .main, in: .common)
+            .autoconnect()
+            .sink { [weak self] _ in
+                self?.counter += 1
+            }
+            .store(in: &cancellables)
+    }
 
     func fetchData(){ // 초기 셋업
         let request = NSFetchRequest<TaskEntity>(entityName: "TaskEntity")
         do{
             savedEntity = try container.viewContext.fetch(request)
+            print(savedEntity)
         } catch let error {
             print("Error fetching Core data \(error)")
         }
     }
+    
+    
     func addItem(selectedColor: Color, reimderdtime : String){
         let entity = TaskEntity(context: container.viewContext)
-        entity.content = createReminderText
         entity.selectedColor = selectedColor.description
         entity.remindedtime = reimderdtime
+//        if let intreimderdtime = Int(reimderdtime){
+//            entity.remindedtime = Int16(intreimderdtime)
+//        }
         saveCoreEntity()
-        print("Success saved")
+//        print(entity.remindedtime)
 
     }
     func saveCoreEntity(){
@@ -64,6 +74,7 @@ class ReminderViewModel : ObservableObject{
             print("Error saving \(error)")
         }
     }
+
     
 //    func updateCoreEntity(entity : TaskEntity, text:String){
 ////        entity.title = text
@@ -85,20 +96,7 @@ class ReminderViewModel : ObservableObject{
     
     
     
-//    var cancellables = Set<AnyCancellable>()
-    
-//    init(){
-//        setUpTimer()
-//    }
-//    func setUpTimer(){
-//        Timer
-//            .publish(every: 1, on: .main, in: .common)
-//            .autoconnect()
-//            .sink { [weak self] _ in
-//                self?.counter += 1
-//            }
-//            .store(in: &cancellables)
-//    }
+
     
 
 

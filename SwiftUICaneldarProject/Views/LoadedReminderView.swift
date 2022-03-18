@@ -13,47 +13,26 @@ struct LoadedReminderView: View {
     @State private var toProgress : CGFloat = 0.5
     @State private var startAngle : Double = 0
     @State private var toAngle : Double = 180
+    var loadedContent : String
+    var loadedSelectedColor : String
+    @State var loadedRemindedtime : String
     var body: some View {
         VStack{
-//            remindervm.savedEntity.remindedtime.map(Text.init)
+            Text(loadedSelectedColor)
+                
             inputTextTitle
             
             Divider()
                 .padding(.bottom,10)
-            clockSection
+//            clockSection
                 .padding(.vertical,10)
             timeTextSection
                 .padding(.vertical,10)
-            HStack(spacing:40) {
-                Button(action: {
-                    
-                }, label: {
-                    Image(systemName: "playpause.fill")
-                        .font(.system(size:40))
-//                    Text("Play")
-//                        .font(.system(.title, design: .rounded))
-//                        .fontWeight(.bold)
-                })
-                .frame(width:150,height:80, alignment: .center)
-                .background(Color.caltheme.red)
-                .cornerRadius(15)
-                
-                Button(action: {
-         
-                }, label: {
-                    Image(systemName: "stop.fill")
-                        .font(.system(size:40))
-//                    Text("Stop")
-//                        .font(.system(.title, design: .rounded))
-//                        .fontWeight(.bold)
-                })
-                .frame(width:150,height:80, alignment: .center)
-                .background(Color.caltheme.red)
-                .cornerRadius(15)
-            }
+            buttonSection
             .foregroundColor(Color.white)
             .padding(.top,30)
         } //VSTACK
+//        .navigationBarHidden(true)
         
     }
 }
@@ -61,7 +40,7 @@ struct LoadedReminderView: View {
 
 struct LoadedReminderView_Previews: PreviewProvider {
     static var previews: some View {
-        LoadedReminderView()
+        LoadedReminderView(loadedContent: "Hello", loadedSelectedColor: "1", loadedRemindedtime: "600")
             .preferredColorScheme(.dark)
     }
 }
@@ -69,7 +48,7 @@ struct LoadedReminderView_Previews: PreviewProvider {
 
 extension LoadedReminderView {
     private var inputTextTitle :some View{
-        Text("the name of your task")
+        Text(loadedContent)
             .font(.largeTitle)
             .bold()
             .foregroundColor(Color.caltheme.secondaryText)
@@ -130,16 +109,37 @@ extension LoadedReminderView {
     }
     
     private var timeTextSection: some View{
-        HStack(spacing : 0) {
-            Text("50")
-                .frame(width:50)
-            Text("Minutes")
-                .frame(width:130)
+        LoadedTimerView(loadedRemindedtime: $loadedRemindedtime)
+    }
+    
+    private var buttonSection: some View{
+        HStack(spacing:40) {
+            Button(action: {
+                
+            }, label: {
+                Image(systemName: "playpause.fill")
+                    .font(.system(size:40))
+//                    Text("Play")
+//                        .font(.system(.title, design: .rounded))
+//                        .fontWeight(.bold)
+            })
+            .frame(width:150,height:80, alignment: .center)
+            .background(Color.caltheme.red)
+            .cornerRadius(15)
+            
+            Button(action: {
+     
+            }, label: {
+                Image(systemName: "stop.fill")
+                    .font(.system(size:40))
+//                    Text("Stop")
+//                        .font(.system(.title, design: .rounded))
+//                        .fontWeight(.bold)
+            })
+            .frame(width:150,height:80, alignment: .center)
+            .background(Color.caltheme.red)
+            .cornerRadius(15)
         }
-        .font(.largeTitle.bold())
-        .foregroundColor(Color.caltheme.secondaryText)
-        .padding()
-        .scaleEffect(1.5)
     }
 }
 
