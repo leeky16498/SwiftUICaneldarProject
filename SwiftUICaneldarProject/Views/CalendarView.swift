@@ -14,6 +14,7 @@ struct CalendarView: View {
     @State var isAnimating : Bool = false
     
     let days : [String] = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    
     let column = Array(repeating: GridItem(.flexible()), count : 7)
     
     var body: some View {
@@ -68,9 +69,6 @@ struct CalendarView: View {
         .onChange(of: vm.currentMonth) { newValue in
             currentDate = vm.getCurrentMonth()
         }
-        .onAppear {
-            self.isAnimating = true
-        }
     }
 }
 
@@ -107,8 +105,6 @@ extension CalendarView {
         .padding(.vertical, 5)
         .frame(height : 70, alignment : .top)
     }
-    
-    
 }
 
     

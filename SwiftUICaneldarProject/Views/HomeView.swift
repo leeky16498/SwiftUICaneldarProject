@@ -10,13 +10,35 @@ import SwiftUI
 struct HomeView: View {
     
     @State var currentDate : Date = Date()
+    @State var isShowCreateReminderView : Bool = false
     
     var body: some View {
         NavigationView{
-            ScrollView(.vertical, showsIndicators: false) {
-                CalendarView(currentDate: $currentDate)
-                    .padding()
+            ZStack(alignment: .bottomTrailing){
+                ScrollView(.vertical, showsIndicators: false) {
+                    CalendarView(currentDate: $currentDate)
+                        .padding()
+                }
+                
+                Button(action: {
+                    self.isShowCreateReminderView.toggle()
+                }, label: {
+                    Image(systemName: "plus")
+                        .font(.title3.bold())
+                        .foregroundColor(.white)
+                        .background(
+                            Circle()
+                                .fill(.gray)
+                                .frame(width : 60, height : 60)
+                        )
+                })
+                .sheet(isPresented : $isShowCreateReminderView) {
+                    CreateReminderView()
+                }
+                .padding(50)
+                
             }
+            
             .navigationTitle("Planery 🥰")
         }
     }

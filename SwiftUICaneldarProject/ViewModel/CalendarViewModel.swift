@@ -26,6 +26,7 @@ class CalendarViewModel : ObservableObject {
         
         let calendar = Calendar.current
         let currentMonth = getCurrentMonth()
+        
         var days = currentMonth.getAllDates().compactMap { date  -> DateModel in
             let day = calendar.component(.day, from: date)
             return DateModel(day: day, date: date)
