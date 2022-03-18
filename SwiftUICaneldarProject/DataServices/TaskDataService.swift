@@ -14,8 +14,7 @@ import CoreData
  3. Container 초기화 --> loadPersistentStores
  */
 
-class CoreDataService:ObservableObject{
-    
+class TaskDataService:ObservableObject{
     let container : NSPersistentContainer
     let containerName : String = "TaskContainer"
     let entityName : String = "TaskEntity"
@@ -40,12 +39,14 @@ class CoreDataService:ObservableObject{
             print("Error fetching Core data \(error)")
         }
     }
-    
-    func addMyCoreEntity(text:String){
-        let newData = TaskEntity(context: container.viewContext)
-//        newData.title = text
-        saveCoreEntity()
-    }
+//    remindervm.addItem(selectedColor: selectedColor, reimderdtime: toProgress.roundCGFloat())
+//    private func add(item: TaskModel){
+//        let newData = TaskEntity(context: container.viewContext)
+//        newData.content = content
+//        newData.selectedColor = selectedColor
+//        newData.remindedtime = remindedtime
+//        saveCoreEntity()
+//    }
     
     func saveCoreEntity(){
         do{

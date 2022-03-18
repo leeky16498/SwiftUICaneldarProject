@@ -82,13 +82,13 @@ extension CreateReminderView {
             TextField("할일을 입력해주세요", text: $remindervm.createReminderText)
                 .foregroundColor(
                     remindervm.createReminderText.isEmpty ?
-                    Color.caltheme.secondaryText : Color.caltheme.violet)
+                    Color.caltheme.secondaryText : selectedColor)
                 .disableAutocorrection(true)
                 .overlay(
                     Image(systemName: "xmark.circle.fill")
                         .padding()
                         .offset(x: 10)
-                        .foregroundColor(Color.caltheme.violet)
+                        .foregroundColor(selectedColor)
                         .opacity(remindervm.createReminderText.isEmpty ? 0.0 : 1.0)
                         .onTapGesture {
                             UIApplication.shared.closeKeyboard()
@@ -126,7 +126,6 @@ extension CreateReminderView {
                     .onTapGesture {
                         withAnimation(.easeIn){
                             selectedColor = color
-                            print(color)
                         }
                     }
             }
@@ -145,7 +144,6 @@ extension CreateReminderView {
                 .stroke(selectedColor, style: StrokeStyle(lineWidth: 40, lineCap: .round, lineJoin: .round))
                 .frame(width: remindervm.uiScreen().width * 0.8, height: remindervm.uiScreen().width * 0.8, alignment: .center)
                 .rotationEffect(Angle(degrees: -90))
-                .opacity(0.5)
             Circle()
                 .frame(width: remindervm.uiScreen().width * 0.7, height: remindervm.uiScreen().width * 0.7, alignment: .center)
                 .foregroundColor(Color.caltheme.black.opacity(0.85))
@@ -184,7 +182,7 @@ extension CreateReminderView {
             Circle()
                 .frame(width: 15, height: 15, alignment: .center)
                 .foregroundColor(selectedColor)
-            Image(systemName: "m.circle.fill")
+            Image(systemName: "alarm.fill")
                 .font(.callout)
                 .frame(width:30, height: 30)
                 .foregroundColor(selectedColor)
