@@ -35,7 +35,7 @@ class ReminderViewModel : ObservableObject{
         setUpTimer()
     }
     func setUpTimer(){
-        let sub =  Timer
+        Timer
             .publish(every: 1, on: .main, in: .common)
             .autoconnect()
             .sink { [weak self] _ in
