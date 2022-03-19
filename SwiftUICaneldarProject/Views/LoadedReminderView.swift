@@ -13,9 +13,20 @@ struct LoadedReminderView: View {
     @State private var toProgress : CGFloat = 0.5
     @State private var startAngle : Double = 0
     @State private var toAngle : Double = 180
+    @State var timeRemaining : Int = 600
+    
     var loadedContent : String
     var loadedSelectedColor : String
-    @State var loadedRemindedtime : String
+    var loadedRemindedtime : String
+    
+//    init(loadedRemindedtime: Binding<String>){
+//        _loadedRemindedtime = State(initialValue: "11")
+//        var ccc = Int(_loadedRemindedtime)!
+//        let aaa = 600
+//        _timeRemaining = State(initialValue: aaa)
+//    }
+    
+    
     var body: some View {
         VStack{
             Text(loadedSelectedColor)
@@ -34,6 +45,12 @@ struct LoadedReminderView: View {
         } //VSTACK
 //        .navigationBarHidden(true)
         
+    }
+    
+    func TimeString(time: Int) -> String {
+        let minutes = Int(time) / 60 % 60
+        let seconds = Int(time) % 60
+        return String(format:"%01i:%02i", minutes, seconds)
     }
 }
 
@@ -109,7 +126,25 @@ extension LoadedReminderView {
     }
     
     private var timeTextSection: some View{
-        LoadedTimerView(loadedRemindedtime: $loadedRemindedtime)
+        VStack {
+
+            Text(loadedRemindedtime)
+            Text("\(TimeString(time: timeRemaining))")
+                .font(.largeTitle.bold())
+                .frame(maxWidth: .infinity)
+            
+                .foregroundColor(Color.caltheme.secondaryText)
+                .scaleEffect(1.5)
+            
+                .onReceive(remindervm.$counter){ _ in
+                    if self.timeRemaining > 0 {
+                        self.timeRemaining -= 1
+                    }else{
+    //                    remindervm.cancellables.cancel()
+    //                    self.timer.upstream.connect().cancel()
+                    }
+                }
+        }
     }
     
     private var buttonSection: some View{
