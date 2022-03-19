@@ -10,8 +10,9 @@ import SwiftUI
 struct CalendarView: View {
     
     @Binding var currentDate : Date // HomeView, currentDate 바인딩
-    @StateObject var vm = CalendarViewModel()
     @State var isAnimating : Bool = false
+    
+    @EnvironmentObject var vm : CalendarViewModel
     
     let days : [String] = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     
@@ -90,8 +91,9 @@ extension CalendarView {
                     Spacer()
                     
                     Circle()
-                        .fill(vm.isSameDay(date1: task.taskDate, date2: value.date) ? .black : .pink)
+                        .fill(vm.isSameDay(date1: task.taskDate, date2: value.date) ? .mint : .black)
                         .frame(width : 8, height : 8)
+                        .padding()
                 } else {
                     Text("\(value.day)")
                         .font(.title3.bold())
