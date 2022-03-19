@@ -11,6 +11,7 @@ struct HomeView: View {
     
     @State var currentDate : Date = Date()
     @State var isShowCreateReminderView : Bool = false
+    @EnvironmentObject var vm : CalendarViewModel
     
     var body: some View {
         NavigationView{
@@ -18,6 +19,30 @@ struct HomeView: View {
                 ScrollView(.vertical, showsIndicators: false) {
                     CalendarView(currentDate: $currentDate)
                         .padding()
+                    
+                    HStack {
+                        Text("Today's Plan")
+                            .font(.title.bold())
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                     
+                    Rectangle()
+                        .fill(.gray)
+                        .frame(maxWidth : .infinity)
+                        .frame(height : 2)
+                        .padding(.horizontal)
+                        .padding(.bottom, 10)
+                    
+                    VStack {
+                        if let task = vm.tasks.first(where: { task in
+                            return vm.isSameDay(date1: task.taskDate, date2: currentDate)
+                        }){
+                            ForEach(task.task) {task in
+                                TaskRowView(task: task)
+                            }
+                        }
+                    }
                 }
                 
                 Button(action: {
