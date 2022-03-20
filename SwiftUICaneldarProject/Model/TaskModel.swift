@@ -37,9 +37,9 @@ var tasksDemo : [TaskTimeModel] = [
 ]
 
 
-//struct TaskModel: Identifiable {
-//    let id = UUID().uuidString
-//    let content : String
-//    var selectedColor : Color
-//    let remindedtime : String
-//}
+struct TaskModel: Identifiable {
+    let id = UUID().uuidString
+    let title : String
+    var selectedColor : Color
+    let remindedtime : CGFloat
+}

@@ -13,17 +13,17 @@ struct ReminderListView: View {
         NavigationView {
             VStack {
                 List{
-                    ForEach(remindervm.savedEntity){entity in
-                        NavigationLink(destination: {
-                            LoadedReminderView(loadedContent: entity.content ?? "hello", loadedSelectedColor: entity.selectedColor ?? "LLL", loadedRemindedtime: entity.remindedtime ?? "aaa")
-                        }, label: {
-                            Text(entity.content ?? "1 no")
-                        })
-                            
-                           
-                    
-                    }
-                    .onDelete(perform: remindervm.deleteCoreEntity)
+//                    ForEach(remindervm.savedEntity){entity in
+//                        NavigationLink(destination: {
+//                            LoadedReminderView(loadedContent: entity.content ?? "hello", loadedSelectedColor: entity.selectedColor ?? "LLL", loadedRemindedtime: entity.remindedtime ?? "aaa")
+//                        }, label: {
+//                            Text(entity.content ?? "1 no")
+//                        })
+//                            
+//                           
+//                    
+//                    }
+//                    .onDelete(perform: remindervm.deleteCoreEntity)
                 }
                 .navigationBarTitle("Help me")
             }

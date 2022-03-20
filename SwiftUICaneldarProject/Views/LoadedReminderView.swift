@@ -9,16 +9,17 @@ import SwiftUI
 import CoreData
 struct LoadedReminderView: View {
     @StateObject var remindervm = ReminderViewModel()
-    @State private var startProgress : CGFloat = 0
+    @State private var startProgress : CGFloat
     @State private var toProgress : CGFloat = 0.5
-    @State private var startAngle : Double = 0
+    @State private var startAngle : Double
     @State private var toAngle : Double = 180
+    @State var selectedColor : Color
     @State var timeRemaining : Int = 600
     
-    var loadedContent : String
-    var loadedSelectedColor : String
-    var loadedRemindedtime : String
-    
+//    var loadedContent : String
+//    var loadedSelectedColor : String
+//    var loadedRemindedtime : String
+//
 //    init(loadedRemindedtime: Binding<String>){
 //        _loadedRemindedtime = State(initialValue: "11")
 //        var ccc = Int(_loadedRemindedtime)!
@@ -29,7 +30,7 @@ struct LoadedReminderView: View {
     
     var body: some View {
         VStack{
-            Text(loadedSelectedColor)
+//            Text(loadedSelectedColor)
                 
             inputTextTitle
             
@@ -57,7 +58,7 @@ struct LoadedReminderView: View {
 
 struct LoadedReminderView_Previews: PreviewProvider {
     static var previews: some View {
-        LoadedReminderView(loadedContent: "Hello", loadedSelectedColor: "1", loadedRemindedtime: "600")
+        LoadedReminderView(toProgress: 1.1, selectedColor: Color.red)
             .preferredColorScheme(.dark)
     }
 }
@@ -65,7 +66,7 @@ struct LoadedReminderView_Previews: PreviewProvider {
 
 extension LoadedReminderView {
     private var inputTextTitle :some View{
-        Text(loadedContent)
+        Text("he")
             .font(.largeTitle)
             .bold()
             .foregroundColor(Color.caltheme.secondaryText)
@@ -78,11 +79,7 @@ extension LoadedReminderView {
                 .frame(width: remindervm.uiScreen().width * 0.9, height: remindervm.uiScreen().width * 0.9, alignment: .center)
                 .shadow(color: Color.caltheme.pink, radius: 20, x: 0, y: 0)
             //드레그 할때 움직이는 아이
-            Circle()
-                .trim(from: startProgress, to: toProgress)
-                .stroke(Color.caltheme.pink, style: StrokeStyle(lineWidth: 40, lineCap: .round, lineJoin: .round))
-                .frame(width: remindervm.uiScreen().width * 0.8, height: remindervm.uiScreen().width * 0.8, alignment: .center)
-                .rotationEffect(Angle(degrees: -90))
+            
             Circle()
                 .frame(width: remindervm.uiScreen().width * 0.7, height: remindervm.uiScreen().width * 0.7, alignment: .center)
                 .foregroundColor(Color.caltheme.black.opacity(0.85))
@@ -128,7 +125,7 @@ extension LoadedReminderView {
     private var timeTextSection: some View{
         VStack {
 
-            Text(loadedRemindedtime)
+            Text("he")
             Text("\(TimeString(time: timeRemaining))")
                 .font(.largeTitle.bold())
                 .frame(maxWidth: .infinity)
