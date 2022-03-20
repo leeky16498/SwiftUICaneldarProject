@@ -58,12 +58,12 @@ struct HomeView: View {
                         )
                 })
                 .sheet(isPresented : $isShowCreateReminderView) {
-                    CreateReminderView()
+                    AddTaskView()
                 }
                 .padding(50)
-                
             }
             
+
             .navigationTitle("Planery 🥰")
         }
     }

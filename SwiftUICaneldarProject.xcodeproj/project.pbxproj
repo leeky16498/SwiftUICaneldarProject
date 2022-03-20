@@ -19,6 +19,7 @@
 		799129C127DF6D2B004CBE70 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799129C027DF6D2B004CBE70 /* ContentView.swift */; };
 		799129C327DF6D2C004CBE70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 799129C227DF6D2C004CBE70 /* Assets.xcassets */; };
 		799129C627DF6D2C004CBE70 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 799129C527DF6D2C004CBE70 /* Preview Assets.xcassets */; };
+		7993FB8727E7B3E800A900DF /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7993FB8627E7B3E800A900DF /* AddTaskView.swift */; };
 		F01E315427E4D4C800B89C4D /* TaskContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F01E315227E4D4C800B89C4D /* TaskContainer.xcdatamodeld */; };
 		F01E318427E5E48300B89C4D /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01E318327E5E48200B89C4D /* TaskRowView.swift */; };
 		F05062A527E014B30051359B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05062A427E014B30051359B /* Color.swift */; };
@@ -44,6 +45,7 @@
 		799129C027DF6D2B004CBE70 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		799129C227DF6D2C004CBE70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		799129C527DF6D2C004CBE70 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7993FB8627E7B3E800A900DF /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 		F01E315327E4D4C800B89C4D /* TaskContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskContainer.xcdatamodel; sourceTree = "<group>"; };
 		F01E318327E5E48200B89C4D /* TaskRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskRowView.swift; sourceTree = "<group>"; };
 		F05062A427E014B30051359B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				F05062AB27E016960051359B /* CreateReminderView.swift */,
 				F075D3E627E3715D0036593F /* LoadedReminderView.swift */,
 				F070D53627E4A026009EE736 /* ReminderListView.swift */,
+				7993FB8627E7B3E800A900DF /* AddTaskView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				799129C127DF6D2B004CBE70 /* ContentView.swift in Sources */,
 				7978DBF227E0CB5600499843 /* GetAllDate.swift in Sources */,
 				7978DBE327E0AC2400499843 /* HomeViewModel.swift in Sources */,
+				7993FB8727E7B3E800A900DF /* AddTaskView.swift in Sources */,
 				799129BF27DF6D2B004CBE70 /* SwiftUICaneldarProjectApp.swift in Sources */,
 				F05062A827E016360051359B /* UIKeyboard.swift in Sources */,
 				F01E318427E5E48300B89C4D /* TaskRowView.swift in Sources */,
@@ -384,7 +388,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SwiftUICaneldarProject/Preview Content\"";
-				DEVELOPMENT_TEAM = LZ887YG4E9;
+				DEVELOPMENT_TEAM = SRJSV34WBB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -416,7 +420,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SwiftUICaneldarProject/Preview Content\"";
-				DEVELOPMENT_TEAM = LZ887YG4E9;
+				DEVELOPMENT_TEAM = SRJSV34WBB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

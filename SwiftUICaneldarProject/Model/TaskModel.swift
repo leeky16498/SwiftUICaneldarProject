@@ -12,7 +12,7 @@ struct Task : Identifiable {
     
     let id = UUID()
     let title : String
-    let scheduledTime : Date = Date()
+    let scheduledTime : Date
     let duration : Int? = nil
     
 }
@@ -20,7 +20,7 @@ struct Task : Identifiable {
 struct TaskTimeModel : Identifiable {
     
     let id = UUID()
-    let task : [Task]
+    var task : [Task] = []
     let taskDate : Date
 }
 
@@ -31,10 +31,13 @@ func getTaskDate(offset: Int) -> Date {
     return date ?? Date()
 }
 
-var tasksDemo : [TaskTimeModel] = [
-    TaskTimeModel(task: [Task(title: "경윤 약속"), Task(title: "아키 약속")], taskDate: getTaskDate(offset: 1)),
-    TaskTimeModel(task: [Task(title: "영희 약속"), Task(title: "철수 약속")], taskDate: getTaskDate(offset: 2)),
-]
+//var demoDate : Date {
+//    let stringDate = "2022-03-10"
+//    let dateFormatter = DateFormatter()
+//    dateFormatter.dateFormat = "yyyy-MM-dd"
+//    let date = dateFormatter.date(from: stringDate)
+//    return date!
+//}
 
 
 struct TaskModel: Identifiable {

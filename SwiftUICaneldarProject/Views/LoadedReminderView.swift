@@ -56,12 +56,12 @@ struct LoadedReminderView: View {
 }
 
 
-struct LoadedReminderView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoadedReminderView(toProgress: 1.1, selectedColor: Color.red)
-            .preferredColorScheme(.dark)
-    }
-}
+//struct LoadedReminderView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LoadedReminderView(toProgress: 1.1, selectedColor: Color.red)
+//            .preferredColorScheme(.dark)
+//    }
+//}
 
 
 extension LoadedReminderView {
