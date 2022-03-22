@@ -58,7 +58,12 @@ struct HomeView: View {
                         )
                 })
                 .sheet(isPresented : $isShowCreateReminderView) {
-                    AddTaskView()
+                    VStack{
+                        AddTaskView()
+                        CreateReminderView()
+                    }
+                   
+                    
                 }
                 .padding(50)
             }

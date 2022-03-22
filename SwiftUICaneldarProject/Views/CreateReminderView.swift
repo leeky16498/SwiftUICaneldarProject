@@ -41,6 +41,7 @@ struct CreateReminderView: View {
     func isPressedCreateReminer() {
         if textCondition(){
             presentationMode.wrappedValue.dismiss()
+            remindervm.addItem(title: remindervm.createReminderText, selectedColor: remindervm.selectedColor, remindedtime: remindervm.toProgress)
         }
     }
     func textCondition() -> Bool {
@@ -58,8 +59,10 @@ struct CreateReminderView: View {
 }
 struct CreateReminderView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateReminderView()
-            .preferredColorScheme(.dark)
+        NavigationView{
+            CreateReminderView()
+                .preferredColorScheme(.dark)
+        }
     }
 }
 extension CreateReminderView {
@@ -135,11 +138,11 @@ extension CreateReminderView {
                 .frame(width: remindervm.uiScreen().width * 0.9, height: remindervm.uiScreen().width * 0.9, alignment: .center)
                 .shadow(color: remindervm.selectedColor, radius: 20, x: 0, y: 0)
             //드레그 할때 움직이는 아이
-            Circle()
-                .trim(from: remindervm.startProgress, to: remindervm.toProgress)
-                .stroke(remindervm.selectedColor, style: StrokeStyle(lineWidth: 40, lineCap: .round, lineJoin: .round))
-                .frame(width: remindervm.uiScreen().width * 0.8, height: remindervm.uiScreen().width * 0.8, alignment: .center)
-                .rotationEffect(Angle(degrees: -90))
+//            Circle()
+//                .trim(from: remindervm.startProgress, to: remindervm.toProgress)
+//                .stroke(remindervm.selectedColor, style: StrokeStyle(lineWidth: 40, lineCap: .round, lineJoin: .round))
+//                .frame(width: remindervm.uiScreen().width * 0.8, height: remindervm.uiScreen().width * 0.8, alignment: .center)
+//                .rotationEffect(Angle(degrees: -90))
             Circle()
                 .frame(width: remindervm.uiScreen().width * 0.7, height: remindervm.uiScreen().width * 0.7, alignment: .center)
                 .foregroundColor(Color.caltheme.black.opacity(0.85))
@@ -169,6 +172,11 @@ extension CreateReminderView {
                     .offset(x: (remindervm.uiScreen().width * 0.8 ) / 2)
                     .rotationEffect(Angle(degrees: Double(sec)))
             }
+            FillClock(startAngle: remindervm.startAngle, toAngle: remindervm.toAngle)
+                .fill(remindervm.selectedColor)
+                .frame(width: remindervm.uiScreen().width * 0.7, height: remindervm.uiScreen().width * 0.7)
+                .offset(y: (remindervm.uiScreen().width * 0.7 ) / 2)
+                .rotationEffect(Angle(degrees: -90))
             
             Rectangle()
                 .frame(width: 130, height: 3)
@@ -209,10 +217,13 @@ extension CreateReminderView {
         .scaleEffect(1.5)
     }
     private var createButtonSection: some View{
+      
+        
         Button(action: {
             isPressedCreateReminer()
-            remindervm.addItem(title: remindervm.createReminderText, selectedColor: remindervm.selectedColor, remindedtime: remindervm.toProgress)
-            LoadedReminderView(toProgress : remindervm.toProgress, startAngle: remindervm.startAngle, toAngle : remindervm.toAngle, selectedColor: remindervm.selectedColor)
+           
+//            LoadedReminderView(toProgress : remindervm.toProgress, startAngle: remindervm.startAngle, toAngle : remindervm.toAngle, selectedColor: remindervm.selectedColor)
+            
         }, label: {
             Text("Create Reminder")
         })
