@@ -59,7 +59,7 @@ struct HomeView: View {
                 })
                 .sheet(isPresented : $isShowCreateReminderView) {
                     VStack{
-                        AddTaskView()
+                      
                         CreateReminderView()
                     }
                    

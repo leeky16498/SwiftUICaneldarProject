@@ -14,12 +14,11 @@ struct SwiftUICaneldarProjectApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationView{
 //                CreateReminderView()
     //            ReminderListView()
                 ContentView()
                     .environmentObject(vm)
-            }
+        
         }
     }
 }

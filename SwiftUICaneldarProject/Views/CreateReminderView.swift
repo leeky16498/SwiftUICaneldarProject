@@ -9,25 +9,43 @@ import SwiftUI
 
 struct CreateReminderView: View {
     @StateObject var remindervm = ReminderViewModel()
- 
+    
     @State private var isshowAlert : Bool = false
     @State private var textalert : String = ""
-    
+    @EnvironmentObject var vm : CalendarViewModel
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
-        VStack{
-            inputTextTitle
-            inputTextSection
+        //        ScrollView {
+        VStack(spacing:20){
+            Group{
+                inputTextTitle
+                inputTextSection
+                Divider()
+                    .background(Color.caltheme.lightgray)
+            }
+            
+//            eventDetailTextSection
+           
+            DatePicker("TaskDate", selection: $remindervm.taskDate, displayedComponents: .date)
+                .padding(.horizontal)
             Divider()
-                .padding(.bottom,10)
-            colorTextSection
+                .background(Color.caltheme.lightgray)
+            colorSelectedTextSection
+           
             colorCircleSection
-                .padding(.bottom,10)
-            clockSection
-            timeTextSection
+            Divider()
+                .background(Color.caltheme.lightgray)
+                            Spacer()
             createButtonSection
+                .padding(.bottom, 20)
+               
+
+            
+            
+            
         } //VSTACK
         .alert(isPresented: $isshowAlert, content: getAlert)
+        //        }
     }
     func onDrag(value: DragGesture.Value){
         let vector = CGVector(dx: value.location.x, dy: value.location.y)
@@ -42,6 +60,7 @@ struct CreateReminderView: View {
         if textCondition(){
             presentationMode.wrappedValue.dismiss()
             remindervm.addItem(title: remindervm.createReminderText, selectedColor: remindervm.selectedColor, remindedtime: remindervm.toProgress)
+            vm.addTasks(text: remindervm.taskTitle, taskDate: remindervm.taskDate)
         }
     }
     func textCondition() -> Bool {
@@ -59,10 +78,11 @@ struct CreateReminderView: View {
 }
 struct CreateReminderView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView{
-            CreateReminderView()
-                .preferredColorScheme(.dark)
-        }
+        
+        CreateReminderView()
+            .preferredColorScheme(.dark)
+            .environmentObject(CalendarViewModel())
+        
     }
 }
 extension CreateReminderView {
@@ -104,8 +124,17 @@ extension CreateReminderView {
         )
         .padding(.horizontal)
     }
-    private var colorTextSection: some View{
-        Text("Select the reminder color")
+    private var eventDetailTextSection: some View{
+        Text("Event Detail")
+            .frame(maxWidth:.infinity, alignment: .leading)
+            .font(.headline)
+            .foregroundColor(Color.caltheme.secondaryText)
+            .padding(.horizontal)
+    }
+    
+    
+    private var colorSelectedTextSection: some View{
+        Text("Select Color")
             .frame(maxWidth:.infinity, alignment: .leading)
             .font(.headline)
             .foregroundColor(Color.caltheme.secondaryText)
@@ -138,11 +167,11 @@ extension CreateReminderView {
                 .frame(width: remindervm.uiScreen().width * 0.9, height: remindervm.uiScreen().width * 0.9, alignment: .center)
                 .shadow(color: remindervm.selectedColor, radius: 20, x: 0, y: 0)
             //드레그 할때 움직이는 아이
-//            Circle()
-//                .trim(from: remindervm.startProgress, to: remindervm.toProgress)
-//                .stroke(remindervm.selectedColor, style: StrokeStyle(lineWidth: 40, lineCap: .round, lineJoin: .round))
-//                .frame(width: remindervm.uiScreen().width * 0.8, height: remindervm.uiScreen().width * 0.8, alignment: .center)
-//                .rotationEffect(Angle(degrees: -90))
+            //            Circle()
+            //                .trim(from: remindervm.startProgress, to: remindervm.toProgress)
+            //                .stroke(remindervm.selectedColor, style: StrokeStyle(lineWidth: 40, lineCap: .round, lineJoin: .round))
+            //                .frame(width: remindervm.uiScreen().width * 0.8, height: remindervm.uiScreen().width * 0.8, alignment: .center)
+            //                .rotationEffect(Angle(degrees: -90))
             Circle()
                 .frame(width: remindervm.uiScreen().width * 0.7, height: remindervm.uiScreen().width * 0.7, alignment: .center)
                 .foregroundColor(Color.caltheme.black.opacity(0.85))
@@ -217,18 +246,16 @@ extension CreateReminderView {
         .scaleEffect(1.5)
     }
     private var createButtonSection: some View{
-      
-        
         Button(action: {
             isPressedCreateReminer()
-           
-//            LoadedReminderView(toProgress : remindervm.toProgress, startAngle: remindervm.startAngle, toAngle : remindervm.toAngle, selectedColor: remindervm.selectedColor)
+            
+            //            LoadedReminderView(toProgress : remindervm.toProgress, startAngle: remindervm.startAngle, toAngle : remindervm.toAngle, selectedColor: remindervm.selectedColor)
             
         }, label: {
             Text("Create Reminder")
         })
+        .font(.title)
         .foregroundColor(Color.caltheme.secondaryText)
-        .font(.headline)
         .frame(maxWidth: .infinity)
         .frame(height:50)
         .background(remindervm.selectedColor)

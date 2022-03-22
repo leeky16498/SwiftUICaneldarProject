@@ -125,7 +125,7 @@ extension LoadedReminderView {
     private var timeTextSection: some View{
         VStack {
 
-            Text("he")
+          
             Text("\(TimeString(time: timeRemaining))")
                 .font(.largeTitle.bold())
                 .frame(maxWidth: .infinity)
