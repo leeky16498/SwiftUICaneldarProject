@@ -18,7 +18,7 @@ struct TaskRowView: View {
                     .font(.title2.bold())
                     .foregroundColor(.white)
                 
-                Text("\(task.scheduledTime)")
+                Text(task.scheduledTime, format: .dateTime.hour().minute())
                     .font(.headline)
                 
                 Text("언제까지 뭐하고 뭐하기, 그래서 이거 완전히 마치고 그 다음에 이거하기")
