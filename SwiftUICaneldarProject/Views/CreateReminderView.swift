@@ -181,7 +181,7 @@ extension CreateReminderView {
             Image(systemName: "alarm.fill")
                 .font(.callout)
                 .frame(width:30, height: 30)
-                .foregroundColor(selectedColor)
+                .foregroundColor((remindervm.selectedColor))
                 .rotationEffect(Angle(degrees: 90))
                 .rotationEffect(Angle(degrees: -remindervm.toAngle))
                 .background(.white, in:Circle())
@@ -212,9 +212,7 @@ extension CreateReminderView {
         Button(action: {
             isPressedCreateReminer()
             remindervm.addItem(title: remindervm.createReminderText, selectedColor: remindervm.selectedColor, remindedtime: remindervm.toProgress)
-            
-            
-//            LoadedReminderView(toProgress : remindervm.toProgress, selectedColor: remindervm.selectedColor)
+            LoadedReminderView(toProgress : remindervm.toProgress, startAngle: remindervm.startAngle, toAngle : remindervm.toAngle, selectedColor: remindervm.selectedColor)
         }, label: {
             Text("Create Reminder")
         })

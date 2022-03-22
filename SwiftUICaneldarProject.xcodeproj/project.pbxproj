@@ -21,6 +21,7 @@
 		799129C627DF6D2C004CBE70 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 799129C527DF6D2C004CBE70 /* Preview Assets.xcassets */; };
 		F01E315427E4D4C800B89C4D /* TaskContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F01E315227E4D4C800B89C4D /* TaskContainer.xcdatamodeld */; };
 		F01E318427E5E48300B89C4D /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01E318327E5E48200B89C4D /* TaskRowView.swift */; };
+		F01E31A927E94B1900B89C4D /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01E31A827E94B1900B89C4D /* Test.swift */; };
 		F05062A527E014B30051359B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05062A427E014B30051359B /* Color.swift */; };
 		F05062A827E016360051359B /* UIKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05062A727E016360051359B /* UIKeyboard.swift */; };
 		F05062AC27E016960051359B /* CreateReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05062AB27E016960051359B /* CreateReminderView.swift */; };
@@ -46,6 +47,7 @@
 		799129C527DF6D2C004CBE70 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F01E315327E4D4C800B89C4D /* TaskContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskContainer.xcdatamodel; sourceTree = "<group>"; };
 		F01E318327E5E48200B89C4D /* TaskRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskRowView.swift; sourceTree = "<group>"; };
+		F01E31A827E94B1900B89C4D /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		F05062A427E014B30051359B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		F05062A727E016360051359B /* UIKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKeyboard.swift; sourceTree = "<group>"; };
 		F05062AB27E016960051359B /* CreateReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReminderView.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				7978DBE927E0AC6400499843 /* HomeView.swift */,
 				7978DBEB27E0AC6C00499843 /* CalendarView.swift */,
 				F05062AB27E016960051359B /* CreateReminderView.swift */,
+				F01E31A827E94B1900B89C4D /* Test.swift */,
 				F075D3E627E3715D0036593F /* LoadedReminderView.swift */,
 				F070D53627E4A026009EE736 /* ReminderListView.swift */,
 			);
@@ -253,6 +256,7 @@
 				F05062A527E014B30051359B /* Color.swift in Sources */,
 				F01E315427E4D4C800B89C4D /* TaskContainer.xcdatamodeld in Sources */,
 				7978DBE727E0AC3200499843 /* SoundKit.swift in Sources */,
+				F01E31A927E94B1900B89C4D /* Test.swift in Sources */,
 				F05062AC27E016960051359B /* CreateReminderView.swift in Sources */,
 				7978DBE527E0AC2D00499843 /* TaskModel.swift in Sources */,
 			);

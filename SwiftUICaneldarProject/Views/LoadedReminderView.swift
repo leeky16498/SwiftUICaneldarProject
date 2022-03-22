@@ -9,10 +9,10 @@ import SwiftUI
 import CoreData
 struct LoadedReminderView: View {
     @StateObject var remindervm = ReminderViewModel()
-    @State private var startProgress : CGFloat
-    @State private var toProgress : CGFloat = 0.5
-    @State private var startAngle : Double
-    @State private var toAngle : Double = 180
+//    @State var startProgress : CGFloat = 0
+    @State var toProgress : CGFloat
+    @State var startAngle : Double
+    @State var toAngle : Double = 180
     @State var selectedColor : Color
     @State var timeRemaining : Int = 600
     
@@ -58,7 +58,7 @@ struct LoadedReminderView: View {
 
 struct LoadedReminderView_Previews: PreviewProvider {
     static var previews: some View {
-        LoadedReminderView(toProgress: 1.1, selectedColor: Color.red)
+        LoadedReminderView(toProgress: 1.1, startAngle: 0, toAngle: 180, selectedColor: Color.red)
             .preferredColorScheme(.dark)
     }
 }
