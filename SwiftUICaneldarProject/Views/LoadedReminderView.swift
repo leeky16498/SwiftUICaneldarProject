@@ -30,13 +30,10 @@ struct LoadedReminderView: View {
     
     var body: some View {
         VStack{
-//            Text(loadedSelectedColor)
-                
+
             inputTextTitle
-            
-            Divider()
-                .padding(.bottom,10)
-//            clockSection
+ 
+            clockSection
                 .padding(.vertical,10)
             timeTextSection
                 .padding(.vertical,10)
@@ -53,6 +50,15 @@ struct LoadedReminderView: View {
         let seconds = Int(time) % 60
         return String(format:"%01i:%02i", minutes, seconds)
     }
+  func onDrag(value: DragGesture.Value){
+    let vector = CGVector(dx: value.location.x, dy: value.location.y)
+    let radians = atan2(vector.dy - 15, vector.dx - 15)
+    var angle = radians * 180 / .pi
+    if angle < 0 {angle += 360}
+    let progress = angle / 360
+    remindervm.toAngle = angle
+    remindervm.toProgress = progress
+  }
 }
 
 
@@ -66,61 +72,76 @@ struct LoadedReminderView_Previews: PreviewProvider {
 
 extension LoadedReminderView {
     private var inputTextTitle :some View{
-        Text("he")
+        Text("Your Task")
             .font(.largeTitle)
             .bold()
             .foregroundColor(Color.caltheme.secondaryText)
             .frame(maxWidth:.infinity, alignment: .center)
             .padding(.horizontal)
     }
-    private var clockSection : some View{
-        ZStack{
-            Circle()
-                .frame(width: remindervm.uiScreen().width * 0.9, height: remindervm.uiScreen().width * 0.9, alignment: .center)
-                .shadow(color: Color.caltheme.pink, radius: 20, x: 0, y: 0)
-            //드레그 할때 움직이는 아이
-            
-            Circle()
-                .frame(width: remindervm.uiScreen().width * 0.7, height: remindervm.uiScreen().width * 0.7, alignment: .center)
-                .foregroundColor(Color.caltheme.black.opacity(0.85))
-            ForEach(0..<60, id:\.self){i in
-                Rectangle()
-                    .foregroundColor(Color.white)
-                    .frame(width: i % 5 == 0 ? 15 : 5, height:  1)
-                    .offset(x: (remindervm.uiScreen().width * 0.6) / 2)
-                    .rotationEffect(.init(degrees: Double(i) * 6))
+  private var clockSection : some View{
+    ZStack{
+      Circle()
+        .frame(width: remindervm.uiScreen().width * 0.9, height: remindervm.uiScreen().width * 0.9, alignment: .center)
+        .shadow(color: remindervm.selectedColor, radius: 20, x: 0, y: 0)
+      Circle()
+        .frame(width: remindervm.uiScreen().width * 0.7, height: remindervm.uiScreen().width * 0.7, alignment: .center)
+        .foregroundColor(Color.caltheme.black.opacity(0.85))
+      ForEach(0..<60, id:\.self){i in
+        Rectangle()
+          .foregroundColor(Color.white)
+          .frame(width: i % 5 == 0 ? 15 : 5, height:  1)
+          .offset(x: (remindervm.uiScreen().width * 0.6) / 2)
+          .rotationEffect(.init(degrees: Double(i) * 6))
+      }
+      let texts = [6,9,12,3]
+      ForEach(texts.indices, id: \.self){index in
+        Text("\(texts[index])")
+          .font(.caption.bold())
+          .foregroundColor(.white)
+          .rotationEffect(Angle(degrees: Double(index) * -90))
+          .offset(y:(remindervm.uiScreen().width * 0.25))
+          .rotationEffect(Angle(degrees: Double(index) * 90))
+      }
+      ForEach(1..<361, id: \.self){ sec in
+        Rectangle()
+          .frame(width: 20, height: 1)
+          .foregroundColor(remindervm.selectedColor)
+          .offset(x: (remindervm.uiScreen().width * 0.8 ) / 2)
+          .rotationEffect(Angle(degrees: Double(sec)))
+      }
+      FillClock(startAngle: remindervm.startAngle, toAngle: remindervm.toAngle)
+        .fill(remindervm.selectedColor)
+        .frame(width: remindervm.uiScreen().width * 0.7, height: remindervm.uiScreen().width * 0.7)
+        .offset(y: (remindervm.uiScreen().width * 0.7 ) / 2)
+        .rotationEffect(Angle(degrees: -90))
+      
+      Rectangle()
+        .frame(width: 130, height: 3)
+        .foregroundColor(remindervm.selectedColor)
+        .offset(x: 60)
+        .rotationEffect(Angle(degrees: Double(remindervm.toAngle - 90 )))
+      Circle()
+        .frame(width: 15, height: 15, alignment: .center)
+        .foregroundColor(remindervm.selectedColor)
+      Image(systemName: "alarm.fill")
+        .font(.callout)
+        .frame(width:30, height: 30)
+        .foregroundColor((remindervm.selectedColor))
+        .rotationEffect(Angle(degrees: 90))
+        .rotationEffect(Angle(degrees: -remindervm.toAngle))
+        .background(.white, in:Circle())
+        .offset(x:remindervm.uiScreen().width * 0.8 / 2)
+        .rotationEffect(Angle(degrees: remindervm.toAngle))
+        .gesture(
+          DragGesture()
+            .onChanged { value in
+              onDrag(value : value)
             }
-            
-            let texts = [6,9,12,3]
-            
-            ForEach(texts.indices, id: \.self){index in
-                Text("\(texts[index])")
-                    .font(.caption.bold())
-                    .foregroundColor(.white)
-                    .rotationEffect(Angle(degrees: Double(index) * -90))
-                    .offset(y:(remindervm.uiScreen().width * 0.25))
-                    .rotationEffect(Angle(degrees: Double(index) * 90))
-            }
-            
-            ForEach(1..<361, id: \.self){ sec in
-                Rectangle()
-                    .frame(width: 20, height: 1)
-                    .foregroundColor(Color.caltheme.pink)
-                    .offset(x: (remindervm.uiScreen().width * 0.8 ) / 2)
-                    .rotationEffect(Angle(degrees: Double(sec)))
-            }
-            
-            Rectangle()
-                .frame(width: 130, height: 3)
-                .foregroundColor(Color.caltheme.pink)
-                .offset(x: 60)
-                .rotationEffect(Angle(degrees: Double(toAngle - 90 )))
-            Circle()
-                .frame(width: 15, height: 15, alignment: .center)
-                .foregroundColor(Color.caltheme.pink)
-            
-        }
+        )
+        .rotationEffect(Angle(degrees: -90))
     }
+  }
     
     private var timeTextSection: some View{
         VStack {
