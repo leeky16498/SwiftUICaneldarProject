@@ -14,10 +14,15 @@ struct CreateReminderView: View {
   
   var body: some View {
     VStack(spacing:20){
-      inputTextTitleSection
-      inputTextSection
-      inputDateSection
-      TextTitle(textTitle: "Create a Task")
+      Group{
+        inputTextTitleSection
+          .padding(.top,60)
+        inputTextSection
+        inputDateSection
+        TextTitle(textTitle: "TaskDuration")
+        inputTimeSection
+        TextTitle(textTitle: "Create a Task")
+      }
       createdTaskTitleSection
       TextTitle(textTitle: "Select Color")
       circleColorSection
@@ -30,10 +35,11 @@ struct CreateReminderView: View {
   
   func isPressedCreateReminer() {
     if remindervm.textCondition(){
-      remindervm.addItem(title: remindervm.createReminderText, selectedColor: remindervm.selectedColor)
+      remindervm.addItem(title: remindervm.createReminderText, selectedColor: remindervm.selectedColor, reminderHours: remindervm.hours, reminderMinutes: remindervm.minutes)
       vm.addTasks(text: remindervm.taskTitle, taskDate: remindervm.taskDate)
+      presentationMode.wrappedValue.dismiss()
     }
-    presentationMode.wrappedValue.dismiss()
+    
   }
 }
 
@@ -93,6 +99,28 @@ extension CreateReminderView {
     Divider()
       .background(Color.caltheme.lightgray)
   }
+  private var inputTimeSection: some View{
+    HStack{
+      Picker("", selection: $remindervm.hours){
+        ForEach(0..<13, id:\.self){ i in
+          Text("\(i) hours").tag(i)
+            .font(.title)
+        }
+      }
+      .frame(width: 200, height: 120).clipped()
+      .pickerStyle(WheelPickerStyle())
+      Picker("", selection: $remindervm.minutes){
+        ForEach(0..<61, id:\.self){ i in
+          if i % 5 == 0{
+            Text("\(i) minutes").tag(i)
+              .font(.title)
+          }
+        }
+      }
+      .frame(width: 200,height: 120).clipped()
+      .pickerStyle(WheelPickerStyle())
+    }
+  }
   @ViewBuilder
   private var createdTaskTitleSection: some View{
     VStack {
@@ -150,7 +178,7 @@ extension CreateReminderView {
           }
       }
       .frame(maxWidth:.infinity)
-      .padding()
+      .padding(.horizontal)
     }
   }
   private var timeTextSection: some View{
@@ -162,7 +190,7 @@ extension CreateReminderView {
     }
     .font(.largeTitle.bold())
     .foregroundColor(Color.caltheme.secondaryText)
-    .padding()
+    .padding(.horizontal)
     .scaleEffect(1.5)
   }
   private var createButtonSection: some View{
@@ -177,6 +205,6 @@ extension CreateReminderView {
     .frame(height:50)
     .background(remindervm.selectedColor)
     .cornerRadius(10)
-    .padding()
+    .padding(.horizontal)
   }
 }

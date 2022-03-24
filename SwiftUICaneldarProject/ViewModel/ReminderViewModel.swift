@@ -16,6 +16,8 @@ class ReminderViewModel : ObservableObject{
   @Published var createReminderText : String = ""
   @Published var taskDate : Date = Date()
   @Published var taskTitle : String = ""
+  @Published var hours : Int = 0
+  @Published var minutes : Int = 0
   @Published var startAngle : Double = 0
   @Published var toAngle : Double = 180
   @Published var startProgress : CGFloat = 0
@@ -23,6 +25,7 @@ class ReminderViewModel : ObservableObject{
   @Published var selectedColor : Color = Color.caltheme.red
   @Published var textalert : String = ""
   @Published var isshowAlert : Bool = false
+  
   @Published var circle = [
     Color.caltheme.red,
     Color.caltheme.pink,
@@ -43,8 +46,8 @@ class ReminderViewModel : ObservableObject{
       }
       .store(in: &cancellables)
   }
-  func addItem(title : String, selectedColor: Color){
-    let addItem = [TaskModel(title: title, selectedColor: selectedColor)]
+  func addItem(title : String, selectedColor: Color, reminderHours: Int, reminderMinutes: Int ){
+    let addItem = [TaskModel(title: title, selectedColor: selectedColor, reminderHours: reminderHours, reminderMinutes: reminderMinutes)]
     taskmodel.append(contentsOf: addItem)
     print(addItem)
   }

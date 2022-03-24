@@ -9,26 +9,26 @@ import Foundation
 import SwiftUI
 
 struct Task : Identifiable {
-    
-    let id = UUID()
-    let title : String
-    let scheduledTime : Date
-    let duration : Int? = nil
-    
+  
+  let id = UUID()
+  let title : String
+  let scheduledTime : Date
+  let duration : Int? = nil
+  
 }
 
 struct TaskTimeModel : Identifiable {
-    
-    let id = UUID()
-    var task : [Task] = []
-    let taskDate : Date
+  
+  let id = UUID()
+  var task : [Task] = []
+  let taskDate : Date
 }
 
 func getTaskDate(offset: Int) -> Date {
-    
-    let calendar = Calendar.current
-    let date = calendar.date(byAdding: .day, value: offset, to: Date())
-    return date ?? Date()
+  
+  let calendar = Calendar.current
+  let date = calendar.date(byAdding: .day, value: offset, to: Date())
+  return date ?? Date()
 }
 
 //var demoDate : Date {
@@ -41,7 +41,9 @@ func getTaskDate(offset: Int) -> Date {
 
 
 struct TaskModel: Identifiable {
-    let id = UUID().uuidString
-    let title : String
-    var selectedColor : Color
+  let id = UUID().uuidString
+  let title : String
+  var selectedColor : Color
+  var reminderHours : Int
+  var reminderMinutes : Int
 }

@@ -168,26 +168,17 @@ extension LoadedReminderView {
     private var buttonSection: some View{
         HStack(spacing:40) {
             Button(action: {
-                
             }, label: {
                 Image(systemName: "playpause.fill")
                     .font(.system(size:40))
-//                    Text("Play")
-//                        .font(.system(.title, design: .rounded))
-//                        .fontWeight(.bold)
             })
             .frame(width:150,height:80, alignment: .center)
             .background(Color.caltheme.red)
             .cornerRadius(15)
-            
             Button(action: {
-     
             }, label: {
                 Image(systemName: "stop.fill")
                     .font(.system(size:40))
-//                    Text("Stop")
-//                        .font(.system(.title, design: .rounded))
-//                        .fontWeight(.bold)
             })
             .frame(width:150,height:80, alignment: .center)
             .background(Color.caltheme.red)

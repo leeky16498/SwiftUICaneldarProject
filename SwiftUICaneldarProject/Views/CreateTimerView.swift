@@ -1,5 +1,5 @@
 //
-//  LoadedTimerView.swift
+//  CreateTimerView.swift
 //  SwiftUICaneldarProject
 //
 //  Created by Chuljin Hwang on 2022/03/24.
@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-struct LoadedTimerView: View {
+struct CreateTimerView: View {
   @Environment(\.presentationMode) var presentationMode
   @EnvironmentObject var vm : CalendarViewModel
   @StateObject var remindervm = ReminderViewModel()
+  
   var body: some View {
     VStack{
       TextTitleSection
@@ -39,18 +40,17 @@ struct LoadedTimerView: View {
   }
 }
 
-
-struct LoadedTimerView_Previews: PreviewProvider {
+struct CreateTimerView_Previews: PreviewProvider {
   static var previews: some View {
-    LoadedTimerView()
+    CreateTimerView()
       .preferredColorScheme(.dark)
       .environmentObject(CalendarViewModel())
   }
 }
 
-extension LoadedTimerView{
+extension CreateTimerView{
   private var TextTitleSection :some View{
-    Text("Here is your task")
+    Text("Create the reminder timer")
       .font(.title)
       .bold()
       .foregroundColor(Color.caltheme.secondaryText)
@@ -116,7 +116,6 @@ extension LoadedTimerView{
                   .font(.system(size:40))
           })
           .frame(width:150,height:80, alignment: .center)
-          .foregroundColor(Color.caltheme.secondaryText)
           .background(Color.caltheme.red)
           .cornerRadius(15)
           Button(action: {
@@ -125,7 +124,6 @@ extension LoadedTimerView{
                   .font(.system(size:40))
           })
           .frame(width:150,height:80, alignment: .center)
-          .foregroundColor(Color.caltheme.secondaryText)
           .background(Color.caltheme.red)
           .cornerRadius(15)
       }

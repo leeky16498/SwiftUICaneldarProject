@@ -30,6 +30,8 @@
 		F075D3E727E3715D0036593F /* LoadedReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F075D3E627E3715D0036593F /* LoadedReminderView.swift */; };
 		F0AE1D3B27E2BB3E00CF1AA2 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AE1D3A27E2BB3E00CF1AA2 /* CGFloat.swift */; };
 		F0DDDC5627EBED68006AF1C4 /* TextTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DDDC5527EBED68006AF1C4 /* TextTitle.swift */; };
+		F0DDDC5827EC895B006AF1C4 /* CreateTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DDDC5727EC895B006AF1C4 /* CreateTimerView.swift */; };
+		F0DDDC5A27EC9B79006AF1C4 /* LoadedTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DDDC5927EC9B79006AF1C4 /* LoadedTimerView.swift */; };
 		F0ECB7DD27E1E3CD00851ABD /* ReminderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ECB7DC27E1E3CD00851ABD /* ReminderViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +60,8 @@
 		F075D3E627E3715D0036593F /* LoadedReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadedReminderView.swift; sourceTree = "<group>"; };
 		F0AE1D3A27E2BB3E00CF1AA2 /* CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
 		F0DDDC5527EBED68006AF1C4 /* TextTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTitle.swift; sourceTree = "<group>"; };
+		F0DDDC5727EC895B006AF1C4 /* CreateTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTimerView.swift; sourceTree = "<group>"; };
+		F0DDDC5927EC9B79006AF1C4 /* LoadedTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadedTimerView.swift; sourceTree = "<group>"; };
 		F0ECB7DC27E1E3CD00851ABD /* ReminderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,9 +161,11 @@
 				7978DBE927E0AC6400499843 /* HomeView.swift */,
 				7978DBEB27E0AC6C00499843 /* CalendarView.swift */,
 				F05062AB27E016960051359B /* CreateReminderView.swift */,
-				F075D3E627E3715D0036593F /* LoadedReminderView.swift */,
+				F0DDDC5927EC9B79006AF1C4 /* LoadedTimerView.swift */,
 				F070D53627E4A026009EE736 /* ReminderListView.swift */,
 				7993FB8627E7B3E800A900DF /* AddTaskView.swift */,
+				F0DDDC5727EC895B006AF1C4 /* CreateTimerView.swift */,
+				F075D3E627E3715D0036593F /* LoadedReminderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -260,6 +266,7 @@
 				F075D3E727E3715D0036593F /* LoadedReminderView.swift in Sources */,
 				7978DBEA27E0AC6400499843 /* HomeView.swift in Sources */,
 				7978DBEE27E0BEFD00499843 /* DateModel.swift in Sources */,
+				F0DDDC5827EC895B006AF1C4 /* CreateTimerView.swift in Sources */,
 				F0ECB7DD27E1E3CD00851ABD /* ReminderViewModel.swift in Sources */,
 				F01E31AB27E950A100B89C4D /* FillClock.swift in Sources */,
 				799129C127DF6D2B004CBE70 /* ContentView.swift in Sources */,
@@ -273,6 +280,7 @@
 				F05062A527E014B30051359B /* Color.swift in Sources */,
 				F01E315427E4D4C800B89C4D /* TaskContainer.xcdatamodeld in Sources */,
 				7978DBE727E0AC3200499843 /* SoundKit.swift in Sources */,
+				F0DDDC5A27EC9B79006AF1C4 /* LoadedTimerView.swift in Sources */,
 				F05062AC27E016960051359B /* CreateReminderView.swift in Sources */,
 				7978DBE527E0AC2D00499843 /* TaskModel.swift in Sources */,
 			);
