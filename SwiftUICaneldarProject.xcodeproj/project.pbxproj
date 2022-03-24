@@ -29,6 +29,7 @@
 		F070D53727E4A026009EE736 /* ReminderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070D53627E4A026009EE736 /* ReminderListView.swift */; };
 		F075D3E727E3715D0036593F /* LoadedReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F075D3E627E3715D0036593F /* LoadedReminderView.swift */; };
 		F0AE1D3B27E2BB3E00CF1AA2 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AE1D3A27E2BB3E00CF1AA2 /* CGFloat.swift */; };
+		F0DDDC5627EBED68006AF1C4 /* TextTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DDDC5527EBED68006AF1C4 /* TextTitle.swift */; };
 		F0ECB7DD27E1E3CD00851ABD /* ReminderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ECB7DC27E1E3CD00851ABD /* ReminderViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		F070D53627E4A026009EE736 /* ReminderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderListView.swift; sourceTree = "<group>"; };
 		F075D3E627E3715D0036593F /* LoadedReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadedReminderView.swift; sourceTree = "<group>"; };
 		F0AE1D3A27E2BB3E00CF1AA2 /* CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
+		F0DDDC5527EBED68006AF1C4 /* TextTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTitle.swift; sourceTree = "<group>"; };
 		F0ECB7DC27E1E3CD00851ABD /* ReminderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -150,6 +152,7 @@
 		F05062A027E014620051359B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F0DDDC5427EBED57006AF1C4 /* Component */,
 				F01E318327E5E48200B89C4D /* TaskRowView.swift */,
 				7978DBE927E0AC6400499843 /* HomeView.swift */,
 				7978DBEB27E0AC6C00499843 /* CalendarView.swift */,
@@ -170,6 +173,14 @@
 				F0AE1D3A27E2BB3E00CF1AA2 /* CGFloat.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		F0DDDC5427EBED57006AF1C4 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				F0DDDC5527EBED68006AF1C4 /* TextTitle.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +268,7 @@
 				7993FB8727E7B3E800A900DF /* AddTaskView.swift in Sources */,
 				799129BF27DF6D2B004CBE70 /* SwiftUICaneldarProjectApp.swift in Sources */,
 				F05062A827E016360051359B /* UIKeyboard.swift in Sources */,
+				F0DDDC5627EBED68006AF1C4 /* TextTitle.swift in Sources */,
 				F01E318427E5E48300B89C4D /* TaskRowView.swift in Sources */,
 				F05062A527E014B30051359B /* Color.swift in Sources */,
 				F01E315427E4D4C800B89C4D /* TaskContainer.xcdatamodeld in Sources */,

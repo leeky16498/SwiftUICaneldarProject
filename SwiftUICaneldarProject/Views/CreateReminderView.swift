@@ -6,74 +6,47 @@
 //
 
 import SwiftUI
-
 struct CreateReminderView: View {
-  @StateObject var remindervm = ReminderViewModel()
-  @State private var isshowAlert : Bool = false
-  @State private var textalert : String = ""
-  @EnvironmentObject var vm : CalendarViewModel
   @Environment(\.presentationMode) var presentationMode
+  @EnvironmentObject var vm : CalendarViewModel
+  @StateObject var remindervm = ReminderViewModel()
+  @State private var textalert : String = ""
+  
   var body: some View {
     VStack(spacing:20){
-      Group{
-        inputTextTitle
-        inputTextSection
-        Divider()
-          .background(Color.caltheme.lightgray)
-      }
-      DatePicker("TaskDate", selection: $remindervm.taskDate, displayedComponents: .date)
-        .font(.title3)
-        .padding(.horizontal)
-      Divider()
-        .background(Color.caltheme.lightgray)
-      CreateTaskTitle
-      createdTask
-      Group{
-        Divider()
-          .background(Color.caltheme.lightgray)
-        colorSelectedTextSection
-        colorCircleSection
-       
-        Spacer()
-      }
-      
+      inputTextTitleSection
+      inputTextSection
+      inputDateSection
+      TextTitle(textTitle: "Create a Task")
+      createdTaskTitleSection
+      TextTitle(textTitle: "Select Color")
+      circleColorSection
+      Spacer()
       createButtonSection
         .padding(.bottom, 20)
-    } //VSTACK
-    .alert(isPresented: $isshowAlert, content: getAlert)
-    //        }
+    }
+    .alert(isPresented: $remindervm.isshowAlert, content: remindervm.getAlert)
   }
   
   func isPressedCreateReminer() {
-    if textCondition(){
-      presentationMode.wrappedValue.dismiss()
-      remindervm.addItem(title: remindervm.createReminderText, selectedColor: remindervm.selectedColor, remindedtime: remindervm.toProgress)
+    if remindervm.textCondition(){
+      remindervm.addItem(title: remindervm.createReminderText, selectedColor: remindervm.selectedColor)
       vm.addTasks(text: remindervm.taskTitle, taskDate: remindervm.taskDate)
     }
-  }
-  func textCondition() -> Bool {
-    if remindervm.createReminderText.count < 2{
-      textalert = "Please, insert at least 3 characters\n😅😅😅"
-      isshowAlert = true
-      return false
-    } else {
-      return true
-    }
-  }
-  func getAlert() -> Alert{
-    Alert(title: Text(textalert))
+    presentationMode.wrappedValue.dismiss()
   }
 }
+
 struct CreateReminderView_Previews: PreviewProvider {
   static var previews: some View {
     CreateReminderView()
       .preferredColorScheme(.dark)
       .environmentObject(CalendarViewModel())
-    
   }
 }
+
 extension CreateReminderView {
-  private var inputTextTitle :some View{
+  private var inputTextTitleSection :some View{
     Text("Create a new remainder")
       .font(.title)
       .bold()
@@ -81,6 +54,7 @@ extension CreateReminderView {
       .frame(maxWidth:.infinity, alignment: .leading)
       .padding(.horizontal)
   }
+  @ViewBuilder
   private var inputTextSection : some View{
     HStack{
       TextField("Input your task...", text: $remindervm.createReminderText)
@@ -108,24 +82,19 @@ extension CreateReminderView {
         .shadow(color: Color.caltheme.black.opacity(0.5), radius: 10, x: 0, y: 0)
     )
     .padding(.horizontal)
+    Divider()
+      .background(Color.caltheme.lightgray)
   }
-  private var eventDetailTextSection: some View{
-    Text("Event Detail")
-      .frame(maxWidth:.infinity, alignment: .leading)
+  @ViewBuilder
+  private var inputDateSection: some View{
+    DatePicker("TaskDate", selection: $remindervm.taskDate, displayedComponents: .date)
       .font(.title3)
-      .foregroundColor(Color.caltheme.secondaryText)
       .padding(.horizontal)
+    Divider()
+      .background(Color.caltheme.lightgray)
   }
-  private var CreateTaskTitle :some View{
-    Text("Create a Task")
-      .font(.title3)
-      .bold()
-      .foregroundColor(Color.caltheme.secondaryText)
-      .frame(maxWidth:.infinity, alignment: .leading)
-      .padding(.horizontal)
-  }
-  
-  private var createdTask: some View{
+  @ViewBuilder
+  private var createdTaskTitleSection: some View{
     VStack {
       HStack{
         Text("Complete a previous task")
@@ -160,16 +129,10 @@ extension CreateReminderView {
     }
     .padding(.horizontal)
     .lineLimit(1)
+    Divider()
+      .background(Color.caltheme.lightgray)
   }
-  private var colorSelectedTextSection: some View{
-    Text("Select Color")
-      .font(.title3)
-      .bold()
-      .frame(maxWidth:.infinity, alignment: .leading)
-      .foregroundColor(Color.caltheme.secondaryText)
-//      .padding(.horizontal)
-  }
-  private var colorCircleSection: some View{
+  private var circleColorSection: some View{
     HStack(spacing:5){
       ForEach(remindervm.circle, id:\.self){color in
         Circle()
@@ -190,7 +153,6 @@ extension CreateReminderView {
       .padding()
     }
   }
-  
   private var timeTextSection: some View{
     HStack(spacing : 0) {
       Text(remindervm.toProgress.roundCGFloat())

@@ -44,5 +44,4 @@ struct TaskModel: Identifiable {
     let id = UUID().uuidString
     let title : String
     var selectedColor : Color
-    let remindedtime : CGFloat
 }
