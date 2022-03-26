@@ -93,7 +93,7 @@ extension CalendarView {
                     Circle()
                         .fill(vm.isSameDay(date1: task.taskDate, date2: value.date) ? .mint : .black)
                         .frame(width : 8, height : 8)
-                        .padding()
+                        .padding(.bottom, 8)
                 } else {
                     Text("\(value.day)")
                         .font(.title3.bold())

@@ -10,20 +10,14 @@ import SwiftUI
 
 class CalendarViewModel : ObservableObject {
     
-    @Published var tasks : [TaskTimeModel] = []
+    @Published var tasks : [TaskModel] = []
     @Published var currentMonth : Int = 0
     
-    func addTasks(text : String, taskDate : Date) {
-        
-        let newTask = Task(title: text, scheduledTime: taskDate)
-        var newTaskTime = TaskTimeModel(taskDate: taskDate)
-        newTaskTime.task.append(newTask)
-        tasks.append(newTaskTime)
+
+    func addTask(title : String, selectedColor : Color, toProgress : CGFloat, toAngle : Double, reminderTime : Int, taskDate : Date) {
+        let newTask = TaskModel(title: title, selectedColor: selectedColor, toProgress: toProgress, toAngle: toAngle, remindedTime: reminderTime, taskDate: taskDate)
+        tasks.append(newTask)
     }
-    //테스크 저장
-    
-//    func
-//    
     
     func getCurrentMonth() -> Date { // 유저가 원하는 현재 month를 뽑아내는 메소드
         

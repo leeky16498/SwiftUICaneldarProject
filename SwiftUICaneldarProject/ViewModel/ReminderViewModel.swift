@@ -11,7 +11,6 @@ import SwiftUI
 
 class ReminderViewModel : ObservableObject{
   @Environment(\.presentationMode) var presentationMode
-  @Published var taskmodel : [TaskModel] = []
   @Published var counter : Int = 0
   @Published var createReminderText : String = ""
   @Published var taskDate : Date = Date()
@@ -46,33 +45,7 @@ class ReminderViewModel : ObservableObject{
       }
       .store(in: &cancellables)
   }
-  
-  struct TaskModel: Identifiable, Codable {
-    var id = UUID().uuidString
-    var title : String
-    var selectedColor : Color
-    var toProgress : CGFloat
-    var toAngle : Double
-    var remindedTime : Int
-  }
-  func addItem(title: String, selectedColor: Color, toProgress: CGFloat, toAngle: Double){
-    let newItem =
-    [TaskModel(
-      title: title,
-      selectedColor: selectedColor,
-      toProgress: toProgress,
-      toAngle: toAngle,
-      remindedTime: Int(round(toProgress * 60) * 60)
-    )]
-    taskmodel.append(contentsOf: newItem)
-    print(taskmodel)
-  }
-  func deleteItem(indexSet: IndexSet){
-    taskmodel.remove(atOffsets: indexSet)
-  }
-  func moveItem(from:IndexSet, to:Int){
-    taskmodel.move(fromOffsets: from, toOffset: to)
-  }
+
   func uiScreen() -> CGRect{
     return UIScreen.main.bounds
   }

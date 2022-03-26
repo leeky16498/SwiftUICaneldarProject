@@ -9,24 +9,31 @@ import SwiftUI
 
 struct TaskRowView: View {
   @State private var isShowCreateTimerView : Bool = false
-  let task : Task
+    
+  let task : TaskModel
   
   var body: some View {
     HStack {
       VStack(alignment : .leading) {
-        Text(task.title)
+          Text(task.title)
           .font(.title2.bold())
           .foregroundColor(.white)
-        
-        Text(task.scheduledTime, format: .dateTime.hour().minute())
-          .font(.headline)
-        
-        Text("언제까지 뭐하고 뭐하기, 그래서 이거 완전히 마치고 그 다음에 이거하기")
-          .font(.footnote)
-          .foregroundColor(.gray)
-          .italic()
-          .padding(.top, 3)
-          .lineLimit(2)
+          
+          Text("Scheduled time : \(task.remindedTime)시간")
+          
+          RoundedRectangle(cornerRadius: 20)
+              .fill(.gray)
+              .frame(height : 15)
+              .overlay(
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(.indigo)
+                    .frame(width : 30)
+                ,alignment: .leading
+              )
+              .overlay(
+                Text("30%")
+                    .font(.footnote)
+              )
       }
       .padding(.leading, 25)
       
@@ -57,8 +64,8 @@ struct TaskRowView: View {
       .background(.ultraThinMaterial)
       .overlay(
         RoundedRectangle(cornerRadius: 10)
-          .fill(Color.caltheme.green)
-          .frame(width : 12)
+            .fill(task.selectedColor)
+            .frame(width : 12)
         ,alignment: .leading
       )
       .cornerRadius(10)
@@ -67,11 +74,11 @@ struct TaskRowView: View {
     }
   }
   
-  struct TaskRowView_Previews: PreviewProvider {
-    static var tasks : Task = Task(title: "hello", scheduledTime: Date())
-    static var previews: some View {
-      TaskRowView(task: tasks)
-        .previewLayout(.sizeThatFits)
-        .preferredColorScheme(.dark)
-    }
-  }
+//  struct TaskRowView_Previews: PreviewProvider {
+//    static var tasks : Task = Task(title: "hello", scheduledTime: Date())
+//    static var previews: some View {
+//      TaskRowView(task: tasks)
+//        .previewLayout(.sizeThatFits)
+//        .preferredColorScheme(.dark)
+//    }
+//  }
