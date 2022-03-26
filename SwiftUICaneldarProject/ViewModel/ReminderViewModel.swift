@@ -46,10 +46,26 @@ class ReminderViewModel : ObservableObject{
       }
       .store(in: &cancellables)
   }
-  func addItem(title : String, selectedColor: Color, reminderHours: Int, reminderMinutes: Int ){
-    let addItem = [TaskModel(title: title, selectedColor: selectedColor, reminderHours: reminderHours, reminderMinutes: reminderMinutes)]
-    taskmodel.append(contentsOf: addItem)
-    print(addItem)
+  
+  struct TaskModel: Identifiable, Codable {
+    var id = UUID().uuidString
+    var title : String
+    var selectedColor : Color
+    var toProgress : CGFloat
+    var toAngle : Double
+    var remindedTime : Int
+  }
+  func addItem(title: String, selectedColor: Color, toProgress: CGFloat, toAngle: Double){
+    let newItem =
+    [TaskModel(
+      title: title,
+      selectedColor: selectedColor,
+      toProgress: toProgress,
+      toAngle: toAngle,
+      remindedTime: Int(round(toProgress * 60) * 60)
+    )]
+    taskmodel.append(contentsOf: newItem)
+    print(taskmodel)
   }
   func deleteItem(indexSet: IndexSet){
     taskmodel.remove(atOffsets: indexSet)
@@ -71,5 +87,10 @@ class ReminderViewModel : ObservableObject{
     } else {
       return true
     }
+  }
+  func TimeString(time: Int) -> String {
+    let minutes = Int(time) / 60 % 60
+    let seconds = Int(time) % 60
+    return String(format:"%01i:%02i", minutes, seconds)
   }
 }

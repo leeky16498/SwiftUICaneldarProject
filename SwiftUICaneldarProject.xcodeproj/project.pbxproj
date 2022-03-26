@@ -156,16 +156,15 @@
 		F05062A027E014620051359B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F0EDFC3A27EED9BD00D03BE9 /* delete */,
 				F0DDDC5427EBED57006AF1C4 /* Component */,
 				F01E318327E5E48200B89C4D /* TaskRowView.swift */,
 				7978DBE927E0AC6400499843 /* HomeView.swift */,
+				7993FB8627E7B3E800A900DF /* AddTaskView.swift */,
 				7978DBEB27E0AC6C00499843 /* CalendarView.swift */,
 				F05062AB27E016960051359B /* CreateReminderView.swift */,
 				F0DDDC5927EC9B79006AF1C4 /* LoadedTimerView.swift */,
 				F070D53627E4A026009EE736 /* ReminderListView.swift */,
-				7993FB8627E7B3E800A900DF /* AddTaskView.swift */,
-				F0DDDC5727EC895B006AF1C4 /* CreateTimerView.swift */,
-				F075D3E627E3715D0036593F /* LoadedReminderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -187,6 +186,15 @@
 				F0DDDC5527EBED68006AF1C4 /* TextTitle.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		F0EDFC3A27EED9BD00D03BE9 /* delete */ = {
+			isa = PBXGroup;
+			children = (
+				F0DDDC5727EC895B006AF1C4 /* CreateTimerView.swift */,
+				F075D3E627E3715D0036593F /* LoadedReminderView.swift */,
+			);
+			path = delete;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

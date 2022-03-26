@@ -9,8 +9,7 @@ import SwiftUI
 
 struct LoadedTimerView: View {
   @Environment(\.presentationMode) var presentationMode
-  @EnvironmentObject var vm : CalendarViewModel
-  @StateObject var remindervm = ReminderViewModel()
+  @EnvironmentObject var remindervm : ReminderViewModel
   var body: some View {
     VStack{
       TextTitleSection
@@ -44,7 +43,7 @@ struct LoadedTimerView_Previews: PreviewProvider {
   static var previews: some View {
     LoadedTimerView()
       .preferredColorScheme(.dark)
-      .environmentObject(CalendarViewModel())
+      .environmentObject(ReminderViewModel())
   }
 }
 

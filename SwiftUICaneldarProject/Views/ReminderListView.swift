@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 struct ReminderListView: View {
-    @StateObject var remindervm = ReminderViewModel()
+  @EnvironmentObject var remindervm : ReminderViewModel
     var body: some View {
         NavigationView {
             VStack {
@@ -39,5 +39,6 @@ struct ReminderListView: View {
 struct ReminderListView_Previews: PreviewProvider {
     static var previews: some View {
         ReminderListView()
+        .environmentObject(ReminderViewModel())
     }
 }

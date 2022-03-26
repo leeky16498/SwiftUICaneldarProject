@@ -9,15 +9,15 @@ import SwiftUI
 
 @main
 struct SwiftUICaneldarProjectApp: App {
-    
     @StateObject var vm = CalendarViewModel()
-    
+    @StateObject var remindervm = ReminderViewModel()
     var body: some Scene {
         WindowGroup {
 //                CreateTimerView()
     //            ReminderListView()
                 ContentView()
                     .environmentObject(vm)
+                    .environmentObject(remindervm)
         
         }
     }

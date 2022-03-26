@@ -40,10 +40,11 @@ func getTaskDate(offset: Int) -> Date {
 //}
 
 
-struct TaskModel: Identifiable {
-  let id = UUID().uuidString
-  let title : String
+struct TaskModel: Identifiable, Codable {
+  var id = UUID().uuidString
+  var title : String
   var selectedColor : Color
-  var reminderHours : Int
-  var reminderMinutes : Int
+  var toProgress : CGFloat
+  var toAngle : Double
+  var remindedTime : Int
 }

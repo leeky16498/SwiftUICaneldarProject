@@ -32,17 +32,13 @@ struct CreateReminderView: View {
     }
     .alert(isPresented: $remindervm.isshowAlert, content: remindervm.getAlert)
   }
-  
   func isPressedCreateReminer() {
     if remindervm.textCondition(){
-      remindervm.addItem(title: remindervm.createReminderText, selectedColor: remindervm.selectedColor, reminderHours: remindervm.hours, reminderMinutes: remindervm.minutes)
-      vm.addTasks(text: remindervm.taskTitle, taskDate: remindervm.taskDate)
+      remindervm.addItem(title: remindervm.createReminderText, selectedColor: remindervm.selectedColor,toProgress: remindervm.toProgress,toAngle: remindervm.toAngle)
       presentationMode.wrappedValue.dismiss()
     }
-    
   }
 }
-
 struct CreateReminderView_Previews: PreviewProvider {
   static var previews: some View {
     CreateReminderView()
@@ -50,7 +46,6 @@ struct CreateReminderView_Previews: PreviewProvider {
       .environmentObject(CalendarViewModel())
   }
 }
-
 extension CreateReminderView {
   private var inputTextTitleSection :some View{
     Text("Create a new remainder")
