@@ -23,19 +23,19 @@ struct LoadedTimerView: View {
     let seconds = Int(time) % 60
     return String(format:"%01i:%02i", minutes, seconds)
   }
-  func onDrag(value: DragGesture.Value){
-    let vector = CGVector(dx: value.location.x, dy: value.location.y)
-    let radians = atan2(vector.dy - 15, vector.dx - 15)
-    var angle = radians * 180 / .pi
-    if angle < 0 {angle += 360}
-    let progress = angle / 360
-    remindervm.toAngle = angle
-    remindervm.toProgress = progress
-  }
-  func isPressedCreateTimer() {
-    
-    presentationMode.wrappedValue.dismiss()
-  }
+//  func onDrag(value: DragGesture.Value){
+//    let vector = CGVector(dx: value.location.x, dy: value.location.y)
+//    let radians = atan2(vector.dy - 15, vector.dx - 15)
+//    var angle = radians * 180 / .pi
+//    if angle < 0 {angle += 360}
+//    let progress = angle / 360
+//    remindervm.toAngle = angle
+//    remindervm.toProgress = progress
+//  }
+//  func isPressedCreateTimer() {
+//
+//    presentationMode.wrappedValue.dismiss()
+//  }
 }
 
 
@@ -49,7 +49,7 @@ struct LoadedTimerView_Previews: PreviewProvider {
 
 extension LoadedTimerView{
   private var TextTitleSection :some View{
-    Text("Here is your task")
+    Text(remindervm)
       .font(.title)
       .bold()
       .foregroundColor(Color.caltheme.secondaryText)
@@ -76,22 +76,22 @@ extension LoadedTimerView{
         .frame(width: remindervm.uiScreen().width * 0.9, height: remindervm.uiScreen().width * 0.9)
         .offset(y: (remindervm.uiScreen().width * 0.9 ) / 2)
         .rotationEffect(Angle(degrees: -90))
-      Image(systemName: "alarm.fill")
-        .font(.callout)
-        .frame(width:30, height: 30)
-        .foregroundColor((remindervm.selectedColor))
-        .rotationEffect(Angle(degrees: 90))
-        .rotationEffect(Angle(degrees: -remindervm.toAngle))
-        .background(.white, in:Circle())
-        .offset(x:remindervm.uiScreen().width * 0.8 / 2)
-        .rotationEffect(Angle(degrees: remindervm.toAngle))
-        .gesture(
-          DragGesture()
-            .onChanged { value in
-              onDrag(value : value)
-            }
-        )
-        .rotationEffect(Angle(degrees: -90))
+//      Image(systemName: "alarm.fill")
+//        .font(.callout)
+//        .frame(width:30, height: 30)
+//        .foregroundColor((remindervm.selectedColor))
+//        .rotationEffect(Angle(degrees: 90))
+//        .rotationEffect(Angle(degrees: -remindervm.toAngle))
+//        .background(.white, in:Circle())
+//        .offset(x:remindervm.uiScreen().width * 0.8 / 2)
+//        .rotationEffect(Angle(degrees: remindervm.toAngle))
+//        .gesture(
+//          DragGesture()
+//            .onChanged { value in
+//              onDrag(value : value)
+//            }
+//        )
+//        .rotationEffect(Angle(degrees: -90))
     }
     .padding(.vertical,30)
   }
