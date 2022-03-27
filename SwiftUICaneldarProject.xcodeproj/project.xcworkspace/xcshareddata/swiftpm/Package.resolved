@@ -1,0 +1,32 @@
+{
+  "pins" : [
+    {
+      "identity" : "files",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/JohnSundell/Files.git",
+      "state" : {
+        "revision" : "d273b5b7025d386feef79ef6bad7de762e106eaf",
+        "version" : "4.2.0"
+      }
+    },
+    {
+      "identity" : "shellout",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/JohnSundell/ShellOut.git",
+      "state" : {
+        "revision" : "e1577acf2b6e90086d01a6d5e2b8efdaae033568",
+        "version" : "2.3.0"
+      }
+    },
+    {
+      "identity" : "xcodetheme",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/JohnSundell/XcodeTheme.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "09fca5040bbfdc90bf9b7f5794c9ccae0d6409f6"
+      }
+    }
+  ],
+  "version" : 2
+}

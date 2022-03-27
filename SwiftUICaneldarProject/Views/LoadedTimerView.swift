@@ -10,7 +10,9 @@ import SwiftUI
 struct LoadedTimerView: View {
   @Environment(\.presentationMode) var presentationMode
   @EnvironmentObject var remindervm : ReminderViewModel
+    
   var body: some View {
+      
     VStack{
       TextTitleSection
       clockSection
@@ -18,11 +20,13 @@ struct LoadedTimerView: View {
       buttonSection
     }
   }
+    
   func TimeString(time: Int) -> String {
     let minutes = Int(time) / 60 % 60
     let seconds = Int(time) % 60
     return String(format:"%01i:%02i", minutes, seconds)
   }
+    
   func onDrag(value: DragGesture.Value){
     let vector = CGVector(dx: value.location.x, dy: value.location.y)
     let radians = atan2(vector.dy - 15, vector.dx - 15)

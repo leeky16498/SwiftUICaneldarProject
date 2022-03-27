@@ -17,10 +17,10 @@ struct TaskModel: Identifiable, Codable {
     var toAngle : Double
     var remindedTime : Int
     var taskDate : Date
+   
 }
 
 func getTaskDate(offset: Int) -> Date {
-  
   let calendar = Calendar.current
   let date = calendar.date(byAdding: .day, value: offset, to: Date())
   return date ?? Date()
