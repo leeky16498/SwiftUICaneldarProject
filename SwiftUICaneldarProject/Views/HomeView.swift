@@ -37,13 +37,9 @@ struct HomeView: View {
             .padding(.bottom, 10)
           
           VStack {
-            if let task = vm.tasks.first(where: { task in
-              return vm.isSameDay(date1: task.taskDate, date2: currentDate)
-            }){
-              ForEach(task.task) {task in
-                TaskRowView(task: task)
+              ForEach(vm.tasks.filter({vm.isSameDay(date1: $0.taskDate, date2: currentDate)})) { task in
+                  TaskRowView(task: task)
               }
-            }
           }
         }
         

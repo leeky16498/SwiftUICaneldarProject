@@ -8,20 +8,15 @@
 import Foundation
 import SwiftUI
 
-struct Task : Identifiable {
-  
-  let id = UUID()
-  let title : String
-  let scheduledTime : Date
-  let duration : Int? = nil
-  
-}
 
-struct TaskTimeModel : Identifiable {
-  
-  let id = UUID()
-  var task : [Task] = []
-  let taskDate : Date
+struct TaskModel: Identifiable, Codable {
+    var id = UUID().uuidString
+    var title : String
+    var selectedColor : Color
+    var toProgress : CGFloat
+    var toAngle : Double
+    var remindedTime : Int
+    var taskDate : Date
 }
 
 func getTaskDate(offset: Int) -> Date {
@@ -39,12 +34,3 @@ func getTaskDate(offset: Int) -> Date {
 //    return date!
 //}
 
-
-struct TaskModel: Identifiable, Codable {
-  var id = UUID().uuidString
-  var title : String
-  var selectedColor : Color
-  var toProgress : CGFloat
-  var toAngle : Double
-  var remindedTime : Int
-}
