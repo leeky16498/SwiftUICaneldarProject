@@ -11,12 +11,14 @@ import SwiftUI
 
 class ReminderViewModel : ObservableObject{
   @Environment(\.presentationMode) var presentationMode
+  @Published var tasks : [TaskModel] = []
+  
   @Published var counter : Int = 0
   @Published var createReminderText : String = ""
   @Published var taskDate : Date = Date()
   @Published var taskTitle : String = ""
   @Published var hours : Int = 0
-  @Published var minutes : Int = 0
+  @Published var minutes : Double = 0
   @Published var startAngle : Double = 0
   @Published var toAngle : Double = 180
   @Published var startProgress : CGFloat = 0

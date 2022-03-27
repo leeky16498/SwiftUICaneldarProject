@@ -10,7 +10,7 @@ import SwiftUI
 struct TaskRowView: View {
   @State private var isShowCreateTimerView : Bool = false
     
-  let task : TaskModel
+  @State var task : TaskModel
   
   var body: some View {
     HStack {
@@ -53,7 +53,7 @@ struct TaskRowView: View {
       })
       .sheet(isPresented : $isShowCreateTimerView) {
         VStack{
-          LoadedTimerView()
+          LoadedTimerView(item: task)
         }
       }
         .padding(.trailing, 40)

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoadedTimerView: View {
   @Environment(\.presentationMode) var presentationMode
+  @State var item : TaskModel
   @EnvironmentObject var remindervm : ReminderViewModel
   var body: some View {
     VStack{
@@ -23,25 +24,14 @@ struct LoadedTimerView: View {
     let seconds = Int(time) % 60
     return String(format:"%01i:%02i", minutes, seconds)
   }
-//  func onDrag(value: DragGesture.Value){
-//    let vector = CGVector(dx: value.location.x, dy: value.location.y)
-//    let radians = atan2(vector.dy - 15, vector.dx - 15)
-//    var angle = radians * 180 / .pi
-//    if angle < 0 {angle += 360}
-//    let progress = angle / 360
-//    remindervm.toAngle = angle
-//    remindervm.toProgress = progress
-//  }
-//  func isPressedCreateTimer() {
-//
-//    presentationMode.wrappedValue.dismiss()
-//  }
+  
 }
 
 
 struct LoadedTimerView_Previews: PreviewProvider {
   static var previews: some View {
-    LoadedTimerView()
+    let item1 = TaskModel(title: "Home", selectedColor: Color.caltheme.pink, remindedTime: 30, taskDate: Date())
+    LoadedTimerView(item: item1)
       .preferredColorScheme(.dark)
       .environmentObject(ReminderViewModel())
   }
@@ -49,8 +39,8 @@ struct LoadedTimerView_Previews: PreviewProvider {
 
 extension LoadedTimerView{
   private var TextTitleSection :some View{
-    Text(remindervm)
-      .font(.title)
+    Text(item.title)
+      .font(.largeTitle)
       .bold()
       .foregroundColor(Color.caltheme.secondaryText)
       .frame(maxWidth:.infinity, alignment: .center)
@@ -60,7 +50,7 @@ extension LoadedTimerView{
     ZStack{
       Circle()
         .frame(width: remindervm.uiScreen().width * 0.9, height: remindervm.uiScreen().width * 0.9, alignment: .center)
-        .shadow(color: remindervm.selectedColor, radius: 20, x: 0, y: 0)
+        .shadow(color: item.selectedColor, radius: 20, x: 0, y: 0)
       Circle()
         .frame(width: remindervm.uiScreen().width * 0.7, height: remindervm.uiScreen().width * 0.7, alignment: .center)
         .foregroundColor(Color.caltheme.black.opacity(0.85))
@@ -71,63 +61,47 @@ extension LoadedTimerView{
           .offset(x: (remindervm.uiScreen().width * 0.6) / 2)
           .rotationEffect(.init(degrees: Double(i) * 6))
       }
-      FillClock(startAngle: remindervm.startAngle, toAngle: remindervm.toAngle)
-        .fill(remindervm.selectedColor)
+      FillClock(startAngle: remindervm.startAngle, toAngle: Double(item.remindedTime * 6))
+        .fill(item.selectedColor)
         .frame(width: remindervm.uiScreen().width * 0.9, height: remindervm.uiScreen().width * 0.9)
         .offset(y: (remindervm.uiScreen().width * 0.9 ) / 2)
         .rotationEffect(Angle(degrees: -90))
-//      Image(systemName: "alarm.fill")
-//        .font(.callout)
-//        .frame(width:30, height: 30)
-//        .foregroundColor((remindervm.selectedColor))
-//        .rotationEffect(Angle(degrees: 90))
-//        .rotationEffect(Angle(degrees: -remindervm.toAngle))
-//        .background(.white, in:Circle())
-//        .offset(x:remindervm.uiScreen().width * 0.8 / 2)
-//        .rotationEffect(Angle(degrees: remindervm.toAngle))
-//        .gesture(
-//          DragGesture()
-//            .onChanged { value in
-//              onDrag(value : value)
-//            }
-//        )
-//        .rotationEffect(Angle(degrees: -90))
     }
     .padding(.vertical,30)
   }
   private var timeTextSection: some View{
     HStack(spacing : 0) {
-      Text(remindervm.toProgress.roundCGFloat())
-        .frame(width:50)
+      Text("\(item.remindedTime)")
+        .frame(width:80)
       Text("Minutes")
         .frame(width:130)
     }
     .font(.largeTitle.bold())
     .foregroundColor(Color.caltheme.secondaryText)
     .padding()
-    .scaleEffect(1.5)
+    .scaleEffect(1.2)
   }
   private var buttonSection: some View{
-      HStack(spacing:40) {
-          Button(action: {
-          }, label: {
-              Image(systemName: "playpause.fill")
-                  .font(.system(size:40))
-          })
-          .frame(width:150,height:80, alignment: .center)
-          .foregroundColor(Color.caltheme.secondaryText)
-          .background(Color.caltheme.red)
-          .cornerRadius(15)
-          Button(action: {
-          }, label: {
-              Image(systemName: "stop.fill")
-                  .font(.system(size:40))
-          })
-          .frame(width:150,height:80, alignment: .center)
-          .foregroundColor(Color.caltheme.secondaryText)
-          .background(Color.caltheme.red)
-          .cornerRadius(15)
-      }
+    HStack(spacing:40) {
+      Button(action: {
+      }, label: {
+        Image(systemName: "playpause.fill")
+          .font(.system(size:40))
+      })
+      .frame(width:150,height:80, alignment: .center)
+      .foregroundColor(Color.caltheme.secondaryText)
+      .background(item.selectedColor)
+      .cornerRadius(15)
+      Button(action: {
+      }, label: {
+        Image(systemName: "stop.fill")
+          .font(.system(size:40))
+      })
+      .frame(width:150,height:80, alignment: .center)
+      .foregroundColor(Color.caltheme.secondaryText)
+      .background(item.selectedColor)
+      .cornerRadius(15)
+    }
   }
   
 }

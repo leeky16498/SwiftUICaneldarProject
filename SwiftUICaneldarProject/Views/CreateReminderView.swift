@@ -19,7 +19,6 @@ struct CreateReminderView: View {
           .padding(.top,60)
         inputTextSection
         inputDateSection
-        TextTitle(textTitle: "TaskDuration")
         inputTimeSection
         TextTitle(textTitle: "Create a Task")
       }
@@ -34,7 +33,7 @@ struct CreateReminderView: View {
   }
   func isPressedCreateReminer() {
     if remindervm.textCondition(){
-        vm.addTask(title: remindervm.createReminderText, selectedColor: remindervm.selectedColor, toProgress: remindervm.toProgress, toAngle: remindervm.toAngle, reminderTime: remindervm.hours, taskDate: remindervm.taskDate)
+      vm.addTask(title: remindervm.createReminderText, selectedColor: remindervm.selectedColor, reminderTime: Int(remindervm.minutes), taskDate: remindervm.taskDate)
       presentationMode.wrappedValue.dismiss()
     }
   }
@@ -90,32 +89,32 @@ extension CreateReminderView {
   }
   @ViewBuilder
   private var inputDateSection: some View{
-    DatePicker("TaskDate", selection: $remindervm.taskDate, displayedComponents: .date)
+    DatePicker("Task Date", selection: $remindervm.taskDate, displayedComponents: .date)
       .font(.title3)
       .padding(.horizontal)
     Divider()
       .background(Color.caltheme.lightgray)
   }
   private var inputTimeSection: some View{
-    HStack{
-      Picker("", selection: $remindervm.hours){
-        ForEach(0..<13, id:\.self){ i in
-          Text("\(i) hours").tag(i)
-            .font(.title)
-        }
+    VStack {
+      HStack {
+        Text("Task Duration")
+          .font(.title3)
+          .bold()
+          .foregroundColor(Color.caltheme.secondaryText)
+          .frame(maxWidth:.infinity, alignment: .leading)
+          .padding(.horizontal)
+        Spacer()
+        Text("\(remindervm.minutes, specifier: "%.0f") minutes")
+          .font(.title3)
+          .bold()
+          .foregroundColor(Color.caltheme.secondaryText)
+          .frame(maxWidth:.infinity, alignment: .trailing)
+          .padding(.horizontal)
+        
       }
-      .frame(width: 200, height: 120).clipped()
-      .pickerStyle(WheelPickerStyle())
-      Picker("", selection: $remindervm.minutes){
-        ForEach(0..<61, id:\.self){ i in
-          if i % 5 == 0{
-            Text("\(i) minutes").tag(i)
-              .font(.title)
-          }
-        }
-      }
-      .frame(width: 200,height: 120).clipped()
-      .pickerStyle(WheelPickerStyle())
+      Slider(value: $remindervm.minutes, in: 0...60)
+        .padding(.horizontal)
     }
   }
   @ViewBuilder
