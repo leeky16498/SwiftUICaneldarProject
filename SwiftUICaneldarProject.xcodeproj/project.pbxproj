@@ -28,6 +28,10 @@
 		F070D53727E4A026009EE736 /* ReminderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070D53627E4A026009EE736 /* ReminderListView.swift */; };
 		F075D3E727E3715D0036593F /* LoadedReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F075D3E627E3715D0036593F /* LoadedReminderView.swift */; };
 		F0AE1D3B27E2BB3E00CF1AA2 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AE1D3A27E2BB3E00CF1AA2 /* CGFloat.swift */; };
+		F0C2E20B27FB172900451741 /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C2E20A27FB172900451741 /* SetupView.swift */; };
+		F0C2E21027FB197900451741 /* SingleDay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F0C2E20D27FB197900451741 /* SingleDay-Regular.ttf */; };
+		F0C2E21127FB197900451741 /* Jua-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F0C2E20E27FB197900451741 /* Jua-Regular.ttf */; };
+		F0C2E21227FB197900451741 /* Sunflower-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F0C2E20F27FB197900451741 /* Sunflower-Light.ttf */; };
 		F0DDDC5627EBED68006AF1C4 /* TextTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DDDC5527EBED68006AF1C4 /* TextTitle.swift */; };
 		F0DDDC5827EC895B006AF1C4 /* CreateTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DDDC5727EC895B006AF1C4 /* CreateTimerView.swift */; };
 		F0DDDC5A27EC9B79006AF1C4 /* LoadedTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DDDC5927EC9B79006AF1C4 /* LoadedTimerView.swift */; };
@@ -57,6 +61,11 @@
 		F070D53627E4A026009EE736 /* ReminderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderListView.swift; sourceTree = "<group>"; };
 		F075D3E627E3715D0036593F /* LoadedReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadedReminderView.swift; sourceTree = "<group>"; };
 		F0AE1D3A27E2BB3E00CF1AA2 /* CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
+		F0C2E20A27FB172900451741 /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
+		F0C2E20D27FB197900451741 /* SingleDay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SingleDay-Regular.ttf"; sourceTree = "<group>"; };
+		F0C2E20E27FB197900451741 /* Jua-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Jua-Regular.ttf"; sourceTree = "<group>"; };
+		F0C2E20F27FB197900451741 /* Sunflower-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sunflower-Light.ttf"; sourceTree = "<group>"; };
+		F0C2E21327FB199500451741 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F0DDDC5527EBED68006AF1C4 /* TextTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTitle.swift; sourceTree = "<group>"; };
 		F0DDDC5727EC895B006AF1C4 /* CreateTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTimerView.swift; sourceTree = "<group>"; };
 		F0DDDC5927EC9B79006AF1C4 /* LoadedTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadedTimerView.swift; sourceTree = "<group>"; };
@@ -131,6 +140,8 @@
 		799129BD27DF6D2B004CBE70 /* SwiftUICaneldarProject */ = {
 			isa = PBXGroup;
 			children = (
+				F0C2E21327FB199500451741 /* Info.plist */,
+				F0C2E20C27FB195100451741 /* Font */,
 				7978DBE827E0AC4B00499843 /* App */,
 				7978DBE127E0AC1800499843 /* Utilities */,
 				7978DBE027E0AC1400499843 /* Model */,
@@ -162,6 +173,7 @@
 				F05062AB27E016960051359B /* CreateReminderView.swift */,
 				F0DDDC5927EC9B79006AF1C4 /* LoadedTimerView.swift */,
 				F070D53627E4A026009EE736 /* ReminderListView.swift */,
+				F0C2E20A27FB172900451741 /* SetupView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -175,6 +187,16 @@
 				F0AE1D3A27E2BB3E00CF1AA2 /* CGFloat.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		F0C2E20C27FB195100451741 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				F0C2E20E27FB197900451741 /* Jua-Regular.ttf */,
+				F0C2E20D27FB197900451741 /* SingleDay-Regular.ttf */,
+				F0C2E20F27FB197900451741 /* Sunflower-Light.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		F0DDDC5427EBED57006AF1C4 /* Component */ = {
@@ -254,6 +276,9 @@
 			files = (
 				799129C627DF6D2C004CBE70 /* Preview Assets.xcassets in Resources */,
 				799129C327DF6D2C004CBE70 /* Assets.xcassets in Resources */,
+				F0C2E21127FB197900451741 /* Jua-Regular.ttf in Resources */,
+				F0C2E21227FB197900451741 /* Sunflower-Light.ttf in Resources */,
+				F0C2E21027FB197900451741 /* SingleDay-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +311,7 @@
 				7978DBE727E0AC3200499843 /* SoundKit.swift in Sources */,
 				F0DDDC5A27EC9B79006AF1C4 /* LoadedTimerView.swift in Sources */,
 				F05062AC27E016960051359B /* CreateReminderView.swift in Sources */,
+				F0C2E20B27FB172900451741 /* SetupView.swift in Sources */,
 				7978DBE527E0AC2D00499843 /* TaskModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,6 +445,7 @@
 				DEVELOPMENT_TEAM = LZ887YG4E9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SwiftUICaneldarProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -448,9 +475,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SwiftUICaneldarProject/Preview Content\"";
-				DEVELOPMENT_TEAM = SRJSV34WBB;
+				DEVELOPMENT_TEAM = LZ887YG4E9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SwiftUICaneldarProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
