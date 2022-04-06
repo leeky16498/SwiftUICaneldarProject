@@ -14,9 +14,10 @@ class CalendarViewModel : ObservableObject {
     @Published var currentMonth : Int = 0
     
 
-    func addTask(title : String, selectedColor : Color, toProgress : CGFloat, toAngle : Double, reminderTime : Int, taskDate : Date) {
-        let newTask = TaskModel(title: title, selectedColor: selectedColor, toProgress: toProgress, toAngle: toAngle, remindedTime: reminderTime, taskDate: taskDate)
+    func addTask(title : String, selectedColor : Color, reminderTime : Int, taskDate : Date) {
+        let newTask = TaskModel(title: title, selectedColor: selectedColor, remindedTime: reminderTime, taskDate: taskDate)
         tasks.append(newTask)
+      print(tasks)
     }
     
     func getCurrentMonth() -> Date { // 유저가 원하는 현재 month를 뽑아내는 메소드

@@ -13,8 +13,8 @@ struct TaskModel: Identifiable, Codable {
     var id = UUID().uuidString
     var title : String
     var selectedColor : Color
-    var toProgress : CGFloat
-    var toAngle : Double
+//    var toProgress : CGFloat
+//    var toAngle : Double
     var remindedTime : Int
     var taskDate : Date
    
