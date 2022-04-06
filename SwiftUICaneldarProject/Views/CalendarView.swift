@@ -31,7 +31,8 @@ struct CalendarView: View {
                     .font(.headline)
                 
                 Text(vm.formatDate(currentDate: currentDate)[1])
-                    .font(.title3.bold())
+                    .font(.title2)
+                    .fontWeight(.heavy)
                 
                 Button(action: {
                     vm.currentMonth += 1
@@ -83,23 +84,41 @@ extension CalendarView {
                 if let task = vm.tasks.first(where: { task in
                     return vm.isSameDay(date1: task.taskDate, date2: value.date)
                 }) {
+                    
                     Text("\(value.day)")
                         .font(.title3.bold())
-                        .foregroundColor(vm.isSameDay(date1: task.taskDate, date2: currentDate) ? .mint : .white)
+                        .foregroundColor(vm.isSameDay(date1: task.taskDate, date2: currentDate) ? .mint : Color.caltheme.CalendarTextColor)
                         .frame(maxWidth : .infinity)
                     
                     Spacer()
                     
-                    Circle()
-                        .fill(vm.isSameDay(date1: task.taskDate, date2: value.date) ? .mint : .black)
-                        .frame(width : 8, height : 8)
-                        .padding(.bottom, 8)
+                    RoundedRectangle(cornerRadius: 5)
+                        .fill(vm.isSameDay(date1: task.taskDate, date2: value.date) ? .mint.opacity(0.3) : Color.caltheme.CalendarTextColor)
+                        .frame(width : 25, height : 25)
+                        .padding(.bottom, 3)
+                        .overlay(
+                            Text("+\(vm.tasks.filter({vm.isSameDay(date1: $0.taskDate, date2: value.date)}).count)")
+                                .font(.system(size: 9).bold())
+                            ,alignment: .center
+                        )
+                   
                 } else {
-                    Text("\(value.day)")
-                        .font(.title3.bold())
-                        .foregroundColor(vm.isSameDay(date1: value.date, date2: currentDate) ? .mint : .white)
-                        .frame(maxWidth : .infinity)
-                    
+                    if Calendar.current.component(.weekday, from: value.date) == 1 {
+                        Text("\(value.day)")
+                            .font(.title3.bold())
+                            .foregroundColor(vm.isSameDay(date1: value.date, date2: currentDate) ? .mint : .red)
+                            .frame(maxWidth : .infinity)
+                    } else if Calendar.current.component(.weekday, from: value.date) == 7 {
+                        Text("\(value.day)")
+                            .font(.title3.bold())
+                            .foregroundColor(vm.isSameDay(date1: value.date, date2: currentDate) ? .mint : .blue)
+                            .frame(maxWidth : .infinity)
+                    } else {
+                        Text("\(value.day)")
+                            .font(.title3.bold())
+                            .foregroundColor(vm.isSameDay(date1: value.date, date2: currentDate) ? .mint : Color.caltheme.CalendarTextColor)
+                            .frame(maxWidth : .infinity)
+                    }
                     Spacer()
                 }
             }
