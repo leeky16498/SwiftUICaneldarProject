@@ -23,9 +23,8 @@ struct CalTheme{
     let secondaryText = Color("SecondaryTextColor")
     let black = Color("ColorBlack")
     let background = Color("BackgroundColor")
+    let CalendarTextColor = Color("CalendarTextColor")
 }
-
-
 
 fileprivate extension Color {
     #if os(macOS)

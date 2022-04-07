@@ -17,9 +17,11 @@ struct TaskRowView: View {
       VStack(alignment : .leading) {
           Text(task.title)
           .font(.title2.bold())
-          .foregroundColor(.white)
           
-          Text("Scheduled time : \(task.remindedTime)시간")
+          Text("Scheduled time : \(task.remindedTime)mim")
+              .font(.footnote)
+              .foregroundColor(.gray)
+              .padding(.bottom, 6)
           
           RoundedRectangle(cornerRadius: 20)
               .fill(.gray)
@@ -35,7 +37,7 @@ struct TaskRowView: View {
                     .font(.footnote)
               )
       }
-      .padding(.leading, 25)
+      .padding(.leading, 35)
       
       Spacer()
       
@@ -58,14 +60,15 @@ struct TaskRowView: View {
       }
         .padding(.trailing, 40)
         .padding(.leading, 10)
-      }
+      }//hst
       .frame(maxWidth : .infinity)
-      .frame(height : 120)
+      .frame(height : 100)
       .background(.ultraThinMaterial)
       .overlay(
-        RoundedRectangle(cornerRadius: 10)
+        Rectangle()
             .fill(task.selectedColor)
-            .frame(width : 12)
+            .frame(width : 25)
+            .cornerRadius(8, corners: [.topLeft, .bottomLeft])
         ,alignment: .leading
       )
       .cornerRadius(10)
@@ -73,12 +76,3 @@ struct TaskRowView: View {
       .padding(.vertical, 3)
     }
   }
-  
-//  struct TaskRowView_Previews: PreviewProvider {
-//    static var tasks : Task = Task(title: "hello", scheduledTime: Date())
-//    static var previews: some View {
-//      TaskRowView(task: tasks)
-//        .previewLayout(.sizeThatFits)
-//        .preferredColorScheme(.dark)
-//    }
-//  }

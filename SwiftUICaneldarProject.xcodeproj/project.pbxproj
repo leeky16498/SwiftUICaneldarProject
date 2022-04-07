@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7978DBE327E0AC2400499843 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7978DBE227E0AC2400499843 /* HomeViewModel.swift */; };
 		7978DBE527E0AC2D00499843 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7978DBE427E0AC2D00499843 /* TaskModel.swift */; };
 		7978DBE727E0AC3200499843 /* SoundKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7978DBE627E0AC3200499843 /* SoundKit.swift */; };
 		7978DBEA27E0AC6400499843 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7978DBE927E0AC6400499843 /* HomeView.swift */; };
@@ -19,6 +18,7 @@
 		799129C127DF6D2B004CBE70 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799129C027DF6D2B004CBE70 /* ContentView.swift */; };
 		799129C327DF6D2C004CBE70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 799129C227DF6D2C004CBE70 /* Assets.xcassets */; };
 		799129C627DF6D2C004CBE70 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 799129C527DF6D2C004CBE70 /* Preview Assets.xcassets */; };
+		7996548E27FDDEF1002FF2A5 /* CornerRadiusCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7996548D27FDDEF1002FF2A5 /* CornerRadiusCustom.swift */; };
 		F01E315427E4D4C800B89C4D /* TaskContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F01E315227E4D4C800B89C4D /* TaskContainer.xcdatamodeld */; };
 		F01E318427E5E48300B89C4D /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01E318327E5E48200B89C4D /* TaskRowView.swift */; };
 		F01E31AB27E950A100B89C4D /* FillClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01E31AA27E950A100B89C4D /* FillClock.swift */; };
@@ -39,7 +39,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7978DBE227E0AC2400499843 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		7978DBE427E0AC2D00499843 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		7978DBE627E0AC3200499843 /* SoundKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundKit.swift; sourceTree = "<group>"; };
 		7978DBE927E0AC6400499843 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -52,6 +51,7 @@
 		799129C027DF6D2B004CBE70 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		799129C227DF6D2C004CBE70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		799129C527DF6D2C004CBE70 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7996548D27FDDEF1002FF2A5 /* CornerRadiusCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadiusCustom.swift; sourceTree = "<group>"; };
 		F01E315327E4D4C800B89C4D /* TaskContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskContainer.xcdatamodel; sourceTree = "<group>"; };
 		F01E318327E5E48200B89C4D /* TaskRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskRowView.swift; sourceTree = "<group>"; };
 		F01E31AA27E950A100B89C4D /* FillClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillClock.swift; sourceTree = "<group>"; };
@@ -86,7 +86,6 @@
 		7978DBDF27E0AC0C00499843 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				7978DBE227E0AC2400499843 /* HomeViewModel.swift */,
 				7978DBEF27E0C55D00499843 /* CalendarViewModel.swift */,
 				F0ECB7DC27E1E3CD00851ABD /* ReminderViewModel.swift */,
 				F01E315227E4D4C800B89C4D /* TaskContainer.xcdatamodeld */,
@@ -185,6 +184,7 @@
 				F05062A727E016360051359B /* UIKeyboard.swift */,
 				7978DBF127E0CB5600499843 /* GetAllDate.swift */,
 				F0AE1D3A27E2BB3E00CF1AA2 /* CGFloat.swift */,
+				7996548D27FDDEF1002FF2A5 /* CornerRadiusCustom.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -301,7 +301,6 @@
 				F01E31AB27E950A100B89C4D /* FillClock.swift in Sources */,
 				799129C127DF6D2B004CBE70 /* ContentView.swift in Sources */,
 				7978DBF227E0CB5600499843 /* GetAllDate.swift in Sources */,
-				7978DBE327E0AC2400499843 /* HomeViewModel.swift in Sources */,
 				799129BF27DF6D2B004CBE70 /* SwiftUICaneldarProjectApp.swift in Sources */,
 				F05062A827E016360051359B /* UIKeyboard.swift in Sources */,
 				F0DDDC5627EBED68006AF1C4 /* TextTitle.swift in Sources */,
@@ -313,6 +312,7 @@
 				F05062AC27E016960051359B /* CreateReminderView.swift in Sources */,
 				F0C2E20B27FB172900451741 /* SetupView.swift in Sources */,
 				7978DBE527E0AC2D00499843 /* TaskModel.swift in Sources */,
+				7996548E27FDDEF1002FF2A5 /* CornerRadiusCustom.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

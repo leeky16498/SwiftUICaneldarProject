@@ -9,19 +9,24 @@ import SwiftUI
 
 @main
 struct SwiftUICaneldarProjectApp: App {
+    
   @AppStorage("isDarkMode") var isDarkMode : String = "다크모드"
   @AppStorage("isCharStyle") var isCharStyle : String = ""
   @AppStorage("isSoundStyle") var isSoundStyle = 1327
+    
   @StateObject var vm = CalendarViewModel()
   @StateObject var remindervm = ReminderViewModel()
+    
   var body: some Scene {
     WindowGroup {
+        HomeView()
+            .environmentObject(vm)
       //                CreateTimerView()
-      //            ReminderListView()
-      SetupView()
-        .preferredColorScheme(isDarkMode == "다크모드" ? .dark : .light)
-        .environmentObject(vm)
-        .environmentObject(remindervm)
+//                  ReminderListView()
+//      SetupView()
+//        .preferredColorScheme(isDarkMode == "다크모드" ? .dark : .light)
+//        .environmentObject(vm)
+//        .environmentObject(remindervm)
       
     }
   }
