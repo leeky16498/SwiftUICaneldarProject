@@ -61,7 +61,7 @@ extension LoadedTimerView{
           .offset(x: (remindervm.uiScreen().width * 0.6) / 2)
           .rotationEffect(.init(degrees: Double(i) * 6))
       }
-      FillClock(startAngle: remindervm.startAngle, toAngle: Double(item.remindedTime * 6))
+      FillClock(startAngle: remindervm.startAngle, toAngle: Double(item.remindedTime / 60 * 6))
         .fill(item.selectedColor)
         .frame(width: remindervm.uiScreen().width * 0.9, height: remindervm.uiScreen().width * 0.9)
         .offset(y: (remindervm.uiScreen().width * 0.9 ) / 2)
@@ -71,21 +71,45 @@ extension LoadedTimerView{
   }
   private var timeTextSection: some View{
     HStack(spacing : 0) {
-      Text("\(item.remindedTime)")
-        .frame(width:80)
-      Text("Minutes")
-        .frame(width:130)
+      Text("\(TimeString(time: item.remindedTime))")
+        .frame(width:100)
+//      Text("Minutes")
+//        .frame(width:130)
     }
     .font(.largeTitle.bold())
     .foregroundColor(Color.caltheme.secondaryText)
     .padding()
     .scaleEffect(1.2)
+    .onReceive(remindervm.$counter){ _ in
+      if remindervm.timerstyle == .start{
+        if item.remindedTime > 0 {
+          item.remindedTime -= 1
+          }
+      }else if remindervm.timerstyle == .pause{
+        
+      }else if remindervm.timerstyle == .stop{
+        item.remindedTime = 0
+      }
+//      if item.remindedTime > 0 {
+//        item.remindedTime -= 1
+//        }else{
+//
+//        }
+    }
   }
+  
+
   private var buttonSection: some View{
     HStack(spacing:40) {
       Button(action: {
+        if  remindervm.timerstyle == .start && item.remindedTime != 0{
+          remindervm.timerstyle = .pause
+        } else if remindervm.timerstyle == .pause && item.remindedTime != 0 {
+          remindervm.timerstyle = .start
+        }
+       
       }, label: {
-        Image(systemName: "playpause.fill")
+        Image(systemName: remindervm.timerstyle == .start ?  "pause.fill" : "play.fill" )
           .font(.system(size:40))
       })
       .frame(width:150,height:80, alignment: .center)
@@ -93,6 +117,8 @@ extension LoadedTimerView{
       .background(item.selectedColor)
       .cornerRadius(15)
       Button(action: {
+        remindervm.timerstyle = .stop
+        
       }, label: {
         Image(systemName: "stop.fill")
           .font(.system(size:40))
@@ -105,3 +131,4 @@ extension LoadedTimerView{
   }
   
 }
+

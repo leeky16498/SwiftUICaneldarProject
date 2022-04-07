@@ -21,6 +21,7 @@ struct SwiftUICaneldarProjectApp: App {
     WindowGroup {
         HomeView()
             .environmentObject(vm)
+            .environmentObject(remindervm)
       //                CreateTimerView()
 //                  ReminderListView()
 //      SetupView()

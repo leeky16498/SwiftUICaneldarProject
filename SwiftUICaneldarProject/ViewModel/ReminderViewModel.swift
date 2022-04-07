@@ -10,6 +10,10 @@ import Combine
 import SwiftUI
 
 class ReminderViewModel : ObservableObject{
+  enum Timerstyle {
+    case normal, start, pause, stop
+  }
+  @Published var timerstyle : Timerstyle = .normal
   @AppStorage("isDarkMode") var isDarkMode : String = "다크모드"
   @AppStorage("isCharStyle") var isCharStyle : String = ""
   @Environment(\.presentationMode) var presentationMode
@@ -71,7 +75,8 @@ class ReminderViewModel : ObservableObject{
     Alert(title: Text(textalert))
   }
   func textCondition() -> Bool {
-    if createReminderText.count < 2{
+    if createReminderText.count < 2 || minutes < 1  {
+      print(minutes)
       textalert = "Please, insert at least 3 characters\n😅😅😅"
       isshowAlert = true
       return false
