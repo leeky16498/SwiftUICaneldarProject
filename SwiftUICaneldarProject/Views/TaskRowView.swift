@@ -4,76 +4,100 @@
 //
 //  Created by Kyungyun Lee on 19/03/2022.
 //
-
 import SwiftUI
 
 struct TaskRowView: View {
-  @State private var isShowCreateTimerView : Bool = false
-    
-  @State var task : TaskModel
+
+    @State private var offsets : CGSize = .zero
+    @State private var isSwipped : Bool = false
+    @State private var isShowCreateTimerView : Bool = false
+    @EnvironmentObject var vm : CalendarViewModel
+    var task : TaskModel
+    var isShowActionSheet : Bool = false
   
   var body: some View {
-    HStack {
-      VStack(alignment : .leading) {
-          Text(task.title)
-          .font(.title2.bold())
+      ZStack {
+          Color.red
+          HStack {
+              Spacer()
+              Button(action: {
+                  
+              }, label: {
+                  Image(systemName: "pencil")
+                      .foregroundColor(.white)
+                      .font(.title)
+                      .frame(width : 80, height : 100)
+                      .background(.green)
+              })
+              
+              Button(action: {
+                  vm.deleteTask(task: task)
+              }, label: {
+                  Image(systemName: "trash")
+                      .foregroundColor(.white)
+                      .font(.title)
+                      .frame(width : 60, height : 100)
+              })
+          }
           
-          Text("Scheduled time : \(task.remindedTime)mim")
-              .font(.footnote)
-              .foregroundColor(.gray)
-              .padding(.bottom, 6)
-          
-          RoundedRectangle(cornerRadius: 20)
-              .fill(.gray)
-              .frame(height : 15)
-              .overlay(
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(.indigo)
-                    .frame(width : 30)
-                ,alignment: .leading
-              )
-              .overlay(
-                Text("30%")
+          HStack {
+            VStack(alignment : .leading) {
+                Text(task.title)
+                .font(.title2.bold())
+                
+                Text("Scheduled time : \(task.remindedTime)mim")
                     .font(.footnote)
-              )
-      }
-      .padding(.leading, 35)
-      
-      Spacer()
-      
-      Button(action: {
-        isShowCreateTimerView.toggle()
-      }, label: {
-        HStack{
-          Image(systemName: "clock")
-          Text("Timer")
+                    .foregroundColor(.gray)
+                    .padding(.bottom, 6)
+            }
+            .padding(.leading, 35)
+            
+            Spacer()
+            }//hst
+            .frame(maxWidth : .infinity)
+            .frame(height : 100)
+            .background(Color.init(uiColor: .systemYellow))
+            .overlay(
+              Rectangle()
+                  .fill(task.selectedColor)
+                  .frame(width : 25)
+                  .cornerRadius(8, corners: [.topLeft, .bottomLeft])
+              ,alignment: .leading
+            )
+            .cornerRadius(10, corners: [.topLeft, .bottomLeft])
+            .offset(x : offsets.width)
+            .gesture(
+                DragGesture()
+                    .onChanged({ gesture in
+                        withAnimation(.easeInOut) {
+                            if gesture.translation.width < 0 {
+                                if isSwipped {
+                                    offsets.width = gesture.translation.width - 140
+                                } else {
+                                    offsets.width = gesture.translation.width
+                                }
+                            }
+                        }
+                    })
+                    .onEnded({ gesture in
+                        withAnimation {
+                            if gesture.translation.width < 0 {
+                                if gesture.translation.width < -60 {
+                                    isSwipped = true
+                                    offsets.width = -140
+                                } else {
+                                    isSwipped = false
+                                    offsets.width = 0
+                                }
+                            } else {
+                                isSwipped = false
+                                offsets.width = 0
+                            }
+                        }
+                    })
+            )
         }
-        .foregroundColor(.black)
-        .frame(width: 110, height : 50)
-        .background(.yellow)
-        .cornerRadius(12)
-      })
-      .sheet(isPresented : $isShowCreateTimerView) {
-        VStack{
-          LoadedTimerView(item: task)
-        }
-      }
-        .padding(.trailing, 40)
-        .padding(.leading, 10)
-      }//hst
-      .frame(maxWidth : .infinity)
-      .frame(height : 100)
-      .background(.ultraThinMaterial)
-      .overlay(
-        Rectangle()
-            .fill(task.selectedColor)
-            .frame(width : 25)
-            .cornerRadius(8, corners: [.topLeft, .bottomLeft])
-        ,alignment: .leading
-      )
-      .cornerRadius(10)
-      .offset(x: 20)
-      .padding(.vertical, 3)
-
+      .cornerRadius(10, corners: [.topLeft, .bottomLeft])
+      .padding(.leading, 20)
     }
-  }
+}
