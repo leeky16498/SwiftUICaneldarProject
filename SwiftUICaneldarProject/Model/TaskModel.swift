@@ -10,11 +10,12 @@ import SwiftUI
 
 
 struct TaskModel: Identifiable, Codable {
-    var id = UUID().uuidString
-    var title : String
-    var selectedColor : Color
-    var remindedTime : Int
-    var taskDate : Date
+  var id = UUID().uuidString
+  var title : String
+  var content : String
+  var selectedColor : Color
+  var remindedTime : Int
+  var taskDate : Date
 }
 
 struct CharStyles : Identifiable{

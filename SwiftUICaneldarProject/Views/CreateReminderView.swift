@@ -18,11 +18,15 @@ struct CreateReminderView: View {
         inputTextTitleSection
           .padding(.top,60)
         inputTextSection
+        inputTextEditor
+        
+        Divider()
+          .background(Color.caltheme.lightgray)
+        
         inputDateSection
-        inputTimeSection
-        TextTitle(textTitle: "Create a Task")
+        
       }
-      createdTaskTitleSection
+      
       TextTitle(textTitle: "Select Color")
       circleColorSection
       Spacer()
@@ -33,7 +37,7 @@ struct CreateReminderView: View {
   }
   func isPressedCreateReminer() {
     if remindervm.textCondition(){
-      vm.addTask(title: remindervm.createReminderText, selectedColor: remindervm.selectedColor, reminderTime: Int(remindervm.minutes), taskDate: remindervm.taskDate)
+      vm.addTask(title: remindervm.createReminderText,content: remindervm.textEditorTodo, selectedColor: remindervm.selectedColor, reminderTime: Int(remindervm.minutes), taskDate: remindervm.taskDate)
       presentationMode.wrappedValue.dismiss()
     }
   }
@@ -88,74 +92,32 @@ extension CreateReminderView {
       .background(Color.caltheme.lightgray)
   }
   @ViewBuilder
-  private var inputDateSection: some View{
-    DatePicker("Task Date", selection: $remindervm.taskDate, displayedComponents: .date)
-      .font(.title3)
-      .padding(.horizontal)
-    Divider()
-      .background(Color.caltheme.lightgray)
-  }
-  private var inputTimeSection: some View{
+  private var inputTextEditor: some View{
     VStack {
-      HStack {
-        Text("Task Duration")
-          .font(.title3)
-          .bold()
-          .foregroundColor(Color.caltheme.secondaryText)
-          .frame(maxWidth:.infinity, alignment: .leading)
-          .padding(.horizontal)
-        Spacer()
-        Text("\(remindervm.minutes, specifier: "%.0f") minutes")
-          .font(.title3)
-          .bold()
-          .foregroundColor(Color.caltheme.secondaryText)
-          .frame(maxWidth:.infinity, alignment: .trailing)
-          .padding(.horizontal)
-        
-      }
-      Slider(value: $remindervm.minutes, in: 0...60)
-        .padding(.horizontal)
+      TextEditor(text: $remindervm.textEditorTodo)
+      
+        .foregroundColor(remindervm.textEditorTodo.isEmpty ? Color.caltheme.secondaryText : remindervm.selectedColor)
+        .frame(width: UIScreen.main.bounds.width * 0.9)
+        .frame(height:200)
+        .colorMultiply(Color.white.opacity(0.5))
+        .padding(.leading)
+        .padding(.trailing)
+        .lineSpacing(8)
+        .cornerRadius(15)
     }
+    
   }
+  
   @ViewBuilder
-  private var createdTaskTitleSection: some View{
-    VStack {
-      HStack{
-        Text("Complete a previous task")
-          .font(.headline)
-          .padding()
-          .frame(maxWidth: .infinity)
-          .background(Color.caltheme.red)
-          .cornerRadius(10)
-        Text("Create new portfolio")
-          .font(.headline)
-          .padding()
-          .frame(maxWidth: 130)
-          .background(Color.caltheme.blue)
-          .cornerRadius(10)
-        Spacer()
-      }
-      HStack{
-        Text("Complete a previous task")
-          .font(.headline)
-          .padding()
-          .frame(maxWidth: 90)
-          .background(Color.caltheme.yellow)
-          .cornerRadius(10)
-        Text("Create new portfolio")
-          .font(.headline)
-          .padding()
-          .frame(maxWidth: .infinity)
-          .background(Color.caltheme.green)
-          .cornerRadius(10)
-        Spacer()
-      }
-    }
-    .padding(.horizontal)
-    .lineLimit(1)
+  private var inputDateSection: some View{
+    DatePicker("Task Date", selection: $remindervm.taskDate)
+    //    DatePicker("Task Date", selection: $remindervm.taskDate, displayedComponents: .date)
+    //      .font(.title3)
+    //      .padding(.horizontal)
     Divider()
       .background(Color.caltheme.lightgray)
   }
+  
   private var circleColorSection: some View{
     HStack(spacing:5){
       ForEach(remindervm.circle, id:\.self){color in

@@ -10,9 +10,9 @@ import SwiftUI
 struct HomeView: View {
   
   @State var currentDate : Date = Date()
-  @State var isShowCreateReminderView : Bool = false
+//  @State var isShowCreateReminderView : Bool = false
   @EnvironmentObject var vm : CalendarViewModel
-  
+  @State var isShowCreateReminderView : Bool = false
   var body: some View {
     NavigationView{
       ZStack(alignment: .bottomTrailing){
@@ -41,6 +41,13 @@ struct HomeView: View {
                     ForEach(vm.tasks.filter({vm.isSameDay(date1: $0.taskDate, date2: currentDate)})) { task in
                         TaskRowView(task: task)
                     }
+                  
+//                    .onTapGesture {
+//                      isShownSheet.toggle()
+//                    }
+//                  .sheet(isPresented: $isShownSheet) {
+//                    SheetTestView()
+//                  }
                  }
               }
             }

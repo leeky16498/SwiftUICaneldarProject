@@ -18,7 +18,7 @@ class ReminderViewModel : ObservableObject{
   @AppStorage("isCharStyle") var isCharStyle : String = ""
   @Environment(\.presentationMode) var presentationMode
   @Published var tasks : [TaskModel] = []
-  
+  @Published var textEditorTodo : String = ""
   @Published var counter : Int = 0
   @Published var createReminderText : String = ""
   @Published var taskDate : Date = Date()
@@ -75,7 +75,7 @@ class ReminderViewModel : ObservableObject{
     Alert(title: Text(textalert))
   }
   func textCondition() -> Bool {
-    if createReminderText.count < 2 || minutes < 1  {
+    if createReminderText.count < 2  {
       print(minutes)
       textalert = "Please, insert at least 3 characters\n😅😅😅"
       isshowAlert = true

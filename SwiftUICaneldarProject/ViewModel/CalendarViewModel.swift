@@ -14,8 +14,8 @@ class CalendarViewModel : ObservableObject {
     @Published var currentMonth : Int = 0
     
 
-    func addTask(title : String, selectedColor : Color, reminderTime : Int, taskDate : Date) {
-        let newTask = TaskModel(title: title, selectedColor: selectedColor, remindedTime: reminderTime * 60, taskDate: taskDate)
+  func addTask(title : String, content: String, selectedColor : Color, reminderTime : Int, taskDate : Date) {
+        let newTask = TaskModel(title: title, content: content, selectedColor: selectedColor, remindedTime: reminderTime * 60, taskDate: taskDate)
         tasks.append(newTask)
     }
     

@@ -30,7 +30,7 @@ struct LoadedTimerView: View {
 
 struct LoadedTimerView_Previews: PreviewProvider {
   static var previews: some View {
-    let item1 = TaskModel(title: "Home", selectedColor: Color.caltheme.pink, remindedTime: 30, taskDate: Date())
+    let item1 = TaskModel(title: "Home", content: "Hello",selectedColor: Color.caltheme.pink, remindedTime: 30, taskDate: Date())
     LoadedTimerView(item: item1)
       .preferredColorScheme(.dark)
       .environmentObject(ReminderViewModel())

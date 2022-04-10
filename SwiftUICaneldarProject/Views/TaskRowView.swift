@@ -74,5 +74,6 @@ struct TaskRowView: View {
       .cornerRadius(10)
       .offset(x: 20)
       .padding(.vertical, 3)
+
     }
   }

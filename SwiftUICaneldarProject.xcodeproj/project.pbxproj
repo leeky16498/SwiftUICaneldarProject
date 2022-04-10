@@ -35,6 +35,7 @@
 		F0DDDC5627EBED68006AF1C4 /* TextTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DDDC5527EBED68006AF1C4 /* TextTitle.swift */; };
 		F0DDDC5827EC895B006AF1C4 /* CreateTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DDDC5727EC895B006AF1C4 /* CreateTimerView.swift */; };
 		F0DDDC5A27EC9B79006AF1C4 /* LoadedTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DDDC5927EC9B79006AF1C4 /* LoadedTimerView.swift */; };
+		F0E85295280196C500B94EC4 /* SheetTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E85294280196C500B94EC4 /* SheetTestView.swift */; };
 		F0ECB7DD27E1E3CD00851ABD /* ReminderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ECB7DC27E1E3CD00851ABD /* ReminderViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +70,7 @@
 		F0DDDC5527EBED68006AF1C4 /* TextTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTitle.swift; sourceTree = "<group>"; };
 		F0DDDC5727EC895B006AF1C4 /* CreateTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTimerView.swift; sourceTree = "<group>"; };
 		F0DDDC5927EC9B79006AF1C4 /* LoadedTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadedTimerView.swift; sourceTree = "<group>"; };
+		F0E85294280196C500B94EC4 /* SheetTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetTestView.swift; sourceTree = "<group>"; };
 		F0ECB7DC27E1E3CD00851ABD /* ReminderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -167,6 +169,7 @@
 				F0EDFC3A27EED9BD00D03BE9 /* delete */,
 				F0DDDC5427EBED57006AF1C4 /* Component */,
 				F01E318327E5E48200B89C4D /* TaskRowView.swift */,
+				F0E85294280196C500B94EC4 /* SheetTestView.swift */,
 				7978DBE927E0AC6400499843 /* HomeView.swift */,
 				7978DBEB27E0AC6C00499843 /* CalendarView.swift */,
 				F05062AB27E016960051359B /* CreateReminderView.swift */,
@@ -289,6 +292,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0E85295280196C500B94EC4 /* SheetTestView.swift in Sources */,
 				F0AE1D3B27E2BB3E00CF1AA2 /* CGFloat.swift in Sources */,
 				F070D53727E4A026009EE736 /* ReminderListView.swift in Sources */,
 				7978DBF027E0C55D00499843 /* CalendarViewModel.swift in Sources */,
