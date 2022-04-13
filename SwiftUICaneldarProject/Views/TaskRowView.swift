@@ -71,7 +71,7 @@ struct TaskRowView: View {
             .gesture(
                 DragGesture()
                     .onChanged({ gesture in
-                        withAnimation(.easeInOut) {
+                        withAnimation(.spring()) {
                             if gesture.translation.width < 0 {
                                 if isSwipped {
                                     offsets.width = gesture.translation.width - 140
@@ -82,7 +82,7 @@ struct TaskRowView: View {
                         }
                     })
                     .onEnded({ gesture in
-                        withAnimation {
+                        withAnimation(.spring()) {
                             if gesture.translation.width < 0 {
                                 if gesture.translation.width < -20 {
                                     isSwipped = true
