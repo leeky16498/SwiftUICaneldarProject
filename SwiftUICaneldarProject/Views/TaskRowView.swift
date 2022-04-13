@@ -17,8 +17,8 @@ struct TaskRowView: View {
   
   var body: some View {
       ZStack {
-          Color.red
-          HStack {
+          Color.yellow
+          HStack(spacing: 0) {
               Spacer()
               Button(action: {
                   
@@ -36,7 +36,9 @@ struct TaskRowView: View {
                   Image(systemName: "trash")
                       .foregroundColor(.white)
                       .font(.title)
-                      .frame(width : 60, height : 100)
+                      .frame(width : 80, height : 100)
+                      .background(.red)
+                     
               })
           }
           
@@ -72,7 +74,7 @@ struct TaskRowView: View {
                         withAnimation(.easeInOut) {
                             if gesture.translation.width < 0 {
                                 if isSwipped {
-                                    offsets.width = gesture.translation.width - 140
+                                    offsets.width = gesture.translation.width - 160
                                 } else {
                                     offsets.width = gesture.translation.width
                                 }
@@ -84,7 +86,7 @@ struct TaskRowView: View {
                             if gesture.translation.width < 0 {
                                 if gesture.translation.width < -60 {
                                     isSwipped = true
-                                    offsets.width = -140
+                                    offsets.width = -160
                                 } else {
                                     isSwipped = false
                                     offsets.width = 0

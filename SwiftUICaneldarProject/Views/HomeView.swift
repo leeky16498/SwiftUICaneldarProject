@@ -16,7 +16,7 @@ struct HomeView: View {
   var body: some View {
     NavigationView{
       ZStack(alignment: .bottomTrailing){
-        ScrollView(.vertical, showsIndicators: false) {
+        ScrollView {
           CalendarView(currentDate: $currentDate)
             .padding()
           
@@ -41,13 +41,6 @@ struct HomeView: View {
                     ForEach(vm.tasks.filter({vm.isSameDay(date1: $0.taskDate, date2: currentDate)})) { task in
                         TaskRowView(task: task)
                     }
-                  
-//                    .onTapGesture {
-//                      isShownSheet.toggle()
-//                    }
-//                  .sheet(isPresented: $isShownSheet) {
-//                    SheetTestView()
-//                  }
                  }
               }
             }

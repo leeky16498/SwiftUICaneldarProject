@@ -8,9 +8,14 @@
 import SwiftUI
 struct CreateReminderView: View {
   @Environment(\.presentationMode) var presentationMode
+    
   @EnvironmentObject var vm : CalendarViewModel
+    
   @StateObject var remindervm = ReminderViewModel()
+    
   @State private var textalert : String = ""
+
+  let task : TaskModel?
   
   var body: some View {
     VStack(spacing:20){
@@ -43,13 +48,13 @@ struct CreateReminderView: View {
   }
 }
 
-struct CreateReminderView_Previews: PreviewProvider {
-  static var previews: some View {
-    CreateReminderView()
-      .preferredColorScheme(.dark)
-      .environmentObject(CalendarViewModel())
-  }
-}
+//struct CreateReminderView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    CreateReminderView()
+//      .preferredColorScheme(.dark)
+//      .environmentObject(CalendarViewModel())
+//  }
+//}
 
 extension CreateReminderView {
   private var inputTextTitleSection :some View{
@@ -60,8 +65,10 @@ extension CreateReminderView {
       .frame(maxWidth:.infinity, alignment: .leading)
       .padding(.horizontal)
   }
+  
+    
   @ViewBuilder
-  private var inputTextSection : some View{
+  private var inputTextSection : some View {
     HStack{
       TextField("Input your task...", text: $remindervm.createReminderText)
         .foregroundColor(
@@ -91,6 +98,7 @@ extension CreateReminderView {
     Divider()
       .background(Color.caltheme.lightgray)
   }
+    
   @ViewBuilder
   private var inputTextEditor: some View{
     VStack {
