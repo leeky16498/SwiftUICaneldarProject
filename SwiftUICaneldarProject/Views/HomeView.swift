@@ -74,7 +74,7 @@ struct HomeView: View {
                       Image(systemName: "plus")
                   })
                   .sheet(isPresented: $isShowCreateReminderView) {
-                      CreateReminderView()
+                      CreateReminderView(task: nil)
                   }
                   
                   NavigationLink(destination: {

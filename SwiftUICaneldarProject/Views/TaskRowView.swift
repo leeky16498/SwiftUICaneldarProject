@@ -26,7 +26,7 @@ struct TaskRowView: View {
                   Image(systemName: "pencil")
                       .foregroundColor(.white)
                       .font(.title)
-                      .frame(width : 80, height : 100)
+                      .frame(width : 70, height : 100)
                       .background(.green)
               })
               
@@ -36,7 +36,7 @@ struct TaskRowView: View {
                   Image(systemName: "trash")
                       .foregroundColor(.white)
                       .font(.title)
-                      .frame(width : 80, height : 100)
+                      .frame(width : 70, height : 100)
                       .background(.red)
                      
               })
@@ -74,7 +74,7 @@ struct TaskRowView: View {
                         withAnimation(.easeInOut) {
                             if gesture.translation.width < 0 {
                                 if isSwipped {
-                                    offsets.width = gesture.translation.width - 160
+                                    offsets.width = gesture.translation.width - 140
                                 } else {
                                     offsets.width = gesture.translation.width
                                 }
@@ -84,9 +84,9 @@ struct TaskRowView: View {
                     .onEnded({ gesture in
                         withAnimation {
                             if gesture.translation.width < 0 {
-                                if gesture.translation.width < -60 {
+                                if gesture.translation.width < -20 {
                                     isSwipped = true
-                                    offsets.width = -160
+                                    offsets.width = -140
                                 } else {
                                     isSwipped = false
                                     offsets.width = 0
