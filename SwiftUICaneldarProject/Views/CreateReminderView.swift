@@ -8,63 +8,52 @@
 import SwiftUI
 struct CreateReminderView: View {
   @Environment(\.presentationMode) var presentationMode
-    
   @EnvironmentObject var vm : CalendarViewModel
-    
   @StateObject var remindervm = ReminderViewModel()
-    
   @State private var textalert : String = ""
-    @State private var taskTitle : String = ""
-    @State private var isEditMode : Bool = false
-
+  @State private var taskTitle : String = ""
+  @State private var isEditMode : Bool = false
   var selectedTask : TaskModel?
-
-    init(task : TaskModel?) {
-        if let task = task {
-            self.selectedTask = task
-            _taskTitle = State(initialValue: selectedTask?.title ?? "")
-            _isEditMode = State(initialValue: true)
-        }
+  
+  init(task : TaskModel?) {
+    if let task = task {
+      self.selectedTask = task
+      _taskTitle = State(initialValue: selectedTask?.title ?? "")
+      _isEditMode = State(initialValue: true)
     }
+  }
   
   var body: some View {
     VStack(spacing:20){
-      Group{
-        inputTextTitleSection
-          .padding(.top,60)
-        inputTextSection
-        inputTextEditor
-        
-        Divider()
-          .background(Color.caltheme.lightgray)
-        
-        inputDateSection
-        
-      }
-      
+      inputTextTitleSection
+        .padding(.top,60)
+      inputTextSection
+      inputTextEditor
+      Divider()
+        .background(Color.caltheme.lightgray)
+      inputDateSection
       TextTitle(textTitle: "Select Color")
       circleColorSection
-      Spacer()
+        .padding(.vertical,15)
       createButtonSection
         .padding(.bottom, 20)
+      Spacer()
+      
     }
     .alert(isPresented: $remindervm.isshowAlert, content: remindervm.getAlert)
   }
-    func saveEditedTask(task : TaskModel) {
-        if let index = vm.tasks.firstIndex(where: {$0.id == task.id}) {
-            vm.tasks[index] = task.editedItem(title: taskTitle)
-            presentationMode.wrappedValue.dismiss()
-            isEditMode = false
-        }
+  func saveEditedTask(task : TaskModel) {
+    if let index = vm.tasks.firstIndex(where: {$0.id == task.id}) {
+      vm.tasks[index] = task.editedItem(title: taskTitle)
+      presentationMode.wrappedValue.dismiss()
+      isEditMode = false
     }
-    
-    func isPressedCreateReminer() {
-//    if remindervm.textCondition(){
-          vm.addTask(title: taskTitle,content: remindervm.textEditorTodo, selectedColor: remindervm.selectedColor, reminderTime: Int(remindervm.minutes), taskDate: remindervm.taskDate)
-        presentationMode.wrappedValue.dismiss()
-          isEditMode = false
-        
-//    }
+  }
+  
+  func isPressedCreateReminer() {
+    vm.addTask(title: taskTitle,content: remindervm.textEditorTodo, selectedColor: remindervm.selectedColor, reminderTime: Int(remindervm.minutes), taskDate: remindervm.taskDate)
+    presentationMode.wrappedValue.dismiss()
+    isEditMode = false
   }
 }
 
@@ -81,67 +70,79 @@ extension CreateReminderView {
     Text("Create a new remainder")
       .font(.title)
       .bold()
-      .foregroundColor(Color.caltheme.secondaryText)
+      .foregroundColor(Color.black)
       .frame(maxWidth:.infinity, alignment: .leading)
       .padding(.horizontal)
   }
-  
-    
   @ViewBuilder
   private var inputTextSection : some View {
     HStack{
-        TextField("Input your task...", text: $taskTitle)
-          .foregroundColor(
-            remindervm.createReminderText.isEmpty ?
-            Color.caltheme.secondaryText : remindervm.selectedColor)
-          .disableAutocorrection(true)
-          .overlay(
-            Image(systemName: "xmark.circle.fill")
-              .padding()
-              .offset(x: 10)
-              .foregroundColor(remindervm.selectedColor)
-              .opacity(remindervm.createReminderText.isEmpty ? 0.0 : 1.0)
-              .onTapGesture {
-                UIApplication.shared.closeKeyboard()
-                remindervm.createReminderText = ""
-              }
-            ,alignment:  .trailing
-          )
+      TextField("Input your title...", text: $taskTitle)
+        .foregroundColor(
+          remindervm.createReminderText.isEmpty ?
+          Color.caltheme.secondaryText : remindervm.selectedColor)
+        .disableAutocorrection(true)
+        .frame(height:40)
+        .padding(.horizontal,7)
+        .overlay(
+          Image(systemName: "xmark.circle.fill")
+            .padding()
+            .offset(x: 10)
+            .foregroundColor(remindervm.selectedColor)
+            .opacity(remindervm.createReminderText.isEmpty ? 0.0 : 1.0)
+            .onTapGesture {
+              UIApplication.shared.closeKeyboard()
+              remindervm.createReminderText = ""
+            }
+          ,alignment:  .trailing
+        )
     }
     .font(.title3)
     .background(
-      RoundedRectangle(cornerRadius: 15)
+      RoundedRectangle(cornerRadius: 10)
         .fill(Color.caltheme.background)
-        .shadow(color: Color.caltheme.black.opacity(0.5), radius: 10, x: 0, y: 0)
+        .shadow(color: Color.caltheme.black.opacity(0.3), radius: 5, x: 0, y: 0)
     )
     .padding(.horizontal)
+    
     Divider()
       .background(Color.caltheme.lightgray)
   }
-    
   @ViewBuilder
   private var inputTextEditor: some View{
     VStack {
-      TextEditor(text: $remindervm.textEditorTodo)
-      
-        .foregroundColor(remindervm.textEditorTodo.isEmpty ? Color.caltheme.secondaryText : remindervm.selectedColor)
-        .frame(width: UIScreen.main.bounds.width * 0.9)
-        .frame(height:200)
-        .colorMultiply(Color.white.opacity(0.5))
-        .padding(.leading)
-        .padding(.trailing)
-        .lineSpacing(8)
-        .cornerRadius(15)
+      ZStack{
+        TextEditor(text: $remindervm.textEditorTodo)
+          .font(.title3)
+          .foregroundColor(remindervm.textEditorTodo.isEmpty ? Color.caltheme.secondaryText : remindervm.selectedColor)
+          .frame(width: UIScreen.main.bounds.width * 0.9)
+          .frame(height:200)
+          .lineSpacing(8)
+          .cornerRadius(15)
+          .padding(.leading)
+          .padding(.trailing)
+          .background(
+            RoundedRectangle(cornerRadius: 15)
+              .fill(Color.caltheme.background)
+              .frame(width: UIScreen.main.bounds.width * 0.92)
+              .shadow(color: Color.caltheme.black.opacity(0.3), radius: 5, x: 0, y: 0)
+          )
+        if remindervm.textEditorTodo.isEmpty{
+          Text("Input your task...")
+            .font(.title2)
+            .foregroundColor(.gray.opacity(0.5))
+            .frame(maxWidth:.infinity, alignment: .leading)
+            .padding(.leading, 18)
+        }
+      }
     }
-    
   }
-  
   @ViewBuilder
   private var inputDateSection: some View{
     DatePicker("Task Date", selection: $remindervm.taskDate)
-    //    DatePicker("Task Date", selection: $remindervm.taskDate, displayedComponents: .date)
-    //      .font(.title3)
-    //      .padding(.horizontal)
+      .font(.title3.bold())
+      .foregroundColor(Color.caltheme.secondaryText)
+      .padding(.horizontal)
     Divider()
       .background(Color.caltheme.lightgray)
   }
@@ -167,34 +168,24 @@ extension CreateReminderView {
       .padding(.horizontal)
     }
   }
-  private var timeTextSection: some View{
-    HStack(spacing : 0) {
-      Text(remindervm.toProgress.roundCGFloat())
-        .frame(width:50)
-      Text("Minutes")
-        .frame(width:130)
-    }
-    .font(.largeTitle.bold())
-    .foregroundColor(Color.caltheme.secondaryText)
-    .padding(.horizontal)
-    .scaleEffect(1.5)
-  }
+  
   private var createButtonSection: some View{
     Button(action: {
-        if let task = selectedTask {
-            saveEditedTask(task: task)
-        } else {
-            isPressedCreateReminer()
-        }
+      if let task = selectedTask {
+        saveEditedTask(task: task)
+      } else {
+        isPressedCreateReminer()
+      }
     }, label: {
-        Text(isEditMode ? "Save Edited Reminder" : "Create Reminder")
+      Text(isEditMode ? "Save Edited Reminder" : "Create Reminder")
     })
     .font(.title)
-    .foregroundColor(Color.caltheme.secondaryText)
+    .foregroundColor(Color.white)
     .frame(maxWidth: .infinity)
     .frame(height:50)
     .background(remindervm.selectedColor)
     .cornerRadius(10)
     .padding(.horizontal)
+    .shadow(color: Color.caltheme.black.opacity(0.3), radius: 5, x: 0, y: 0)
   }
 }
