@@ -111,7 +111,7 @@ extension CreateReminderView {
   @ViewBuilder
   private var inputTextEditor: some View{
     VStack {
-      ZStack{
+        ZStack(alignment : .topLeading){
         TextEditor(text: $remindervm.textEditorTodo)
           .font(.title3)
           .foregroundColor(remindervm.textEditorTodo.isEmpty ? Color.caltheme.secondaryText : remindervm.selectedColor)
@@ -132,7 +132,8 @@ extension CreateReminderView {
             .font(.title2)
             .foregroundColor(.gray.opacity(0.5))
             .frame(maxWidth:.infinity, alignment: .leading)
-            .padding(.leading, 18)
+            .padding(.leading, 22)
+            .padding(.vertical)
         }
       }
     }
