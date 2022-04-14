@@ -12,8 +12,8 @@ struct TaskRowView: View {
     @State private var isSwipped : Bool = false
     @State private var isShowCreateTimerView : Bool = false
     @EnvironmentObject var vm : CalendarViewModel
-    var task : TaskModel
-    var isShowActionSheet : Bool = false
+    let task : TaskModel
+    @State private var isShowEditSheet : Bool = false
   
   var body: some View {
       ZStack {
@@ -21,7 +21,7 @@ struct TaskRowView: View {
           HStack(spacing: 0) {
               Spacer()
               Button(action: {
-                  
+                  isShowEditSheet.toggle()
               }, label: {
                   Image(systemName: "pencil")
                       .foregroundColor(.white)
@@ -29,6 +29,9 @@ struct TaskRowView: View {
                       .frame(width : 70, height : 100)
                       .background(.green)
               })
+              .sheet(isPresented: $isShowEditSheet) {
+                  CreateReminderView(task: task)
+              }
               
               Button(action: {
                   vm.deleteTask(task: task)

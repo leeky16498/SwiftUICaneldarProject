@@ -16,7 +16,13 @@ struct TaskModel: Identifiable, Codable {
   var selectedColor : Color
   var remindedTime : Int
   var taskDate : Date
+    
+    func editedItem(title : String) -> TaskModel {
+        return TaskModel(id: id, title: title, content: content, selectedColor: selectedColor, remindedTime: remindedTime, taskDate: taskDate)
+    }
 }
+
+
 
 struct CharStyles : Identifiable{
   let id = UUID().uuidString

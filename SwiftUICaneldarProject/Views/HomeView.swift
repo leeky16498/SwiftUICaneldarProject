@@ -75,6 +75,7 @@ struct HomeView: View {
                   })
                   .sheet(isPresented: $isShowCreateReminderView) {
                       CreateReminderView(task: nil)
+                      
                   }
                   
                   NavigationLink(destination: {

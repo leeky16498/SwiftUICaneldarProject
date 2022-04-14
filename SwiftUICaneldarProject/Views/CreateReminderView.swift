@@ -14,8 +14,18 @@ struct CreateReminderView: View {
   @StateObject var remindervm = ReminderViewModel()
     
   @State private var textalert : String = ""
+    @State private var taskTitle : String = ""
+    @State private var isEditMode : Bool = false
 
-  let task : TaskModel?
+  var selectedTask : TaskModel?
+
+    init(task : TaskModel?) {
+        if let task = task {
+            self.selectedTask = task
+            _taskTitle = State(initialValue: selectedTask?.title ?? "")
+            _isEditMode = State(initialValue: true)
+        }
+    }
   
   var body: some View {
     VStack(spacing:20){
@@ -40,11 +50,21 @@ struct CreateReminderView: View {
     }
     .alert(isPresented: $remindervm.isshowAlert, content: remindervm.getAlert)
   }
-  func isPressedCreateReminer() {
-    if remindervm.textCondition(){
-      vm.addTask(title: remindervm.createReminderText,content: remindervm.textEditorTodo, selectedColor: remindervm.selectedColor, reminderTime: Int(remindervm.minutes), taskDate: remindervm.taskDate)
-      presentationMode.wrappedValue.dismiss()
+    func saveEditedTask(task : TaskModel) {
+        if let index = vm.tasks.firstIndex(where: {$0.id == task.id}) {
+            vm.tasks[index] = task.editedItem(title: taskTitle)
+            presentationMode.wrappedValue.dismiss()
+            isEditMode = false
+        }
     }
+    
+    func isPressedCreateReminer() {
+//    if remindervm.textCondition(){
+          vm.addTask(title: taskTitle,content: remindervm.textEditorTodo, selectedColor: remindervm.selectedColor, reminderTime: Int(remindervm.minutes), taskDate: remindervm.taskDate)
+        presentationMode.wrappedValue.dismiss()
+          isEditMode = false
+        
+//    }
   }
 }
 
@@ -57,7 +77,7 @@ struct CreateReminderView: View {
 //}
 
 extension CreateReminderView {
-  private var inputTextTitleSection :some View{
+  private var inputTextTitleSection : some View{
     Text("Create a new remainder")
       .font(.title)
       .bold()
@@ -70,23 +90,23 @@ extension CreateReminderView {
   @ViewBuilder
   private var inputTextSection : some View {
     HStack{
-      TextField("Input your task...", text: $remindervm.createReminderText)
-        .foregroundColor(
-          remindervm.createReminderText.isEmpty ?
-          Color.caltheme.secondaryText : remindervm.selectedColor)
-        .disableAutocorrection(true)
-        .overlay(
-          Image(systemName: "xmark.circle.fill")
-            .padding()
-            .offset(x: 10)
-            .foregroundColor(remindervm.selectedColor)
-            .opacity(remindervm.createReminderText.isEmpty ? 0.0 : 1.0)
-            .onTapGesture {
-              UIApplication.shared.closeKeyboard()
-              remindervm.createReminderText = ""
-            }
-          ,alignment:  .trailing
-        )
+        TextField("Input your task...", text: $taskTitle)
+          .foregroundColor(
+            remindervm.createReminderText.isEmpty ?
+            Color.caltheme.secondaryText : remindervm.selectedColor)
+          .disableAutocorrection(true)
+          .overlay(
+            Image(systemName: "xmark.circle.fill")
+              .padding()
+              .offset(x: 10)
+              .foregroundColor(remindervm.selectedColor)
+              .opacity(remindervm.createReminderText.isEmpty ? 0.0 : 1.0)
+              .onTapGesture {
+                UIApplication.shared.closeKeyboard()
+                remindervm.createReminderText = ""
+              }
+            ,alignment:  .trailing
+          )
     }
     .font(.title3)
     .background(
@@ -161,9 +181,13 @@ extension CreateReminderView {
   }
   private var createButtonSection: some View{
     Button(action: {
-      isPressedCreateReminer()
+        if let task = selectedTask {
+            saveEditedTask(task: task)
+        } else {
+            isPressedCreateReminer()
+        }
     }, label: {
-      Text("Create Reminder")
+        Text(isEditMode ? "Save Edited Reminder" : "Create Reminder")
     })
     .font(.title)
     .foregroundColor(Color.caltheme.secondaryText)
