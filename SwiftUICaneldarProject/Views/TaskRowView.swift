@@ -17,7 +17,7 @@ struct TaskRowView: View {
   
   var body: some View {
       ZStack {
-          Color.black
+          Color.yellow
           HStack(spacing: 0) {
               Spacer()
               Button(action: {
