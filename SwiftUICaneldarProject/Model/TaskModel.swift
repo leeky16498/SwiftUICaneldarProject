@@ -17,7 +17,7 @@ struct TaskModel: Identifiable, Codable {
   var remindedTime : Int
   var taskDate : Date
     
-    func editedItem(title : String) -> TaskModel {
+    func editedItem(title : String, content : String, selectedColor : Color, taskDate : Date) -> TaskModel {
         return TaskModel(id: id, title: title, content: content, selectedColor: selectedColor, remindedTime: remindedTime, taskDate: taskDate)
     }
 }

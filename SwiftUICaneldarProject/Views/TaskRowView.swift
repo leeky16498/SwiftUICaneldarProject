@@ -50,10 +50,11 @@ struct TaskRowView: View {
                 Text(task.title)
                 .font(.title2.bold())
                 
-                Text("Scheduled time : \(task.remindedTime)mim")
+                Text(task.content)
                     .font(.footnote)
                     .foregroundColor(.gray)
                     .padding(.bottom, 6)
+                    .lineLimit(3)
             }
             .padding(.leading, 35)
             
