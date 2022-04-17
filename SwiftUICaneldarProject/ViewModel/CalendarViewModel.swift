@@ -10,8 +10,34 @@ import SwiftUI
 
 class CalendarViewModel : ObservableObject {
     
-    @Published var tasks : [TaskModel] = []
+    @Published var tasks : [TaskModel] = [] {
+        didSet {
+            saveItem()
+        }
+    }
+
+    let taskKey : String = "task_list"
+
+
     @Published var currentMonth : Int = 0
+
+    init() {
+        getItems()
+    }
+
+    func getItems() {
+        guard let data = UserDefaults.standard.data(forKey: taskKey),
+              let savedItems = try? JSONDecoder().decode([TaskModel].self, from: data)
+        else {return}
+    
+        self.tasks = savedItems
+    }
+
+    func saveItem() {
+        if let encodedData = try? JSONEncoder().encode(tasks) {
+            UserDefaults.standard.set(encodedData, forKey: taskKey)
+        }
+    }
     
 
   func addTask(title : String, content: String, selectedColor : Color, reminderTime : Int, taskDate : Date) {

@@ -17,7 +17,7 @@ struct TaskRowView: View {
   
   var body: some View {
       ZStack {
-          Color.black
+          Color.yellow
           HStack(spacing: 0) {
               Spacer()
               Button(action: {
@@ -50,10 +50,11 @@ struct TaskRowView: View {
                 Text(task.title)
                 .font(.title2.bold())
                 
-                Text("Scheduled time : \(task.remindedTime)mim")
+                Text(task.content)
                     .font(.footnote)
                     .foregroundColor(.gray)
                     .padding(.bottom, 6)
+                    .lineLimit(3)
             }
             .padding(.leading, 35)
             

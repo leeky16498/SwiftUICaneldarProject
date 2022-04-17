@@ -11,14 +11,19 @@ struct CreateReminderView: View {
   @EnvironmentObject var vm : CalendarViewModel
   @StateObject var remindervm = ReminderViewModel()
   @State private var textalert : String = ""
-  @State private var taskTitle : String = ""
+  @State private var oldTaskTitle : String = ""
+    @State private var oldTaskDate : Date = Date()
+    @State private var oldContents : String = ""
+    @State private var oldColor : Color = Color.caltheme.red
   @State private var isEditMode : Bool = false
   var selectedTask : TaskModel?
   
   init(task : TaskModel?) {
     if let task = task {
       self.selectedTask = task
-      _taskTitle = State(initialValue: selectedTask?.title ?? "")
+      _oldTaskTitle = State(initialValue: selectedTask?.title ?? "")
+      _oldColor = State(initialValue: selectedTask?.selectedColor ?? Color.caltheme.red)
+        _oldContents = State(initialValue: selectedTask?.content ?? "")
       _isEditMode = State(initialValue: true)
     }
   }
@@ -44,14 +49,14 @@ struct CreateReminderView: View {
   }
   func saveEditedTask(task : TaskModel) {
     if let index = vm.tasks.firstIndex(where: {$0.id == task.id}) {
-      vm.tasks[index] = task.editedItem(title: taskTitle)
+        vm.tasks[index] = task.editedItem(title: oldTaskTitle, content: oldContents, selectedColor: oldColor, taskDate: oldTaskDate)
       presentationMode.wrappedValue.dismiss()
       isEditMode = false
     }
   }
   
   func isPressedCreateReminer() {
-    vm.addTask(title: taskTitle,content: remindervm.textEditorTodo, selectedColor: remindervm.selectedColor, reminderTime: Int(remindervm.minutes), taskDate: remindervm.taskDate)
+    vm.addTask(title: oldTaskTitle,content: remindervm.textEditorTodo, selectedColor: remindervm.selectedColor, reminderTime: Int(remindervm.minutes), taskDate: remindervm.taskDate)
     presentationMode.wrappedValue.dismiss()
     isEditMode = false
   }
@@ -77,7 +82,7 @@ extension CreateReminderView {
   @ViewBuilder
   private var inputTextSection : some View {
     HStack{
-      TextField("Input your title...", text: $taskTitle)
+      TextField("Input your title...", text: $oldTaskTitle)
         .foregroundColor(
           remindervm.createReminderText.isEmpty ?
           Color.caltheme.secondaryText : remindervm.selectedColor)
@@ -111,8 +116,8 @@ extension CreateReminderView {
   @ViewBuilder
   private var inputTextEditor: some View{
     VStack {
-      ZStack{
-        TextEditor(text: $remindervm.textEditorTodo)
+        ZStack(alignment : .topLeading){
+        TextEditor(text: $oldContents)
           .font(.title3)
           .foregroundColor(remindervm.textEditorTodo.isEmpty ? Color.caltheme.secondaryText : remindervm.selectedColor)
           .frame(width: UIScreen.main.bounds.width * 0.9)
@@ -127,12 +132,13 @@ extension CreateReminderView {
               .frame(width: UIScreen.main.bounds.width * 0.92)
               .shadow(color: Color.caltheme.black.opacity(0.3), radius: 5, x: 0, y: 0)
           )
-        if remindervm.textEditorTodo.isEmpty{
+            if remindervm.textEditorTodo.isEmpty && oldContents.count == 0{
           Text("Input your task...")
             .font(.title2)
             .foregroundColor(.gray.opacity(0.5))
             .frame(maxWidth:.infinity, alignment: .leading)
-            .padding(.leading, 18)
+            .padding(.leading, 22)
+            .padding(.vertical)
         }
       }
     }
