@@ -22,13 +22,6 @@ struct SwiftUICaneldarProjectApp: App {
         HomeView()
             .environmentObject(vm)
             .environmentObject(remindervm)
-      //                CreateTimerView()
-//                  ReminderListView()
-//      SetupView()
-//        .preferredColorScheme(isDarkMode == "다크모드" ? .dark : .light)
-//        .environmentObject(vm)
-//        .environmentObject(remindervm)
-      
     }
   }
 }

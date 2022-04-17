@@ -38,30 +38,12 @@ struct HomeView: View {
                   .padding(.bottom, 10)
                 
                 VStack {
-                    ForEach(vm.tasks.filter({vm.isSameDay(date1: $0.taskDate, date2: currentDate)})) { task in
+                    ForEach(vm.tasks.filter({vm.isSameDay(date1: $0.taskDate, date2: currentDate)}).sorted(by: {$0.taskDate < $1.taskDate})) { task in
                         TaskRowView(task: task)
                     }
                  }
               }
             }
-//        Button(action: {
-//          self.isShowCreateReminderView.toggle()
-//        }, label: {
-//          Image(systemName: "plus")
-//            .font(.title3.bold())
-//            .foregroundColor(.white)
-//            .background(
-//              Circle()
-//                .fill(.gray)
-//                .frame(width : 60, height : 60)
-//            )
-//        })
-//        .sheet(isPresented : $isShowCreateReminderView) {
-//          VStack{
-//
-//            CreateReminderView()
-//          }
-//        }
       }
         
       .navigationTitle("Planery🥰")

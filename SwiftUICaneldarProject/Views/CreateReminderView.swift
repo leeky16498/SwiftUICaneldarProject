@@ -23,7 +23,7 @@ struct CreateReminderView: View {
       self.selectedTask = task
       _oldTaskTitle = State(initialValue: selectedTask?.title ?? "")
       _oldColor = State(initialValue: selectedTask?.selectedColor ?? Color.caltheme.red)
-        _oldContents = State(initialValue: selectedTask?.content ?? "")
+      _oldContents = State(initialValue: selectedTask?.content ?? "")
       _isEditMode = State(initialValue: true)
     }
   }
@@ -47,6 +47,7 @@ struct CreateReminderView: View {
     }
     .alert(isPresented: $remindervm.isshowAlert, content: remindervm.getAlert)
   }
+    
   func saveEditedTask(task : TaskModel) {
     if let index = vm.tasks.firstIndex(where: {$0.id == task.id}) {
         vm.tasks[index] = task.editedItem(title: oldTaskTitle, content: oldContents, selectedColor: oldColor, taskDate: oldTaskDate)
@@ -56,7 +57,7 @@ struct CreateReminderView: View {
   }
   
   func isPressedCreateReminer() {
-    vm.addTask(title: oldTaskTitle,content: remindervm.textEditorTodo, selectedColor: remindervm.selectedColor, reminderTime: Int(remindervm.minutes), taskDate: remindervm.taskDate)
+      vm.addTask(title: oldTaskTitle, content: oldContents, selectedColor: oldColor, taskDate: oldTaskDate, remindedTime: remindervm.hours)
     presentationMode.wrappedValue.dismiss()
     isEditMode = false
   }
@@ -72,13 +73,14 @@ struct CreateReminderView: View {
 
 extension CreateReminderView {
   private var inputTextTitleSection : some View{
-    Text("Create a new remainder")
+    Text("New Reminder ✅")
       .font(.title)
       .bold()
       .foregroundColor(Color.black)
       .frame(maxWidth:.infinity, alignment: .leading)
       .padding(.horizontal)
   }
+    
   @ViewBuilder
   private var inputTextSection : some View {
     HStack{
@@ -113,13 +115,14 @@ extension CreateReminderView {
     Divider()
       .background(Color.caltheme.lightgray)
   }
+    
   @ViewBuilder
   private var inputTextEditor: some View{
     VStack {
         ZStack(alignment : .topLeading){
         TextEditor(text: $oldContents)
           .font(.title3)
-          .foregroundColor(remindervm.textEditorTodo.isEmpty ? Color.caltheme.secondaryText : remindervm.selectedColor)
+          .foregroundColor(remindervm.textEditorTodo.isEmpty ? Color.caltheme.secondaryText : oldColor)
           .frame(width: UIScreen.main.bounds.width * 0.9)
           .frame(height:200)
           .lineSpacing(8)
@@ -145,7 +148,7 @@ extension CreateReminderView {
   }
   @ViewBuilder
   private var inputDateSection: some View{
-    DatePicker("Task Date", selection: $remindervm.taskDate)
+    DatePicker("Task Date", selection: $oldTaskDate)
       .font(.title3.bold())
       .foregroundColor(Color.caltheme.secondaryText)
       .padding(.horizontal)
@@ -162,11 +165,11 @@ extension CreateReminderView {
           .background(
             Circle()
               .frame(width: 45, height: 45)
-              .foregroundColor(color == remindervm.selectedColor ? Color.white : Color.clear)
-              .shadow(color: color == remindervm.selectedColor ? Color.white : Color.clear, radius: 5, x: 0, y: 0))
+              .foregroundColor(color == oldColor ? Color.white : Color.clear)
+              .shadow(color: color == oldColor ? Color.white : Color.clear, radius: 5, x: 0, y: 0))
           .onTapGesture {
             withAnimation(.easeIn){
-              remindervm.selectedColor = color
+              oldColor = color
             }
           }
       }
@@ -189,7 +192,7 @@ extension CreateReminderView {
     .foregroundColor(Color.white)
     .frame(maxWidth: .infinity)
     .frame(height:50)
-    .background(remindervm.selectedColor)
+    .background(oldColor)
     .cornerRadius(10)
     .padding(.horizontal)
     .shadow(color: Color.caltheme.black.opacity(0.3), radius: 5, x: 0, y: 0)

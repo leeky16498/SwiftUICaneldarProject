@@ -32,21 +32,25 @@ class ReminderViewModel : ObservableObject{
   @Published var selectedColor : Color = Color.caltheme.red
   @Published var textalert : String = ""
   @Published var isshowAlert : Bool = false
+    
   @Published var charStyles : [CharStyles] = [
     CharStyles(title: "기본체", char: ""),
     CharStyles(title: "주아체", char: "Jua-Regular"),
     CharStyles(title: "해바라기체", char: "Sunflower-Light"),
     CharStyles(title: "싱글체", char: "SingleDay-Regular")
   ]
+    
   @Published var systemStyles : [SystemStyle] = [
     SystemStyle(mode: "다크모드"),
     SystemStyle(mode: "라이트모드")]
+    
   @Published var soundStyle : [SoundStyle] = [
     SoundStyle(soundTitle: "뉴플래쉬", soundNumber: 1028),
     SoundStyle(soundTitle: "흔들흔들", soundNumber: 1109),
     SoundStyle(soundTitle: "미뉴엣", soundNumber: 1327),
     SoundStyle(soundTitle: "업데이트음", soundNumber: 1336)
   ]
+    
   @Published var circle = [
     Color.caltheme.red,
     Color.caltheme.pink,
@@ -54,10 +58,13 @@ class ReminderViewModel : ObservableObject{
     Color.caltheme.yellow,
     Color.caltheme.blue,
   ]
+    
   var cancellables = Set<AnyCancellable>()
+    
   init(){
     setUpTimer()
   }
+    
   func setUpTimer(){
     Timer
       .publish(every: 1, on: .main, in: .common)
@@ -71,9 +78,11 @@ class ReminderViewModel : ObservableObject{
   func uiScreen() -> CGRect{
     return UIScreen.main.bounds
   }
+    
   func getAlert() -> Alert{
     Alert(title: Text(textalert))
   }
+    
   func textCondition() -> Bool {
     if createReminderText.count < 2  {
       print(minutes)
@@ -84,6 +93,7 @@ class ReminderViewModel : ObservableObject{
       return true
     }
   }
+    
   func TimeString(time: Int) -> String {
     let minutes = Int(time) / 60 % 60
     let seconds = Int(time) % 60

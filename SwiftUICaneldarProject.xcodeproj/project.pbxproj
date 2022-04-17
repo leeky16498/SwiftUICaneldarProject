@@ -19,6 +19,8 @@
 		799129C327DF6D2C004CBE70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 799129C227DF6D2C004CBE70 /* Assets.xcassets */; };
 		799129C627DF6D2C004CBE70 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 799129C527DF6D2C004CBE70 /* Preview Assets.xcassets */; };
 		7996548E27FDDEF1002FF2A5 /* CornerRadiusCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7996548D27FDDEF1002FF2A5 /* CornerRadiusCustom.swift */; };
+		79D81F9E280C6F9C00EB7260 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D81F9D280C6F9C00EB7260 /* View.swift */; };
+		79D81FA0280C784400EB7260 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D81F9F280C784400EB7260 /* MailView.swift */; };
 		F01E315427E4D4C800B89C4D /* TaskContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F01E315227E4D4C800B89C4D /* TaskContainer.xcdatamodeld */; };
 		F01E318427E5E48300B89C4D /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01E318327E5E48200B89C4D /* TaskRowView.swift */; };
 		F01E31AB27E950A100B89C4D /* FillClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01E31AA27E950A100B89C4D /* FillClock.swift */; };
@@ -35,7 +37,6 @@
 		F0DDDC5627EBED68006AF1C4 /* TextTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DDDC5527EBED68006AF1C4 /* TextTitle.swift */; };
 		F0DDDC5827EC895B006AF1C4 /* CreateTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DDDC5727EC895B006AF1C4 /* CreateTimerView.swift */; };
 		F0DDDC5A27EC9B79006AF1C4 /* LoadedTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DDDC5927EC9B79006AF1C4 /* LoadedTimerView.swift */; };
-		F0E85295280196C500B94EC4 /* SheetTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E85294280196C500B94EC4 /* SheetTestView.swift */; };
 		F0ECB7DD27E1E3CD00851ABD /* ReminderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0ECB7DC27E1E3CD00851ABD /* ReminderViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,8 @@
 		799129C227DF6D2C004CBE70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		799129C527DF6D2C004CBE70 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7996548D27FDDEF1002FF2A5 /* CornerRadiusCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadiusCustom.swift; sourceTree = "<group>"; };
+		79D81F9D280C6F9C00EB7260 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		79D81F9F280C784400EB7260 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		F01E315327E4D4C800B89C4D /* TaskContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskContainer.xcdatamodel; sourceTree = "<group>"; };
 		F01E318327E5E48200B89C4D /* TaskRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskRowView.swift; sourceTree = "<group>"; };
 		F01E31AA27E950A100B89C4D /* FillClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillClock.swift; sourceTree = "<group>"; };
@@ -70,7 +73,6 @@
 		F0DDDC5527EBED68006AF1C4 /* TextTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTitle.swift; sourceTree = "<group>"; };
 		F0DDDC5727EC895B006AF1C4 /* CreateTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTimerView.swift; sourceTree = "<group>"; };
 		F0DDDC5927EC9B79006AF1C4 /* LoadedTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadedTimerView.swift; sourceTree = "<group>"; };
-		F0E85294280196C500B94EC4 /* SheetTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetTestView.swift; sourceTree = "<group>"; };
 		F0ECB7DC27E1E3CD00851ABD /* ReminderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -169,13 +171,13 @@
 				F0EDFC3A27EED9BD00D03BE9 /* delete */,
 				F0DDDC5427EBED57006AF1C4 /* Component */,
 				F01E318327E5E48200B89C4D /* TaskRowView.swift */,
-				F0E85294280196C500B94EC4 /* SheetTestView.swift */,
 				7978DBE927E0AC6400499843 /* HomeView.swift */,
 				7978DBEB27E0AC6C00499843 /* CalendarView.swift */,
 				F05062AB27E016960051359B /* CreateReminderView.swift */,
 				F0DDDC5927EC9B79006AF1C4 /* LoadedTimerView.swift */,
 				F070D53627E4A026009EE736 /* ReminderListView.swift */,
 				F0C2E20A27FB172900451741 /* SetupView.swift */,
+				79D81F9F280C784400EB7260 /* MailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -188,6 +190,7 @@
 				7978DBF127E0CB5600499843 /* GetAllDate.swift */,
 				F0AE1D3A27E2BB3E00CF1AA2 /* CGFloat.swift */,
 				7996548D27FDDEF1002FF2A5 /* CornerRadiusCustom.swift */,
+				79D81F9D280C6F9C00EB7260 /* View.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -292,7 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0E85295280196C500B94EC4 /* SheetTestView.swift in Sources */,
+				79D81F9E280C6F9C00EB7260 /* View.swift in Sources */,
 				F0AE1D3B27E2BB3E00CF1AA2 /* CGFloat.swift in Sources */,
 				F070D53727E4A026009EE736 /* ReminderListView.swift in Sources */,
 				7978DBF027E0C55D00499843 /* CalendarViewModel.swift in Sources */,
@@ -303,6 +306,7 @@
 				F0DDDC5827EC895B006AF1C4 /* CreateTimerView.swift in Sources */,
 				F0ECB7DD27E1E3CD00851ABD /* ReminderViewModel.swift in Sources */,
 				F01E31AB27E950A100B89C4D /* FillClock.swift in Sources */,
+				79D81FA0280C784400EB7260 /* MailView.swift in Sources */,
 				799129C127DF6D2B004CBE70 /* ContentView.swift in Sources */,
 				7978DBF227E0CB5600499843 /* GetAllDate.swift in Sources */,
 				799129BF27DF6D2B004CBE70 /* SwiftUICaneldarProjectApp.swift in Sources */,

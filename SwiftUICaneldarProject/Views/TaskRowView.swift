@@ -17,7 +17,7 @@ struct TaskRowView: View {
   
   var body: some View {
       ZStack {
-          Color.yellow
+          Color.white
           HStack(spacing: 0) {
               Spacer()
               Button(action: {
@@ -49,12 +49,18 @@ struct TaskRowView: View {
             VStack(alignment : .leading) {
                 Text(task.title)
                 .font(.title2.bold())
+                .padding(.vertical, 3)
                 
                 Text(task.content)
                     .font(.footnote)
+                    .foregroundColor(.black)
+                    .lineLimit(2)
+                    .padding(.bottom, 3)
+                
+                Text("Planned time : \(task.taskDate.formatted(date: .omitted, time: .shortened))")
+                    .font(.footnote)
                     .foregroundColor(.gray)
                     .padding(.bottom, 6)
-                    .lineLimit(3)
             }
             .padding(.leading, 35)
             
@@ -62,7 +68,7 @@ struct TaskRowView: View {
             }//hst
             .frame(maxWidth : .infinity)
             .frame(height : 100)
-            .background(Color.init(uiColor: .systemYellow))
+            .background(Color.init(uiColor: .white))
             .overlay(
               Rectangle()
                   .fill(task.selectedColor)
@@ -102,7 +108,8 @@ struct TaskRowView: View {
                         }
                     })
             )
-        }
+        }//zst
+      .border(width: 1, edges: [.bottom, .top, .leading], color:  .gray)
       .cornerRadius(10, corners: [.topLeft, .bottomLeft])
       .padding(.leading, 20)
     }
