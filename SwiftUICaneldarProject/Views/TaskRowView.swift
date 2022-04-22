@@ -14,6 +14,7 @@ struct TaskRowView: View {
     @EnvironmentObject var vm : CalendarViewModel
     let task : TaskModel
     @State private var isShowEditSheet : Bool = false
+    @State private var isSelectedToDelete : Bool = false
   
   var body: some View {
       ZStack {
@@ -112,5 +113,16 @@ struct TaskRowView: View {
       .border(width: 1, edges: [.bottom, .top, .leading], color:  .gray)
       .cornerRadius(10, corners: [.topLeft, .bottomLeft])
       .padding(.leading, 20)
+      .onTapGesture {}
+      .onLongPressGesture {
+          self.isSelectedToDelete.toggle()
+      }
+      .confirmationDialog("Option", isPresented: $isSelectedToDelete) {
+          Button(role: .destructive, action: {
+              vm.deleteTask(task: task)
+          }, label: {
+              Text("Delete")
+          })
+      }
     }
 }
